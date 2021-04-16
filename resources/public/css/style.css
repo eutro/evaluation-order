@@ -12,6 +12,10 @@
     margin: 0;
 }
 
+.code span {
+    font-size: 1em;
+}
+
 .editor {
     resize: none;
 }
@@ -22,4 +26,33 @@
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.string {
+    color: green;
+}
+
+.keyword {
+    color: mediumpurple;
+    font-style: italic;
+}
+
+.number, .nil {
+    color: dodgerblue;
+}
+
+.symbol.function, .var {
+    color: orangered;
+}
+
+.expr:focus {
+    background: yellow;
+}
+
+.error {
+    color: red;
+}
+
+.value {
+    color: purple;
 }
