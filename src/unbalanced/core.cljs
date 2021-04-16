@@ -1,40 +1,34 @@
 (ns unbalanced.core
-  (:require [unbalanced.render.render :as render]
-            [unbalanced.game :as game]
-            [unbalanced.input :as input]
-            [cljs.core.async :as a])
+  (:require [reagent.dom :as rd]
+            [reagent.core :as reagent])
   (:require-macros [unbalanced.macros :refer [! !js]]))
 
-(defrecord Context [render input game])
+(defn edit-level [level]
+  [:textarea {:class "editor code"
+              :spellCheck "false"
+              :onChange
+              (fn [event]
+                (reset! level (-> event (! :-target) (! :-value))))
+              :value @level}])
 
-(defn first-tick [ctx]
-  [ctx (game/tick (:game ctx) ctx)])
+(defn play-level [level]
+  [:pre {:class "code"} @level])
 
-(defn tick-game [[ctx next-tick] time]
-  (let [new-game (a/poll! next-tick)
-        ctx
-        (if new-game
-          (assoc ctx :game new-game)
-          ctx)
-        next-tick
-        (if new-game
-          (game/tick new-game ctx)
-          next-tick)]
-    (render/draw!
-      (:render ctx)
-      (game/render (:game ctx) ctx time)
-      0 0)
-    [ctx next-tick]))
+(defn level []
+  (let [edit (reagent/atom true)]
+    (fn [level]
+      [:div {:class "code-wrapper"
+             :onKeyPress
+             (fn [event]
+               (when (and (-> event (! :-ctrlKey))
+                          (-> event (! :-key) (= "Enter")))
+                 (swap! edit not)))
+             :tabIndex 0}
+       (if @edit
+         [edit-level level]
+         [play-level level])])))
 
-(defn main-loop [loop-state time]
-  (let [loop-state (tick-game loop-state time)]
-    (!js :requestAnimationFrame
-      (fn [time] (main-loop loop-state time)))))
+(defn game []
+  [level (reagent/atom (prn-str '(-> "Hello world!")))])
 
-(defn main []
-  (let [ctx (->Context (render/get-render-context)
-                       (input/get-input-context)
-                       (game/get-game-context))]
-    (main-loop (first-tick ctx) 0)))
-
-(main)
+(rd/render game (! js/document :getElementById "game"))
