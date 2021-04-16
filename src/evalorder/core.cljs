@@ -1,9 +1,9 @@
-(ns unbalanced.core
+(ns evalorder.core
   (:require [reagent.dom :as rd]
             [reagent.core :as reagent]
-            [unbalanced.lang.reader :as reader]
-            [unbalanced.lang.evaluator :as ev])
-  (:require-macros [unbalanced.macros :refer [! !js]]))
+            [evalorder.lang.reader :as reader]
+            [evalorder.lang.evaluator :as ev])
+  (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defn edit-level [level]
   [:textarea {:class "editor code"
