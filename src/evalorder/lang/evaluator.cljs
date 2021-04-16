@@ -1,5 +1,5 @@
-(ns unbalanced.lang.evaluator
-  (:require-macros [unbalanced.macros :refer [! !js]]))
+(ns evalorder.lang.evaluator
+  (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defn ->str [x]
   (condp #(%1 %2) x
@@ -10,7 +10,6 @@
   {'+ +, '- -, '/ /, '* *})
 
 (defn evaluate [value]
-  (prn "Evaluating" value)
   (try
     (condp #(%1 %2) value
       seq? (let [[function & args] (map evaluate value)]

@@ -1,6 +1,6 @@
-(defproject unbalanced "0.1.0-SNAPSHOT"
+(defproject evalorder "0.1.0-SNAPSHOT"
   :description "("
-  :url "http://eutro.github.io/unbalanced/index.html"
+  :url "http://eutro.github.io/evaluation-order/index.html"
   :license {:name "MIT", :url "https://mit-license.org/"}
   :min-lein-version "2.9.1"
   :dependencies [[org.clojure/clojure "1.10.0"]
@@ -14,7 +14,7 @@
               [{:id "dev"
                 :source-paths ["src"]
                 :figwheel {:open-urls ["http://localhost:3449/index.html"]}
-                :compiler {:main unbalanced.core
+                :compiler {:main evalorder.core
                            :target :bundle
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/out/index.js"
@@ -27,8 +27,8 @@
                            :preloads [devtools.preload]}}
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:output-to "resources/public/js/compiled/unbalanced.js"
-                           :main unbalanced.core
+                :compiler {:output-to "resources/public/js/compiled/evalorder.js"
+                           :main evalorder.core
                            :optimizations :advanced
                            :pretty-print false}}]}
   :figwheel {:http-server-root "public"                     ;; default and assumes "resources"
