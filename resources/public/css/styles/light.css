@@ -28,6 +28,10 @@
     color: purple;
 }
 
-.selected > * {
+.light .comment {
+    color: gray;
+}
+
+.light .selected > * {
     background: yellow;
 }
