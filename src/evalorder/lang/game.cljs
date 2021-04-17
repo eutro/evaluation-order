@@ -30,7 +30,7 @@
 (s/def ::definitions
   (s/coll-of ::definition, :into {}))
 
-(s/def ::description (s/every string?))
+(s/def ::description (s/every (s/nonconforming (s/or :s string? :n nil?))))
 
 (s/def ::post-description ::description)
 
@@ -51,7 +51,7 @@
   [:div {:className "button", :onClick on-click}
    name
    [:span {:className "tooltip"}
-    desc [:span " [" key "]"]]])
+    desc (when key [:span " [" key "]"])]])
 
 (defn describe [lines]
   (when (seq lines)
@@ -59,7 +59,11 @@
      (for [[comment i] (map vector lines (range))]
        ^{:key i}
        [:div {:class "comment"}
-        ";; " comment])]))
+        (if comment
+          (str ";; " comment)
+          [:br])])]))
+
+(def reset-toggle (reagent/atom false))
 
 (defn level-node [{:keys [description
                           post-description
@@ -87,35 +91,38 @@
             (swap! (or el @selected) #(with-meta (ast/evaluated %) (meta %))))
           (reset! evaluated true))]
     (fn []
-      [:div {:class "full-size code"
-             :onKeyDown
-             (fn [event]
-               (when-not (-> event (! :-ctrlKey))
-                 (let [key (-> event (! :-key))]
-                   (case key
-                     "ArrowUp" (some-> (:parent (meta @@selected)) select)
-                     "ArrowDown" (some-> (first (:children @@selected)) select)
-                     "ArrowLeft" (some-> (:lhs (meta @@selected)) select)
-                     "ArrowRight" (some-> (:rhs (meta @@selected)) select)
-                     "Enter" (evaluate)
-                     nil))))
-             :tabIndex -1
-             :ref (fn [el] (when el (! el :focus)))}
-       [describe description]
-       [:div {:class "expression"} (ast/render-child child)]
-       [describe post-description]
-       (when (and @evaluated (contains? target (ast/value @@selected)))
-         [:<>
-          [describe post-level]
-          [:div {:class "next-button"
-                 :onClick (fn [_] (finish-level))
-                 :onKeyDown (fn [event] (when (-> event (! :-key) (= "Enter")) (finish-level)))
-                 :tabIndex 0}
-           (ast/render (ast/->ListExpr nil [(atom (ast/->SymExpr nil 'next))]))]])
-       [:div {:class "controls"}
-        [button "evaluate" "Evaluate the current expression" "Enter" (fn [_] (evaluate))]]])))
+      [:<>
+       [:div {:class "full-size code"
+              :onKeyDown
+              (fn [event]
+                (when-not (-> event (! :-ctrlKey))
+                  (let [key (-> event (! :-key))]
+                    (case key
+                      "ArrowUp" (some-> (:parent (meta @@selected)) select)
+                      "ArrowDown" (some-> (first (:children @@selected)) select)
+                      "ArrowLeft" (some-> (:lhs (meta @@selected)) select)
+                      "ArrowRight" (some-> (:rhs (meta @@selected)) select)
+                      "Enter" (evaluate)
+                      nil))))
+              :tabIndex -1
+              :ref (fn [el] (when el (! el :focus)))}
+        [describe description]
+        [:div {:class "expression"} (ast/render-child child)]
+        [describe post-description]
+        (when (and @evaluated (contains? target (ast/value @@selected)))
+          [:<>
+           [describe post-level]
+           [:div {:class "next-button"
+                  :onClick (fn [_] (finish-level))
+                  :onKeyDown (fn [event] (when (-> event (! :-key) (= "Enter")) (finish-level)))
+                  :tabIndex 0}
+            (ast/render (ast/->ListExpr nil [(atom (ast/->SymExpr nil 'next))]))]])]
+       [:div {:class "buttons"}
+        [button "evaluate" "Evaluate the current expression" "Enter" (fn [_] (evaluate))]
+        [button "reset" "Reset the level" nil (fn [_] (swap! reset-toggle not))]]])))
 
 (defn root [level finish-level]
+  @reset-toggle
   ;; fully rerender it
   ^{:key (js/Date.now)}
   [level-node level finish-level])
