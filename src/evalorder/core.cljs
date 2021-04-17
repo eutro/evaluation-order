@@ -2,7 +2,7 @@
   (:require [reagent.dom :as rd]
             [reagent.core :as reagent]
             [evalorder.lang.reader :as reader]
-            [evalorder.lang.ast :as ast])
+            [evalorder.lang.game :as game])
   (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defn edit-level [level]
@@ -26,7 +26,7 @@
               :tabIndex -1}
         (if @edit
           [edit-level level]
-          (try [ast/root (reader/read @level)]
+          (try [game/root (reader/read @level)]
                (catch js/Error e
                  (js/alert (! e :-message))
                  (swap! edit not)

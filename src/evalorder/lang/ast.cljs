@@ -2,37 +2,71 @@
   (:require [reagent.core :as reagent])
   (:require-macros [evalorder.macros :refer [! !js]]))
 
+(defprotocol Applicable
+  (app [this out-atom args]))
+
 (defprotocol Expr
   (render [this])
   (evaluated [this])
-  (value [this])
-  (app [this args]))
+  (value [this]))
 
 (defn render-child [child]
   (let [v @child]
     [:span (when (:selected (meta v)) {:class "selected"})
      [render v]]))
 
-(defrecord Literal [str class value])
+(defprotocol Literal
+  (get-class [_]))
+
+(defprotocol ToStr
+  (to-str [_]))
+
+(defrecord NumLiteral [value]
+  Literal
+  (get-class [_] "number"))
+
+(defrecord ValueLiteral [value]
+  ToStr
+  (to-str [_] "?")
+  Literal
+  (get-class [_] "value"))
+
+(defrecord ErrorExpr [this-atom message]
+  Expr
+  (render [_]
+    [:span {:class "error"}
+     "#!" (pr-str message)])
+  (evaluated [this] this)
+  (value [this] this))
 
 (defrecord LiteralExpr [this-atom literal]
   Expr
   (render [_]
-    [:span {:class (:class literal)}
-     (:str literal)])
+    [:span {:class (get-class literal)}
+     (if (satisfies? ToStr literal)
+       (to-str literal)
+       (pr-str (:value literal)))])
   (evaluated [this] this)
-  (value [_] (:value literal)))
+  (value [_] (:value literal))
+  Applicable
+  (app [_ out-atom args] (app out-atom literal args)))
 
 (defn delim [v]
   [:span {:class "delimiter"} v])
+
+(def ^:dynamic *env* {})
 
 (defrecord SymExpr [this-atom sym]
   Expr
   (render [_]
     [:span {:class "symbol"} (str sym)])
-  (evaluated [_]
-    (->LiteralExpr this-atom (->Literal "?" "value" ({'+ +, '* *, '/ /} sym))))
-  (value [_] sym))
+  (evaluated [this] this)
+  (value [_] sym)
+  Applicable
+  (app [_ out-atom args]
+    (if-some [[_ v] (find *env* sym)]
+      (app v out-atom args)
+      (->ErrorExpr out-atom "Undefined"))))
 
 (defrecord ListExpr [this-atom children]
   Expr
@@ -40,9 +74,12 @@
     `[:span {:class "list"}
       [~delim "("] ~@(map render-child children) [~delim ")"]])
   (evaluated [_]
-    ;; TODO application
-    (->SymExpr this-atom (symbol "applicatiom")))
+    (app @(first children) this-atom (map deref (next children))))
   (value [_] (map (comp value deref) children)))
+
+(extend-protocol Applicable
+  default
+  (app [_ out-atom _args] (->ErrorExpr out-atom "Cannot be applied")))
 
 (defn assoc-neighbours [els]
   (doseq [[lhs rhs] (partition 2 1 els)]
@@ -60,31 +97,6 @@
                   assoc-neighbours
                   (->ListExpr ta))
         symbol? (->SymExpr ta expr)
-        number? (->LiteralExpr ta (->Literal (str expr) "number" expr))
-        (->LiteralExpr ta (->Literal "?" "value" expr))))
+        number? (->LiteralExpr ta (->NumLiteral expr))
+        (->LiteralExpr ta (->ValueLiteral expr))))
     ta))
-
-(defn root [form]
-  (let [child (parse form)
-        selected (reagent/atom child)]
-    (swap! child vary-meta assoc :selected true)
-    (fn []
-      [:div {:class "full-size code"
-             :onKeyDown
-             (fn [event]
-               (when-not (-> event (! :-ctrlKey))
-                 (let [key (-> event (! :-key))]
-                   (when-some [sel
-                               (case key
-                                 "ArrowUp" (:parent (meta @@selected))
-                                 "ArrowDown" (first (:children @@selected))
-                                 "ArrowLeft" (:lhs (meta @@selected))
-                                 "ArrowRight" (:rhs (meta @@selected))
-                                 nil)]
-                     (swap! @selected vary-meta dissoc :selected)
-                     (reset! selected sel)
-                     (swap! sel vary-meta assoc :selected true))
-                   (when (= key "Enter")
-                     (swap! @selected #(with-meta (evaluated %) (meta %)))))))
-             :tabIndex -1}
-       (render-child child)])))
