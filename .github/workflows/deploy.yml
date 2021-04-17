@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Build ClojureScript
-        run: lein cljsbuild once min
+        run: lein cljsbuild once dev
 
       - name: Copy Files
         run: |
