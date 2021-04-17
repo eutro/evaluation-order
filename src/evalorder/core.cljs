@@ -6,10 +6,14 @@
   (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defn game [levels]
-  (let [style (reagent/atom "light")]
+  (let [style (reagent/atom "light")
+        level-no (reagent/atom 0)]
     (fn []
       [:div {:class (str "full-size " @style)}
-       [game/root (rand-nth levels)]])))
+       (if-some [[_ level] (find levels @level-no)]
+         (try [game/root (game/validate level) (fn [] (swap! level-no inc))]
+              (catch js/Error. e (js/alert (ex-message e))))
+         [:div {:class "code"} "wow you've finished"])])))
 
 (-> (!js :fetch "/levels.edn")
     (! :then
