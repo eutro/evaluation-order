@@ -1,14 +1,16 @@
-[{:expression 1
-  :description ["Level 1"]
+[{:description ["This is an expression"]
+  :expression 1
+  :post-description ["Try evaluating it"]
+  :post-level ["The expression 1 evaluates to itself"]
   :target #{1}
   :definitions []}
- {:expression pi
-  :description ["Level 2"]
+ {:description ["Level 2"]
+  :expression pi
   :target #{3.14}
   :definitions [[pi
                  {:desc "Pi, the mathematical constant, to 2 decimal places."}
                  3.14]]}
- {:expression (+ 1 2)
-  :description ["Level 3"]
+ {:description ["Level 3"]
+  :expression (+ 1 2)
   :target #{3}
   :definitions [+]}]
