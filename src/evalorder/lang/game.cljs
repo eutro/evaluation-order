@@ -47,11 +47,19 @@
       (throw (js/Error. (str "Invalid level:\n" (s/explain-str ::level level)))))
     conformed))
 
-(defn button [name desc key on-click]
-  [:div {:className "button", :onClick on-click}
-   name
-   [:span {:className "tooltip"}
-    desc (when key [:span " [" key "]"])]])
+(defn button [name desc key on-click bar-content]
+  [:div {:className "button",
+         :onClick on-click,
+         :onMouseOver (fn [_]
+                        (reset!
+                          bar-content
+                          [:span {:className "tooltip"}
+                           desc (when key [:span " [" key "]"])]))
+         :onMouseOut (fn [] (reset! bar-content nil))}
+   name])
+
+(defn bar [content]
+  [:div {:class "bar"} @content])
 
 (defn describe [lines]
   (when (seq lines)
@@ -92,7 +100,7 @@
           (reset! evaluated true))]
     (fn []
       [:<>
-       [:div {:class "full-size code"
+       [:div {:class "code"
               :onKeyDown
               (fn [event]
                 (when-not (-> event (! :-ctrlKey))
@@ -117,9 +125,12 @@
                   :onKeyDown (fn [event] (when (-> event (! :-key) (= "Enter")) (finish-level)))
                   :tabIndex 0}
             (ast/render (ast/->ListExpr nil [(atom (ast/->SymExpr nil 'next))]))]])]
-       [:div {:class "buttons"}
-        [button "evaluate" "Evaluate the current expression" "Enter" (fn [_] (evaluate))]
-        [button "reset" "Reset the level" nil (fn [_] (swap! reset-toggle not))]]])))
+
+       (let [bar-content (reagent/atom nil)]
+         [:div {:class "buttons"}
+          [button "evaluate" "Evaluate the current expression" "Enter" (fn [_] (evaluate)) bar-content]
+          [button "reset" "Reset the level" nil (fn [_] (swap! reset-toggle not)) bar-content]
+          [bar bar-content]])])))
 
 (defn root [level finish-level]
   @reset-toggle
