@@ -1,0 +1,33 @@
+.light code {
+    background: white;
+}
+
+.light .string {
+    color: green;
+}
+
+.light .keyword {
+    color: mediumpurple;
+    font-style: italic;
+}
+
+.light .number,
+.light .nil {
+    color: dodgerblue;
+}
+
+.light *:nth-child(2) > .symbol {
+    color: darkorange;
+}
+
+.light .error {
+    color: red;
+}
+
+.light .value {
+    color: purple;
+}
+
+.selected > * {
+    background: yellow;
+}
