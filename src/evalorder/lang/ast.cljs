@@ -12,7 +12,14 @@
 
 (defn render-child [child]
   (let [v @child]
-    [:span (when (:selected (meta v)) {:class "selected"})
+    [:span
+     (if (:selected (meta v))
+       {:class "selected"}
+       (when-some [on-click (:onClick (meta v))]
+         {:onClick
+          (fn [event]
+            (on-click child)
+            (! event :stopPropagation))}))
      [render v]]))
 
 (defprotocol Literal
@@ -91,16 +98,19 @@
     (swap! rhs vary-meta assoc :lhs lhs))
   els)
 
-(defn parse [expr]
+(defn parse [expr & [extra-meta]]
   (let [ta (reagent/atom nil)]
     (reset!
       ta
-      (condp #(%1 %2) expr
-        seq? (->> expr
-                  (map (comp #(doto % (swap! vary-meta assoc :parent ta)) parse))
-                  assoc-neighbours
-                  (->ListExpr ta))
-        symbol? (->SymExpr ta expr)
-        number? (->LiteralExpr ta (->NumLiteral expr))
-        (->LiteralExpr ta (->ValueLiteral expr))))
+      (vary-meta
+        (condp #(%1 %2) expr
+          seq? (->> expr
+                    (map #(parse % (assoc extra-meta :parent ta)))
+                    assoc-neighbours
+                    (->ListExpr ta))
+          symbol? (->SymExpr ta expr)
+          number? (->LiteralExpr ta (->NumLiteral expr))
+          (->LiteralExpr ta (->ValueLiteral expr)))
+        merge
+        extra-meta))
     ta))

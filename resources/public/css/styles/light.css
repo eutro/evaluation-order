@@ -35,3 +35,14 @@
 .light .selected > * {
     background: yellow;
 }
+
+.light .button {
+    background: blue;
+    color: white;
+}
+
+.light .button > .tooltip {
+    background: gray;
+    color: white;
+}
+
