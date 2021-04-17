@@ -22,7 +22,7 @@
               (catch js/Error. e (js/alert (ex-message e))))
          [:div {:class "code"} "wow you've finished"])])))
 
-(-> (!js :fetch "/levels.edn")
+(-> (!js :fetch "levels.edn")
     (! :then
        (fn [value]
          (-> value
