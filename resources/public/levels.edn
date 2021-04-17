@@ -1,16 +1,59 @@
-[{:description ["This is an expression"]
+[{:description
+  ["This is the number 1:"]
   :expression 1
-  :post-description ["Try evaluating it"]
-  :post-level ["The expression 1 evaluates to itself"]
+  :post-description
+  ["It is also an expression."
+   nil
+   "Try evaluating it."]
+  :post-level
+  [nil
+   "Nothing happened."
+   nil
+   "Numbers, like certain other things,"
+   "stay the same when evaluated."]
   :target #{1}
   :definitions []}
- {:description ["Level 2"]
+
+ {:description
+  ["This is a symbol:"]
   :expression pi
+  :post-description
+  ["When a symbol is evaluated"
+   "it becomes the value the symbol names."]
+  :post-level
+  [nil
+   "In this case, \"pi\" names the mathematical constant."]
+
   :target #{3.14}
   :definitions [[pi
                  {:desc "Pi, the mathematical constant, to 2 decimal places."}
                  3.14]]}
- {:description ["Level 3"]
+
+ {:description
+  ["This is a list:"]
   :expression (+ 1 2)
+  :post-description
+  ["It is a sequence of expressions,"
+   "enclosed in a pair of parentheses."]
+  :post-level
+  [nil
+   "When a list is evaluated,"
+   "it applies its first expression, as a function,"
+   "to the values of the rest."]
   :target #{3}
-  :definitions [+]}]
+  :definitions [+]}
+
+ {:description
+  ["Lists can contain other lists:"]
+  :expression (+ 1 2 (* 3 4))
+  :post-description
+  ["Evaluation order matters, of course."
+   nil
+   "If you were to evaluate the outer expression first,"
+   "you would be adding two numbers and a list."
+   nil
+   "Navigate to the inner expression by pressing it,"
+   "or using the arrow keys."]
+
+  :target #{15}
+  :definitions [+ *]}]
