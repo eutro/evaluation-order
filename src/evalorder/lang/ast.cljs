@@ -60,7 +60,11 @@
   Expr
   (render [_]
     [:span {:class "symbol"} (str sym)])
-  (evaluated [this] this)
+  (evaluated [this]
+    (let [[_ {:keys [value]}] (find *env* sym)]
+      (if (and value (implements? IDeref value))
+        (assoc @value :this-atom this-atom)
+        this)))
   (value [_] sym)
   Applicable
   (app [_ out-atom args]

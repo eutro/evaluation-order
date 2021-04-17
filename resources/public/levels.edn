@@ -1,9 +1,14 @@
-[{:expression (+ 1 2 3)
-  :description ["Cool"]
-  :target 6
-  :definitions [+]}
-
- {:expression (+ 1 (* 4 5) (/ 3 4))
-  :description ["Oh god" "Oh fuck"]
-  :target pi
-  :definitions [+ * /]}]
+[{:expression 1
+  :description ["Level 1"]
+  :target #{1}
+  :definitions []}
+ {:expression pi
+  :description ["Level 2"]
+  :target #{3.14}
+  :definitions [[pi
+                 {:desc "Pi, the mathematical constant, to 2 decimal places."}
+                 3.14]]}
+ {:expression (+ 1 2)
+  :description ["Level 3"]
+  :target #{3}
+  :definitions [+]}]
