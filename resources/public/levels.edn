@@ -1,0 +1,9 @@
+[{:expression (+ 1 2 3)
+  :description ["Cool"]
+  :target 6
+  :definitions [+]}
+
+ {:expression (+ 1 (* 4 5) (/ 3 4))
+  :description ["Oh god" "Oh fuck"]
+  :target pi
+  :definitions [+ * /]}]
