@@ -1,0 +1,60 @@
+.string {
+    color: green;
+}
+
+.keyword {
+    color: mediumpurple;
+    font-style: italic;
+}
+
+.number,
+.nil {
+    color: cornflowerblue;
+}
+
+*:nth-child(2) > .symbol {
+    color: darkorange;
+}
+
+.error {
+    color: red;
+}
+
+.value {
+    color: purple;
+}
+
+.comment {
+    color: gray;
+}
+
+.selected > * {
+    background: yellow;
+}
+
+.button {
+    background: blue;
+    color: white;
+}
+
+.bar {
+    background: gray;
+    color: white;
+}
+
+.level-option:hover {
+    background: lightgray;
+}
+
+.dark {
+    background: #2B2B2B;
+    color: lightgray;
+}
+
+.dark .selected > * {
+    background: darkslategray;
+}
+
+.level-option:hover {
+    background: gray;
+}

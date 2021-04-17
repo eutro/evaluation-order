@@ -6,7 +6,7 @@
   (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defn game [levels]
-  (let [style (reagent/atom "light")
+  (let [style (reagent/atom "dark")
         level-no (reagent/atom 0)]
     (fn []
       [:div {:class @style}
