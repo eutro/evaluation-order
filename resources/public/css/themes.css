@@ -12,6 +12,7 @@
     color: cornflowerblue;
 }
 
+.bool,
 *:nth-child(2) > .symbol {
     color: darkorange;
 }

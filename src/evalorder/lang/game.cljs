@@ -14,8 +14,8 @@
 (s/def ::doc any?)
 
 (s/def ::raw-def
-  (s/or :sym symbol?
-        :entry (s/tuple symbol? ::doc ::expression)))
+  (s/or :global (s/and symbol? #(contains? values/*globals* %))
+        :expr (s/tuple symbol? ::doc ::expression)))
 
 (s/def ::definition
   (s/and
@@ -23,9 +23,9 @@
     (s/conformer
       (fn [[k v]]
         (case k
-          :sym [v (values/*globals* v)]
-          :entry (let [[name doc value] v]
-                   [name (values/->Global doc (ast/parse value))]))))))
+          :global [v (values/*globals* v)]
+          :expr (let [[name doc value] v]
+                  [name (values/->Global doc (ast/parse value))]))))))
 
 (s/def ::definitions
   (s/coll-of ::definition, :into {}))
@@ -117,7 +117,7 @@
         [describe description]
         [:div {:class "expression"} (ast/render-child child)]
         [describe post-description]
-        (when (and @evaluated (contains? target (ast/value @@selected)))
+        (when (and @evaluated (contains? target (ast/value @child)))
           [:<>
            [describe post-level]
            [:div {:class "next-button"

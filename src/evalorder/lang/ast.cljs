@@ -32,6 +32,14 @@
   Literal
   (get-class [_] "number"))
 
+(defrecord NilLiteral [value]
+  Literal
+  (get-class [_] "nil"))
+
+(defrecord BoolLiteral [value]
+  Literal
+  (get-class [_] "bool"))
+
 (defrecord ValueLiteral [value]
   ToStr
   (to-str [_] "?")
@@ -110,6 +118,8 @@
                     (->ListExpr ta))
           symbol? (->SymExpr ta expr)
           number? (->LiteralExpr ta (->NumLiteral expr))
+          boolean? (->LiteralExpr ta (->BoolLiteral expr))
+          nil? (->LiteralExpr ta (->NilLiteral expr))
           (->LiteralExpr ta (->ValueLiteral expr)))
         merge
         extra-meta))
