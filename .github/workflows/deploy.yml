@@ -14,7 +14,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Hash dependencies
+        run: echo "DEPS_HASH=$(lein deps :tree-data | sha256sum)" >> $GITHUB_ENV
+
+      - name: Cache Maven
+        uses: actions/cache@v2.1.5
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-lein-${{ env.DEPS_HASH }}
+
       - uses: actions/setup-node@v2
+        with:
+          node-version: 7.10.0
 
       - name: Install Node dependencies
         run: npm install
@@ -36,7 +47,6 @@ jobs:
 
       - name: Commit Pages
         run: |
-          git stash
           git switch gh-pages
           rm -r *
           cp -r ../out/resources/public/* ./
