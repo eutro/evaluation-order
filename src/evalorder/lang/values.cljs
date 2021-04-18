@@ -44,3 +44,26 @@
   (if (some (complement number?) args)
     (ast/->ErrorExpr out-atom "Can only add numbers")
     (ast/->LiteralExpr out-atom (ast/->NumLiteral (apply / args)))))
+
+(def-g if
+  '{:arglists ([pred then] [pred then else])
+    :desc
+    "If the predicate is neither nil nor false, return then,
+    otherwise return else, or nil."}
+  (reify ast/Applicable
+    (app [_ out-atom [pred then else :as args]]
+      (if (not (<= 2 (count args) 3))
+        (ast/->ErrorExpr out-atom "Expected 2 or 3 arguments to if")
+        (assoc
+          (if (boolean (ast/value pred))
+            then
+            (or else
+                (ast/->LiteralExpr nil (ast/->NilLiteral nil))))
+          :this-atom out-atom)))))
+
+(defn-g =
+  [out-atom args]
+  '{:arglists ([x] [x y] [x y & more])
+    :desc
+    "Returns true if its arguments are equal, false otherwise."}
+  (ast/->LiteralExpr out-atom (ast/->BoolLiteral (apply = args))))
