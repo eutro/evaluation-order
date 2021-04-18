@@ -36,6 +36,7 @@ jobs:
 
       - name: Commit Pages
         run: |
+          git stash
           git switch gh-pages
           rm -r *
           cp -r ../out/resources/public/* ./
