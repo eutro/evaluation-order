@@ -217,4 +217,4 @@ var formatters = devtools.util.get_formatters_safe.call(null);
 return cljs.core.boolean$.call(null,cljs.core.some.call(null,devtools.formatters.is_ours_QMARK_,formatters));
 });
 
-//# sourceMappingURL=formatters.js.map?rel=1618703419748
+//# sourceMappingURL=formatters.js.map?rel=1618704256513

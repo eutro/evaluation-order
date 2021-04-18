@@ -84,10 +84,10 @@ throw e24313;
 })()], null);
 });
 });
-fetch("/levels.edn").then((function (value){
+fetch("levels.edn").then((function (value){
 return value.text().then((function (text){
 return reagent.dom.render.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.core.game,clojure.edn.read_string.call(null,text)], null),document.getElementById("game"));
 }));
 }));
 
-//# sourceMappingURL=core.js.map?rel=1618703416514
+//# sourceMappingURL=core.js.map?rel=1618704253498
