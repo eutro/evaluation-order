@@ -1,7 +1,7 @@
 (ns evalorder.core
   (:require [reagent.dom :as rd]
             [reagent.core :as reagent]
-            [evalorder.lang.game]
+            [evalorder.game]
             [evalorder.screen :as screen]
             [evalorder.cookies :as ck]
             [evalorder.menu :as menu]

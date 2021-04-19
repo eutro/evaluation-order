@@ -51,7 +51,6 @@
          (error-screen (str/split (ex-message e) #"\n")))))
 
 (defn show [story]
-  (prn story)
   (let [index (reagent/atom 1)]
     (fn []
       (let [target @index
