@@ -34,8 +34,21 @@
 }
 
 .button {
-    background: blue;
+    background: #48c774;
     color: white;
+}
+
+.button:hover {
+    background: #3ec46d;
+}
+
+.button:active {
+    background: #3abb67;
+}
+
+.button[disabled] {
+    background:#48c78e;
+    cursor: wait;
 }
 
 .bar {
