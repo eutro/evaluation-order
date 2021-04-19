@@ -63,7 +63,8 @@
     (fn []
       (let [e @expr-atom
             p @path-atom]
-        (when (and (seq @history)
+        (when (and next! p
+                   (seq @history)
                    (target e))
           (reset! path-atom nil)
           (next!))
@@ -91,7 +92,7 @@
                            (swap! history conj e))
                        nil))))}
          [:div {:class "expression"}
-          [expr @expr-atom @path-atom]]]))))
+          [expr e (and next! p)]]]))))
 
 (screen/add-reader!
   'game/expression
