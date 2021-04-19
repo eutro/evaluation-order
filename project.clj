@@ -4,7 +4,7 @@
   :license {:name "MIT", :url "https://mit-license.org/"}
   :min-lein-version "2.9.1"
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.10.773"]
+                 [org.clojure/clojurescript "1.10.844"]
                  [org.clojure/core.async "1.3.610"]
                  [reagent "1.0.0" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]]
   :plugins [[lein-figwheel "0.5.20"]
