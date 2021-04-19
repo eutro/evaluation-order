@@ -235,7 +235,7 @@ return cljs.core.swap_BANG_.call(null,evalorder.core.theme,evalorder.core.theme_
 })], null)], null);
 });
 evalorder.core.app = (function evalorder$core$app(){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),cljs.core.deref.call(null,evalorder.core.theme)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var or__4160__auto__ = cljs.core.deref.call(null,evalorder.menu.screen);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),["full ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,evalorder.core.theme))].join('')], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var or__4160__auto__ = cljs.core.deref.call(null,evalorder.menu.screen);
 if(cljs.core.truth_(or__4160__auto__)){
 return or__4160__auto__;
 } else {
@@ -245,4 +245,4 @@ return evalorder.core.main_menu;
 });
 reagent.dom.render.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.core.app], null),document.getElementById("app"));
 
-//# sourceMappingURL=core.js.map?rel=1618870423880
+//# sourceMappingURL=core.js.map?rel=1618870611737

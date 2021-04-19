@@ -2,7 +2,7 @@
     font-size: 2em;
 }
 
-.full, .full > * {
+.full {
     position: absolute;
     left: 0;
     right: 0;

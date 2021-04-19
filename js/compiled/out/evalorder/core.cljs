@@ -25,6 +25,6 @@
    [menu/button "Change Theme" (fn [] (swap! theme theme->next))]])
 
 (defn app []
-  [:div {:class @theme} [(or @menu/screen main-menu)]])
+  [:div {:class (str "full " @theme)} [(or @menu/screen main-menu)]])
 
 (rd/render [app] (! js/document :getElementById "app"))

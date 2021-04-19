@@ -119,9 +119,19 @@ return false;
 return (function (){
 var e = cljs.core.deref.call(null,expr_atom);
 var p = cljs.core.deref.call(null,path_atom);
-if(cljs.core.truth_((function (){var and__4149__auto__ = cljs.core.seq.call(null,cljs.core.deref.call(null,history));
-if(and__4149__auto__){
+if(cljs.core.truth_((function (){var and__4149__auto__ = next_BANG_;
+if(cljs.core.truth_(and__4149__auto__)){
+var and__4149__auto____$1 = p;
+if(cljs.core.truth_(and__4149__auto____$1)){
+var and__4149__auto____$2 = cljs.core.seq.call(null,cljs.core.deref.call(null,history));
+if(and__4149__auto____$2){
 return target.call(null,e);
+} else {
+return and__4149__auto____$2;
+}
+} else {
+return and__4149__auto____$1;
+}
 } else {
 return and__4149__auto__;
 }
@@ -190,7 +200,13 @@ return null;
 
 }
 }
-})], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"expression"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,cljs.core.deref.call(null,expr_atom),cljs.core.deref.call(null,path_atom)], null)], null)], null);
+})], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"expression"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,e,(function (){var and__4149__auto__ = next_BANG_;
+if(cljs.core.truth_(and__4149__auto__)){
+return p;
+} else {
+return and__4149__auto__;
+}
+})()], null)], null)], null);
 });
 });
 evalorder.screen.add_reader_BANG_.call(null,new cljs.core.Symbol("game","expression","game/expression",1843886853,null),(function (expr){
@@ -255,4 +271,4 @@ return (new evalorder.game.t_evalorder$game27320(expr__$1,validated__$1,meta2732
 return (new evalorder.game.t_evalorder$game27320(expr,validated,cljs.core.PersistentArrayMap.EMPTY));
 }));
 
-//# sourceMappingURL=game.js.map?rel=1618870423792
+//# sourceMappingURL=game.js.map?rel=1618870611632
