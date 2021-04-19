@@ -1,21 +1,12 @@
-// Copyright 2006 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
  * @fileoverview Generics method for collection-like classes and objects.
  *
- * @author arv@google.com (Erik Arvidsson)
  *
  * This file contains functions to work with collections. It supports using
  * Map, Set, Array and Object and other classes that implement collection-like
@@ -40,6 +31,7 @@ goog.require('goog.object');
  * @return {number} The number of values in the collection-like object.
  */
 goog.structs.getCount = function(col) {
+  'use strict';
   if (col.getCount && typeof col.getCount == 'function') {
     return col.getCount();
   }
@@ -56,6 +48,7 @@ goog.structs.getCount = function(col) {
  * @return {!Array<?>} The values in the collection-like object.
  */
 goog.structs.getValues = function(col) {
+  'use strict';
   if (col.getValues && typeof col.getValues == 'function') {
     return col.getValues();
   }
@@ -81,6 +74,7 @@ goog.structs.getValues = function(col) {
  * @return {!Array|undefined} The keys in the collection.
  */
 goog.structs.getKeys = function(col) {
+  'use strict';
   if (col.getKeys && typeof col.getKeys == 'function') {
     return col.getKeys();
   }
@@ -109,6 +103,7 @@ goog.structs.getKeys = function(col) {
  * @return {boolean} True if the map contains the value.
  */
 goog.structs.contains = function(col, val) {
+  'use strict';
   if (col.contains && typeof col.contains == 'function') {
     return col.contains(val);
   }
@@ -128,6 +123,7 @@ goog.structs.contains = function(col, val) {
  * @return {boolean} True if empty.
  */
 goog.structs.isEmpty = function(col) {
+  'use strict';
   if (col.isEmpty && typeof col.isEmpty == 'function') {
     return col.isEmpty();
   }
@@ -148,6 +144,7 @@ goog.structs.isEmpty = function(col) {
  * @param {Object} col The collection-like object.
  */
 goog.structs.clear = function(col) {
+  'use strict';
   // NOTE(arv): This should not contain strings because strings are immutable
   if (col.clear && typeof col.clear == 'function') {
     col.clear();
@@ -175,6 +172,7 @@ goog.structs.clear = function(col) {
  *     goog.object.forEach, or for-of.
  */
 goog.structs.forEach = function(col, f, opt_obj) {
+  'use strict';
   if (col.forEach && typeof col.forEach == 'function') {
     col.forEach(f, opt_obj);
   } else if (goog.isArrayLike(col) || typeof col === 'string') {
@@ -209,6 +207,7 @@ goog.structs.forEach = function(col, f, opt_obj) {
  * @template T,S
  */
 goog.structs.filter = function(col, f, opt_obj) {
+  'use strict';
   if (typeof col.filter == 'function') {
     return col.filter(f, opt_obj);
   }
@@ -259,6 +258,7 @@ goog.structs.filter = function(col, f, opt_obj) {
  * @template T,S,V
  */
 goog.structs.map = function(col, f, opt_obj) {
+  'use strict';
   if (typeof col.map == 'function') {
     return col.map(f, opt_obj);
   }
@@ -303,6 +303,7 @@ goog.structs.map = function(col, f, opt_obj) {
  * @template T,S
  */
 goog.structs.some = function(col, f, opt_obj) {
+  'use strict';
   if (typeof col.some == 'function') {
     return col.some(f, opt_obj);
   }
@@ -337,6 +338,7 @@ goog.structs.some = function(col, f, opt_obj) {
  * @template T,S
  */
 goog.structs.every = function(col, f, opt_obj) {
+  'use strict';
   if (typeof col.every == 'function') {
     return col.every(f, opt_obj);
   }

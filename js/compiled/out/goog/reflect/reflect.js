@@ -1,4 +1,10 @@
-/*TRANSPILED*/goog.provide("goog.reflect");
+/*TRANSPILED*//*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+'use strict';
+goog.provide("goog.reflect");
 goog.reflect.object = function(type, object) {
   return object;
 };
@@ -19,7 +25,7 @@ goog.reflect.canAccessProperty = function(obj, prop) {
   return false;
 };
 goog.reflect.cache = function(cacheObj, key, valueFn, opt_keyFn) {
-  var storedKey = opt_keyFn ? opt_keyFn(key) : key;
+  const storedKey = opt_keyFn ? opt_keyFn(key) : key;
   if (Object.prototype.hasOwnProperty.call(cacheObj, storedKey)) {
     return cacheObj[storedKey];
   }

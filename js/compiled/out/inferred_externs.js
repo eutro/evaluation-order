@@ -24,7 +24,6 @@ Object.useEffect;
 Object.render;
 Object.out;
 Object.out.println;
-Object.then;
 Object.createElement;
 Object.createElement.apply;
 Object.unmountComponentAtNode;

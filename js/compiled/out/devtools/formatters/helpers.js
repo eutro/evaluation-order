@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.10.773 {:target :nodejs}
+// Compiled by ClojureScript 1.10.844 {:target :nodejs, :nodejs-rt false}
 goog.provide('devtools.formatters.helpers');
 goog.require('cljs.core');
 goog.require('devtools.prefs');
@@ -8,8 +8,8 @@ goog.require('devtools.protocols');
 devtools.formatters.helpers.pref = (function devtools$formatters$helpers$pref(v){
 while(true){
 if((v instanceof cljs.core.Keyword)){
-var G__25132 = devtools.prefs.pref.call(null,v);
-v = G__25132;
+var G__28229 = devtools.prefs.pref.call(null,v);
+v = G__28229;
 continue;
 } else {
 return v;
@@ -41,7 +41,7 @@ return false;
 }
 });
 devtools.formatters.helpers.has_formatting_protocol_QMARK_ = (function devtools$formatters$helpers$has_formatting_protocol_QMARK_(value){
-var or__4126__auto__ = (function (){try{if((!((value == null)))){
+var or__4160__auto__ = (function (){try{if((!((value == null)))){
 if((((value.cljs$lang$protocol_mask$partition0$ & (2147483648))) || ((cljs.core.PROTOCOL_SENTINEL === value.cljs$core$IPrintWithWriter$)))){
 return true;
 } else {
@@ -54,13 +54,13 @@ return false;
 } else {
 return cljs.core.native_satisfies_QMARK_.call(null,cljs.core.IPrintWithWriter,value);
 }
-}catch (e25135){var _e__24387__auto__ = e25135;
+}catch (e28232){var _e__27485__auto__ = e28232;
 return false;
 }})();
-if(cljs.core.truth_(or__4126__auto__)){
-return or__4126__auto__;
+if(cljs.core.truth_(or__4160__auto__)){
+return or__4160__auto__;
 } else {
-var or__4126__auto____$1 = (function (){try{if((!((value == null)))){
+var or__4160__auto____$1 = (function (){try{if((!((value == null)))){
 if(((false) || ((cljs.core.PROTOCOL_SENTINEL === value.devtools$format$IDevtoolsFormat$)))){
 return true;
 } else {
@@ -73,11 +73,11 @@ return false;
 } else {
 return cljs.core.native_satisfies_QMARK_.call(null,devtools.format.IDevtoolsFormat,value);
 }
-}catch (e25139){var _e__24387__auto__ = e25139;
+}catch (e28236){var _e__27485__auto__ = e28236;
 return false;
 }})();
-if(cljs.core.truth_(or__4126__auto____$1)){
-return or__4126__auto____$1;
+if(cljs.core.truth_(or__4160__auto____$1)){
+return or__4160__auto____$1;
 } else {
 try{if((!((value == null)))){
 if(((false) || ((cljs.core.PROTOCOL_SENTINEL === value.devtools$protocols$IFormat$)))){
@@ -92,51 +92,51 @@ return false;
 } else {
 return cljs.core.native_satisfies_QMARK_.call(null,devtools.protocols.IFormat,value);
 }
-}catch (e25141){var _e__24387__auto__ = e25141;
+}catch (e28238){var _e__27485__auto__ = e28238;
 return false;
 }}
 }
 });
 devtools.formatters.helpers.cljs_type_QMARK_ = (function devtools$formatters$helpers$cljs_type_QMARK_(f){
-var and__4115__auto__ = goog.isObject(f);
-if(cljs.core.truth_(and__4115__auto__)){
+var and__4149__auto__ = goog.isObject(f);
+if(cljs.core.truth_(and__4149__auto__)){
 if((!(devtools.formatters.helpers.is_prototype_QMARK_.call(null,f)))){
 return f.cljs$lang$type;
 } else {
 return false;
 }
 } else {
-return and__4115__auto__;
+return and__4149__auto__;
 }
 });
 devtools.formatters.helpers.cljs_instance_QMARK_ = (function devtools$formatters$helpers$cljs_instance_QMARK_(value){
-var and__4115__auto__ = goog.isObject(value);
-if(cljs.core.truth_(and__4115__auto__)){
+var and__4149__auto__ = goog.isObject(value);
+if(cljs.core.truth_(and__4149__auto__)){
 return devtools.formatters.helpers.cljs_type_QMARK_.call(null,devtools.formatters.helpers.get_constructor.call(null,value));
 } else {
-return and__4115__auto__;
+return and__4149__auto__;
 }
 });
 devtools.formatters.helpers.cljs_land_value_QMARK_ = (function devtools$formatters$helpers$cljs_land_value_QMARK_(value){
-var or__4126__auto__ = devtools.formatters.helpers.cljs_instance_QMARK_.call(null,value);
-if(cljs.core.truth_(or__4126__auto__)){
-return or__4126__auto__;
+var or__4160__auto__ = devtools.formatters.helpers.cljs_instance_QMARK_.call(null,value);
+if(cljs.core.truth_(or__4160__auto__)){
+return or__4160__auto__;
 } else {
 return devtools.formatters.helpers.has_formatting_protocol_QMARK_.call(null,value);
 }
 });
 devtools.formatters.helpers.cljs_value_QMARK_ = (function devtools$formatters$helpers$cljs_value_QMARK_(value){
-var and__4115__auto__ = (function (){var or__4126__auto__ = devtools.formatters.helpers.cljs_land_value_QMARK_.call(null,value);
-if(cljs.core.truth_(or__4126__auto__)){
-return or__4126__auto__;
+var and__4149__auto__ = (function (){var or__4160__auto__ = devtools.formatters.helpers.cljs_land_value_QMARK_.call(null,value);
+if(cljs.core.truth_(or__4160__auto__)){
+return or__4160__auto__;
 } else {
 return devtools.formatters.helpers.cljs_function_QMARK_.call(null,value);
 }
 })();
-if(cljs.core.truth_(and__4115__auto__)){
+if(cljs.core.truth_(and__4149__auto__)){
 return (((!(devtools.formatters.helpers.is_prototype_QMARK_.call(null,value)))) && ((!(devtools.formatters.helpers.is_js_symbol_QMARK_.call(null,value)))));
 } else {
-return and__4115__auto__;
+return and__4149__auto__;
 }
 });
 devtools.formatters.helpers.bool_QMARK_ = (function devtools$formatters$helpers$bool_QMARK_(value){
@@ -145,26 +145,26 @@ return ((value === true) || (value === false));
 devtools.formatters.helpers.instance_of_a_well_known_type_QMARK_ = (function devtools$formatters$helpers$instance_of_a_well_known_type_QMARK_(value){
 var well_known_types = devtools.formatters.helpers.pref.call(null,new cljs.core.Keyword(null,"well-known-types","well-known-types",70638649));
 var constructor_fn = devtools.formatters.helpers.get_constructor.call(null,value);
-var vec__25143 = devtools.munging.parse_constructor_info.call(null,constructor_fn);
-var ns = cljs.core.nth.call(null,vec__25143,(0),null);
-var name = cljs.core.nth.call(null,vec__25143,(1),null);
+var vec__28240 = devtools.munging.parse_constructor_info.call(null,constructor_fn);
+var ns = cljs.core.nth.call(null,vec__28240,(0),null);
+var name = cljs.core.nth.call(null,vec__28240,(1),null);
 var fully_qualified_type_name = [cljs.core.str.cljs$core$IFn$_invoke$arity$1(ns),"/",cljs.core.str.cljs$core$IFn$_invoke$arity$1(name)].join('');
 return cljs.core.contains_QMARK_.call(null,well_known_types,fully_qualified_type_name);
 });
 devtools.formatters.helpers.should_render_instance_QMARK_ = (function devtools$formatters$helpers$should_render_instance_QMARK_(value){
-var and__4115__auto__ = devtools.formatters.helpers.cljs_instance_QMARK_.call(null,value);
-if(cljs.core.truth_(and__4115__auto__)){
+var and__4149__auto__ = devtools.formatters.helpers.cljs_instance_QMARK_.call(null,value);
+if(cljs.core.truth_(and__4149__auto__)){
 return (!(devtools.formatters.helpers.instance_of_a_well_known_type_QMARK_.call(null,value)));
 } else {
-return and__4115__auto__;
+return and__4149__auto__;
 }
 });
 devtools.formatters.helpers.directly_printable_QMARK_ = (function devtools$formatters$helpers$directly_printable_QMARK_(value){
 return ((typeof value === 'string') || (typeof value === 'number') || (devtools.formatters.helpers.bool_QMARK_.call(null,value)));
 });
 devtools.formatters.helpers.abbreviated_QMARK_ = (function devtools$formatters$helpers$abbreviated_QMARK_(template){
-return cljs.core.some.call(null,(function (p1__25146_SHARP_){
-return cljs.core._EQ_.call(null,devtools.formatters.helpers.pref.call(null,new cljs.core.Keyword(null,"more-marker","more-marker",-14717935)),p1__25146_SHARP_);
+return cljs.core.some.call(null,(function (p1__28243_SHARP_){
+return cljs.core._EQ_.call(null,devtools.formatters.helpers.pref.call(null,new cljs.core.Keyword(null,"more-marker","more-marker",-14717935)),p1__28243_SHARP_);
 }),template);
 });
 devtools.formatters.helpers.abbreviate_long_string = (function devtools$formatters$helpers$abbreviate_long_string(string,marker,prefix_limit,postfix_limit){
@@ -222,4 +222,4 @@ return null;
 }
 });
 
-//# sourceMappingURL=helpers.js.map?rel=1618749920609
+//# sourceMappingURL=helpers.js.map?rel=1618870424635

@@ -1,9 +1,16 @@
-/*TRANSPILED*/goog.provide("goog.debug.Error");
-goog.debug.Error = function(opt_msg) {
+/*TRANSPILED*/goog.loadModule(function(exports) {'use strict';/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+'use strict';
+goog.module("goog.debug.Error");
+goog.module.declareLegacyNamespace();
+function DebugError(opt_msg) {
   if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, goog.debug.Error);
+    Error.captureStackTrace(this, DebugError);
   } else {
-    var stack = (new Error).stack;
+    const stack = (new Error).stack;
     if (stack) {
       this.stack = stack;
     }
@@ -12,6 +19,9 @@ goog.debug.Error = function(opt_msg) {
     this.message = String(opt_msg);
   }
   this.reportErrorToServer = true;
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
+}
+goog.inherits(DebugError, Error);
+DebugError.prototype.name = "CustomError";
+exports = DebugError;
+
+;return exports;});

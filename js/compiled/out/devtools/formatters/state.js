@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.10.773 {:target :nodejs}
+// Compiled by ClojureScript 1.10.844 {:target :nodejs, :nodejs-rt false}
 goog.provide('devtools.formatters.state');
 goog.require('cljs.core');
 devtools.formatters.state._STAR_current_state_STAR_ = null;
@@ -17,23 +17,23 @@ throw (new Error("Assert failed: (valid-current-state?)"));
 return devtools.formatters.state._STAR_current_state_STAR_;
 });
 devtools.formatters.state.update_current_state_BANG_ = (function devtools$formatters$state$update_current_state_BANG_(var_args){
-var args__4742__auto__ = [];
-var len__4736__auto___25152 = arguments.length;
-var i__4737__auto___25153 = (0);
+var args__4777__auto__ = [];
+var len__4771__auto___28249 = arguments.length;
+var i__4772__auto___28250 = (0);
 while(true){
-if((i__4737__auto___25153 < len__4736__auto___25152)){
-args__4742__auto__.push((arguments[i__4737__auto___25153]));
+if((i__4772__auto___28250 < len__4771__auto___28249)){
+args__4777__auto__.push((arguments[i__4772__auto___28250]));
 
-var G__25154 = (i__4737__auto___25153 + (1));
-i__4737__auto___25153 = G__25154;
+var G__28251 = (i__4772__auto___28250 + (1));
+i__4772__auto___28250 = G__28251;
 continue;
 } else {
 }
 break;
 }
 
-var argseq__4743__auto__ = ((((1) < args__4742__auto__.length))?(new cljs.core.IndexedSeq(args__4742__auto__.slice((1)),(0),null)):null);
-return devtools.formatters.state.update_current_state_BANG_.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__4743__auto__);
+var argseq__4778__auto__ = ((((1) < args__4777__auto__.length))?(new cljs.core.IndexedSeq(args__4777__auto__.slice((1)),(0),null)):null);
+return devtools.formatters.state.update_current_state_BANG_.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__4778__auto__);
 });
 
 (devtools.formatters.state.update_current_state_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (f,args){
@@ -48,11 +48,11 @@ return (devtools.formatters.state._STAR_current_state_STAR_ = cljs.core.apply.ca
 (devtools.formatters.state.update_current_state_BANG_.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(devtools.formatters.state.update_current_state_BANG_.cljs$lang$applyTo = (function (seq25150){
-var G__25151 = cljs.core.first.call(null,seq25150);
-var seq25150__$1 = cljs.core.next.call(null,seq25150);
-var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__25151,seq25150__$1);
+(devtools.formatters.state.update_current_state_BANG_.cljs$lang$applyTo = (function (seq28247){
+var G__28248 = cljs.core.first.call(null,seq28247);
+var seq28247__$1 = cljs.core.next.call(null,seq28247);
+var self__4758__auto__ = this;
+return self__4758__auto__.cljs$core$IFn$_invoke$arity$variadic(G__28248,seq28247__$1);
 }));
 
 devtools.formatters.state.push_object_to_current_history_BANG_ = (function devtools$formatters$state$push_object_to_current_history_BANG_(object){
@@ -63,8 +63,8 @@ return new cljs.core.Keyword(null,"history","history",-247395220).cljs$core$IFn$
 });
 devtools.formatters.state.is_circular_QMARK_ = (function devtools$formatters$state$is_circular_QMARK_(object){
 var history = devtools.formatters.state.get_current_history.call(null);
-return cljs.core.some.call(null,(function (p1__25155_SHARP_){
-return (p1__25155_SHARP_ === object);
+return cljs.core.some.call(null,(function (p1__28252_SHARP_){
+return (p1__28252_SHARP_ === object);
 }),history);
 });
 devtools.formatters.state.prevent_recursion_QMARK_ = (function devtools$formatters$state$prevent_recursion_QMARK_(){
@@ -101,4 +101,4 @@ devtools.formatters.state.reset_depth_limits = (function devtools$formatters$sta
 return devtools.formatters.state.set_managed_print_level.call(null,devtools.formatters.state.set_depth_budget.call(null,state,null),null);
 });
 
-//# sourceMappingURL=state.js.map?rel=1618749920640
+//# sourceMappingURL=state.js.map?rel=1618870424664

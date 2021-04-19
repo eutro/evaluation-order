@@ -1,16 +1,8 @@
-// Copyright 2008 The Closure Library Authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * @license
+ * Copyright The Closure Library Authors.
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 /**
  * @fileoverview Utilities to check the preconditions, postconditions and
@@ -42,8 +34,6 @@
  * goog.asserts.assert(value);
  * // "value" is of type {!Object} at this point.
  * </code>
- *
- * @author agrieve@google.com (Andrew Grieve)
  */
 
 goog.provide('goog.asserts');
@@ -70,6 +60,7 @@ goog.asserts.ENABLE_ASSERTS =
  * @final
  */
 goog.asserts.AssertionError = function(messagePattern, messageArgs) {
+  'use strict';
   goog.debug.Error.call(this, goog.asserts.subs_(messagePattern, messageArgs));
 
   /**
@@ -91,6 +82,7 @@ goog.asserts.AssertionError.prototype.name = 'AssertionError';
  * @param {!goog.asserts.AssertionError} e The exception to be handled.
  */
 goog.asserts.DEFAULT_ERROR_HANDLER = function(e) {
+  'use strict';
   throw e;
 };
 
@@ -112,6 +104,7 @@ goog.asserts.errorHandler_ = goog.asserts.DEFAULT_ERROR_HANDLER;
  * @private
  */
 goog.asserts.subs_ = function(pattern, subs) {
+  'use strict';
   var splitParts = pattern.split('%s');
   var returnString = '';
 
@@ -139,6 +132,7 @@ goog.asserts.subs_ = function(pattern, subs) {
  */
 goog.asserts.doAssertFailure_ = function(
     defaultMessage, defaultArgs, givenMessage, givenArgs) {
+  'use strict';
   var message = 'Assertion failed';
   if (givenMessage) {
     message += ': ' + givenMessage;
@@ -163,6 +157,7 @@ goog.asserts.doAssertFailure_ = function(
  * @param {function(!goog.asserts.AssertionError)} errorHandler
  */
 goog.asserts.setErrorHandler = function(errorHandler) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS) {
     goog.asserts.errorHandler_ = errorHandler;
   }
@@ -181,6 +176,7 @@ goog.asserts.setErrorHandler = function(errorHandler) {
  * @closurePrimitive {asserts.truthy}
  */
 goog.asserts.assert = function(condition, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS && !condition) {
     goog.asserts.doAssertFailure_(
         '', null, opt_message, Array.prototype.slice.call(arguments, 2));
@@ -212,6 +208,7 @@ goog.asserts.assert = function(condition, opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertExists = function(value, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS && value == null) {
     goog.asserts.doAssertFailure_(
         'Expected to exist: %s.', [value], opt_message,
@@ -241,11 +238,11 @@ goog.asserts.assertExists = function(value, opt_message, var_args) {
  * @closurePrimitive {asserts.fail}
  */
 goog.asserts.fail = function(opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS) {
-    goog.asserts.errorHandler_(
-        new goog.asserts.AssertionError(
-            'Failure' + (opt_message ? ': ' + opt_message : ''),
-            Array.prototype.slice.call(arguments, 1)));
+    goog.asserts.errorHandler_(new goog.asserts.AssertionError(
+        'Failure' + (opt_message ? ': ' + opt_message : ''),
+        Array.prototype.slice.call(arguments, 1)));
   }
 };
 
@@ -260,6 +257,7 @@ goog.asserts.fail = function(opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertNumber = function(value, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS && typeof value !== 'number') {
     goog.asserts.doAssertFailure_(
         'Expected number but got %s: %s.', [goog.typeOf(value), value],
@@ -279,6 +277,7 @@ goog.asserts.assertNumber = function(value, opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertString = function(value, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS && typeof value !== 'string') {
     goog.asserts.doAssertFailure_(
         'Expected string but got %s: %s.', [goog.typeOf(value), value],
@@ -299,7 +298,8 @@ goog.asserts.assertString = function(value, opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertFunction = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isFunction(value)) {
+  'use strict';
+  if (goog.asserts.ENABLE_ASSERTS && typeof value !== 'function') {
     goog.asserts.doAssertFailure_(
         'Expected function but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
@@ -318,6 +318,7 @@ goog.asserts.assertFunction = function(value, opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertObject = function(value, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS && !goog.isObject(value)) {
     goog.asserts.doAssertFailure_(
         'Expected object but got %s: %s.', [goog.typeOf(value), value],
@@ -337,7 +338,8 @@ goog.asserts.assertObject = function(value, opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertArray = function(value, opt_message, var_args) {
-  if (goog.asserts.ENABLE_ASSERTS && !goog.isArray(value)) {
+  'use strict';
+  if (goog.asserts.ENABLE_ASSERTS && !Array.isArray(value)) {
     goog.asserts.doAssertFailure_(
         'Expected array but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
@@ -357,6 +359,7 @@ goog.asserts.assertArray = function(value, opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertBoolean = function(value, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS && typeof value !== 'boolean') {
     goog.asserts.doAssertFailure_(
         'Expected boolean but got %s: %s.', [goog.typeOf(value), value],
@@ -375,10 +378,13 @@ goog.asserts.assertBoolean = function(value, opt_message, var_args) {
  *     enabled.
  * @throws {goog.asserts.AssertionError} When the value is not an Element.
  * @closurePrimitive {asserts.matchesReturn}
+ * @deprecated Use goog.asserts.dom.assertIsElement instead.
  */
 goog.asserts.assertElement = function(value, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS &&
-      (!goog.isObject(value) || value.nodeType != goog.dom.NodeType.ELEMENT)) {
+      (!goog.isObject(value) ||
+       /** @type {!Node} */ (value).nodeType != goog.dom.NodeType.ELEMENT)) {
     goog.asserts.doAssertFailure_(
         'Expected Element but got %s: %s.', [goog.typeOf(value), value],
         opt_message, Array.prototype.slice.call(arguments, 2));
@@ -393,6 +399,11 @@ goog.asserts.assertElement = function(value, opt_message, var_args) {
  *
  * The compiler may tighten the type returned by this function.
  *
+ * Do not use this to ensure a value is an HTMLElement or a subclass! Cross-
+ * document DOM inherits from separate - though identical - browser classes, and
+ * such a check will unexpectedly fail. Please use the methods in
+ * goog.asserts.dom for these purposes.
+ *
  * @param {?} value The value to check.
  * @param {function(new: T, ...)} type A user-defined constructor.
  * @param {string=} opt_message Error message in case of failure.
@@ -404,6 +415,7 @@ goog.asserts.assertElement = function(value, opt_message, var_args) {
  * @closurePrimitive {asserts.matchesReturn}
  */
 goog.asserts.assertInstanceof = function(value, type, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS && !(value instanceof type)) {
     goog.asserts.doAssertFailure_(
         'Expected instanceof %s but got %s.',
@@ -426,6 +438,7 @@ goog.asserts.assertInstanceof = function(value, type, opt_message, var_args) {
  * @return {number} The value initially passed in.
  */
 goog.asserts.assertFinite = function(value, opt_message, var_args) {
+  'use strict';
   if (goog.asserts.ENABLE_ASSERTS &&
       (typeof value != 'number' || !isFinite(value))) {
     goog.asserts.doAssertFailure_(
@@ -440,6 +453,7 @@ goog.asserts.assertFinite = function(value, opt_message, var_args) {
  * would break most code that use {@code for (var ... in ...)} loops.
  */
 goog.asserts.assertObjectPrototypeIsIntact = function() {
+  'use strict';
   for (var key in Object.prototype) {
     goog.asserts.fail(key + ' should not be enumerable in Object.prototype.');
   }
@@ -454,6 +468,7 @@ goog.asserts.assertObjectPrototypeIsIntact = function() {
  * @private
  */
 goog.asserts.getType_ = function(value) {
+  'use strict';
   if (value instanceof Function) {
     return value.displayName || value.name || 'unknown type name';
   } else if (value instanceof Object) {

@@ -1,4 +1,10 @@
-/*TRANSPILED*/goog.provide("goog.math.Size");
+/*TRANSPILED*//*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+'use strict';
+goog.provide("goog.math.Size");
 goog.math.Size = function(width, height) {
   this.width = width;
   this.height = height;
@@ -57,16 +63,16 @@ goog.math.Size.prototype.round = function() {
   return this;
 };
 goog.math.Size.prototype.scale = function(sx, opt_sy) {
-  var sy = typeof opt_sy === "number" ? opt_sy : sx;
+  const sy = typeof opt_sy === "number" ? opt_sy : sx;
   this.width *= sx;
   this.height *= sy;
   return this;
 };
 goog.math.Size.prototype.scaleToCover = function(target) {
-  var s = this.aspectRatio() <= target.aspectRatio() ? target.width / this.width : target.height / this.height;
+  const s = this.aspectRatio() <= target.aspectRatio() ? target.width / this.width : target.height / this.height;
   return this.scale(s);
 };
 goog.math.Size.prototype.scaleToFit = function(target) {
-  var s = this.aspectRatio() > target.aspectRatio() ? target.width / this.width : target.height / this.height;
+  const s = this.aspectRatio() > target.aspectRatio() ? target.width / this.width : target.height / this.height;
   return this.scale(s);
 };

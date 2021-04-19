@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.10.773 {:target :nodejs}
+// Compiled by ClojureScript 1.10.844 {:target :nodejs, :nodejs-rt false}
 goog.provide('devtools.async');
 goog.require('cljs.core');
 goog.require('goog.async.nextTick');
@@ -22,12 +22,12 @@ throw e;
 }),(0));
 });
 devtools.async.promise_based_set_immediate = (function devtools$async$promise_based_set_immediate(callback){
-var o__24380__auto___27120 = (function (){var o__24380__auto___27120 = (function (){var o__24380__auto___27120 = Promise;
-return (o__24380__auto___27120["resolve"]).call(o__24380__auto___27120);
+var o__27478__auto___30206 = (function (){var o__27478__auto___30206 = (function (){var o__27478__auto___30206 = Promise;
+return (o__27478__auto___30206["resolve"]).call(o__27478__auto___30206);
 })();
-return (o__24380__auto___27120["then"]).call(o__24380__auto___27120,callback);
+return (o__27478__auto___30206["then"]).call(o__27478__auto___30206,callback);
 })();
-(o__24380__auto___27120["catch"]).call(o__24380__auto___27120,devtools.async.rethrow_outside_promise);
+(o__27478__auto___30206["catch"]).call(o__27478__auto___30206,devtools.async.rethrow_outside_promise);
 
 return null;
 });
@@ -48,14 +48,14 @@ return null;
 } else {
 (devtools.async._STAR_installed_STAR_ = true);
 
-var G__27121_27122 = Error;
-var target__24385__auto___27123 = G__27121_27122;
-if(cljs.core.truth_(target__24385__auto___27123)){
+var G__30207_30208 = Error;
+var target__27483__auto___30209 = G__30207_30208;
+if(cljs.core.truth_(target__27483__auto___30209)){
 } else {
-throw (new Error(["Assert failed: ",["unable to locate object path ",null," in ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__27121_27122)].join(''),"\n","target__24385__auto__"].join('')));
+throw (new Error(["Assert failed: ",["unable to locate object path ",null," in ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__30207_30208)].join(''),"\n","target__27483__auto__"].join('')));
 }
 
-(target__24385__auto___27123["stackTraceLimit"] = Infinity);
+(target__27483__auto___30209["stackTraceLimit"] = Infinity);
 
 
 devtools.async.install_async_set_immediate_BANG_.call(null);
@@ -78,4 +78,4 @@ return null;
 }
 });
 
-//# sourceMappingURL=async.js.map?rel=1618749923352
+//# sourceMappingURL=async.js.map?rel=1618870427232
