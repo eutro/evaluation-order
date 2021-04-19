@@ -110,10 +110,10 @@ var expr_atom = reagent.core.atom.call(null,expression);
 var path_atom = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
 var history = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
 var validate_path = (function (path){
-if(cljs.core.not_EQ_.call(null,new cljs.core.Keyword("evalorder.game","not-found","evalorder.game/not-found",-839713790),cljs.core.get_in.call(null,cljs.core.deref.call(null,expr_atom),path,new cljs.core.Keyword("evalorder.game","not-found","evalorder.game/not-found",-839713790)))){
-return path;
+if(cljs.core._EQ_.call(null,new cljs.core.Keyword("evalorder.game","not-found","evalorder.game/not-found",-839713790),cljs.core.get_in.call(null,cljs.core.deref.call(null,expr_atom),path,new cljs.core.Keyword("evalorder.game","not-found","evalorder.game/not-found",-839713790)))){
+return null;
 } else {
-return false;
+return path;
 }
 });
 return (function (){
@@ -142,7 +142,13 @@ next_BANG_.call(null);
 } else {
 }
 
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"class","class",-2030961996),"code",new cljs.core.Keyword(null,"tabIndex","tabIndex",-169286716),(-1),new cljs.core.Keyword(null,"onKeyDown","onKeyDown",648902330),(function (event){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),cljs.core.merge.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"code"], null),(cljs.core.truth_(next_BANG_)?new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"tabIndex","tabIndex",-169286716),(-1),new cljs.core.Keyword(null,"ref","ref",1289896967),(function (el){
+if(cljs.core.truth_(el)){
+return el.focus();
+} else {
+return null;
+}
+}),new cljs.core.Keyword(null,"onKeyDown","onKeyDown",648902330),(function (event){
 if(cljs.core.truth_(event.ctrlKey)){
 return null;
 } else {
@@ -150,12 +156,16 @@ var key = event.key;
 var G__27314 = key;
 switch (G__27314) {
 case "ArrowUp":
+if(cljs.core.seq.call(null,p)){
 var G__27315 = cljs.core.subvec.call(null,p,(0),(cljs.core.count.call(null,p) - (1)));
 var G__27315__$1 = (((G__27315 == null))?null:validate_path.call(null,G__27315));
 if((G__27315__$1 == null)){
 return null;
 } else {
 return cljs.core.reset_BANG_.call(null,path_atom,G__27315__$1);
+}
+} else {
+return null;
 }
 
 break;
@@ -170,6 +180,7 @@ return cljs.core.reset_BANG_.call(null,path_atom,G__27316__$1);
 
 break;
 case "ArrowLeft":
+if(cljs.core.seq.call(null,p)){
 var G__27317 = cljs.core.update.call(null,p,(cljs.core.count.call(null,p) - (1)),cljs.core.dec);
 var G__27317__$1 = (((G__27317 == null))?null:validate_path.call(null,G__27317));
 if((G__27317__$1 == null)){
@@ -177,15 +188,22 @@ return null;
 } else {
 return cljs.core.reset_BANG_.call(null,path_atom,G__27317__$1);
 }
+} else {
+return null;
+}
 
 break;
 case "ArrowRight":
+if(cljs.core.seq.call(null,p)){
 var G__27318 = cljs.core.update.call(null,p,(cljs.core.count.call(null,p) - (1)),cljs.core.inc);
 var G__27318__$1 = (((G__27318 == null))?null:validate_path.call(null,G__27318));
 if((G__27318__$1 == null)){
 return null;
 } else {
 return cljs.core.reset_BANG_.call(null,path_atom,G__27318__$1);
+}
+} else {
+return null;
 }
 
 break;
@@ -200,7 +218,7 @@ return null;
 
 }
 }
-})], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"expression"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,e,(function (){var and__4149__auto__ = next_BANG_;
+})], null):null)),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"expression"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,e,(function (){var and__4149__auto__ = next_BANG_;
 if(cljs.core.truth_(and__4149__auto__)){
 return p;
 } else {
@@ -271,4 +289,4 @@ return (new evalorder.game.t_evalorder$game27320(expr__$1,validated__$1,meta2732
 return (new evalorder.game.t_evalorder$game27320(expr,validated,cljs.core.PersistentArrayMap.EMPTY));
 }));
 
-//# sourceMappingURL=game.js.map?rel=1618870611632
+//# sourceMappingURL=game.js.map?rel=1618871561047

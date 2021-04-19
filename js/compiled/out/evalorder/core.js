@@ -245,4 +245,4 @@ return evalorder.core.main_menu;
 });
 reagent.dom.render.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.core.app], null),document.getElementById("app"));
 
-//# sourceMappingURL=core.js.map?rel=1618870611737
+//# sourceMappingURL=core.js.map?rel=1618871561150
