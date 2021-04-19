@@ -15,9 +15,7 @@
  #game/expression
      {:expression pi
       :target #{3.14}
-      :definitions [[pi
-                     {:desc "Pi, the mathematical constant, to 2 decimal places."}
-                     3.14]]}
+      :definitions [[pi 3.14]]}
 
  #game/expression
      {:expression (+ 1 2)

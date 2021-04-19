@@ -58,8 +58,9 @@
         path-atom (reagent/atom [])
         history (reagent/atom [])
         validate-path (fn [path]
-                        (and (not= ::not-found (get-in @expr-atom path ::not-found))
-                             path))]
+                        (if (= ::not-found (get-in @expr-atom path ::not-found))
+                          nil
+                          path))]
     (fn []
       (let [e @expr-atom
             p @path-atom]
@@ -68,29 +69,35 @@
                    (target e))
           (reset! path-atom nil)
           (next!))
-        [:div {:class "code"
-               :tabIndex -1
-               :onKeyDown
-               (fn [event]
-                 (when-not (-> event (! :-ctrlKey))
-                   (let [key (-> event (! :-key))]
-                     (case key
-                       "ArrowUp"
-                       (some->> (subvec p 0 (dec (count p)))
-                                validate-path (reset! path-atom))
-                       "ArrowDown"
-                       (some->> (conj p 0)
-                                validate-path (reset! path-atom))
-                       "ArrowLeft"
-                       (some->> (update p (dec (count p)) dec)
-                                validate-path (reset! path-atom))
-                       "ArrowRight"
-                       (some->> (update p (dec (count p)) inc)
-                                validate-path (reset! path-atom))
-                       "Enter"
-                       (do (swap! expr-atom evaluate-in p)
-                           (swap! history conj e))
-                       nil))))}
+        [:div (merge
+                {:class "code"}
+                (when next!
+                  {:tabIndex -1
+                   :ref (fn [el] (when el (! el :focus)))
+                   :onKeyDown
+                   (fn [event]
+                     (when-not (-> event (! :-ctrlKey))
+                       (let [key (-> event (! :-key))]
+                         (case key
+                           "ArrowUp"
+                           (when (seq p)
+                             (some->> (subvec p 0 (dec (count p)))
+                                      validate-path (reset! path-atom)))
+                           "ArrowDown"
+                           (some->> (conj p 0)
+                                    validate-path (reset! path-atom))
+                           "ArrowLeft"
+                           (when (seq p)
+                             (some->> (update p (dec (count p)) dec)
+                                      validate-path (reset! path-atom)))
+                           "ArrowRight"
+                           (when (seq p)
+                             (some->> (update p (dec (count p)) inc)
+                                      validate-path (reset! path-atom)))
+                           "Enter"
+                           (do (swap! expr-atom evaluate-in p)
+                               (swap! history conj e))
+                           nil))))}))
          [:div {:class "expression"}
           [expr e (and next! p)]]]))))
 
