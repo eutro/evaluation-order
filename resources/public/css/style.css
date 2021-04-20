@@ -30,10 +30,11 @@
 }
 
 .code {
-    padding: .5em;
-    border: 0;
-    margin: 0;
     outline: none;
+}
+
+.story {
+    padding: 0.5em;
 }
 
 .bar {
