@@ -5,7 +5,8 @@
 (defn get-cookie [cookie]
   (-> (! js/document :-cookie)
       (str/split #"; ")
-      (->> (into {} (map #(str/split % #"=" 2))))
+      (->> (into {} (comp (filter seq)
+                          (map #(str/split % #"=" 2)))))
       (get cookie)))
 
 (def one-year (* 60 60 24 356))
