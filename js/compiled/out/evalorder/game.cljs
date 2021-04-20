@@ -7,7 +7,7 @@
 
 (s/def ::expression
   (s/and
-    (s/or :recursive (s/coll-of ::expression, :into [])
+    (s/or :recursive (s/coll-of ::expression, :kind sequential?, :into [])
           :number number?
           :symbol symbol?)
     (s/conformer second)))
@@ -21,7 +21,7 @@
 (defn validate [level]
   (let [conformed (s/conform ::level level)]
     (when (s/invalid? conformed)
-      (throw (js/Error. (str "Invalid expr:\n" (s/explain-str ::level level)))))
+      (throw (js/Error. (str "Invalid expression:\n" (s/explain-str ::level level)))))
     conformed))
 
 (defn delim [v]
