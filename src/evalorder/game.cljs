@@ -24,6 +24,12 @@
       (throw (js/Error. (str "Invalid expression:\n" (s/explain-str ::level level)))))
     conformed))
 
+(defrecord Error [message])
+
+(defn error [message] (->Error message))
+
+(defn error? [e] (instance? Error e))
+
 (defn delim [v]
   [:span {:class "delimiter"} v])
 
@@ -40,15 +46,58 @@
       [delim ")"]]
 
      (number? value) [:span {:class "number"} (str value)]
-     (symbol? value) [:span {:class "symbol"} (str value)])])
+     (symbol? value) [:span {:class "symbol"} (str value)]
+     (boolean? value) [:span {:class "bool"} (str value)]
+     (nil? value) [:span {:class "nil"} (str value)]
+     (error? value) [:span {:class "error"}
+                     (str "!" (pr-str (:message value)))]
+
+     :else [:span {:class "error"} "!?"])])
+
+;; lisp 2 moment
+(def ^:dynamic *fn-env*
+  {'+ (fn [& args]
+        (if (some (complement number?) args)
+          (error "Can only add numbers")
+          (apply + args)))
+   '* (fn [& args]
+        (if (some (complement number?) args)
+          (error "Can only multiply numbers")
+          (apply * args)))
+   '- (fn [& args]
+        (if (some (complement number?) args)
+          (error "Can only subtract numbers")
+          (apply - args)))
+   '/ (fn [& args]
+        (if (some (complement number?) args)
+          (error "Can only divide numbers")
+          (apply / args)))
+   '= =
+   'if (fn [pred then else]
+         (if pred then else))})
+
+(def ^:dynamic *val-env*
+  {'pi 3.14})
+
+(defn app [value args]
+  (cond
+    (symbol? value) (apply (*fn-env* value) args)
+    :else (error "Can't be applied")))
 
 (defn evaluate [value]
-  value)
+  (cond
+    (vector? value) (app (first value) (next value))
+    (symbol? value)
+    (cond
+      (contains? *val-env* value) (*val-env* value)
+      (contains? *fn-env* value) value
+      :else (error "Undefined"))
+    :else value))
 
 (defn evaluate-in [value path]
   (if (seq path)
     (update-in value path evaluate)
-    value))
+    (evaluate value)))
 
 (defn root [{:keys [expression
                     target
