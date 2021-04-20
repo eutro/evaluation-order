@@ -7,14 +7,14 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 });
 evalorder.menu.button = (function evalorder$menu$button(var_args){
 var args__4777__auto__ = [];
-var len__4771__auto___27348 = arguments.length;
-var i__4772__auto___27349 = (0);
+var len__4771__auto___27350 = arguments.length;
+var i__4772__auto___27351 = (0);
 while(true){
-if((i__4772__auto___27349 < len__4771__auto___27348)){
-args__4777__auto__.push((arguments[i__4772__auto___27349]));
+if((i__4772__auto___27351 < len__4771__auto___27350)){
+args__4777__auto__.push((arguments[i__4772__auto___27351]));
 
-var G__27350 = (i__4772__auto___27349 + (1));
-i__4772__auto___27349 = G__27350;
+var G__27352 = (i__4772__auto___27351 + (1));
+i__4772__auto___27351 = G__27352;
 continue;
 } else {
 }
@@ -25,34 +25,34 @@ var argseq__4778__auto__ = ((((2) < args__4777__auto__.length))?(new cljs.core.I
 return evalorder.menu.button.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),(arguments[(1)]),argseq__4778__auto__);
 });
 
-(evalorder.menu.button.cljs$core$IFn$_invoke$arity$variadic = (function (text,on_click,p__27344){
-var vec__27345 = p__27344;
-var extras = cljs.core.nth.call(null,vec__27345,(0),null);
+(evalorder.menu.button.cljs$core$IFn$_invoke$arity$variadic = (function (text,on_click,p__27346){
+var vec__27347 = p__27346;
+var extras = cljs.core.nth.call(null,vec__27347,(0),null);
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943),cljs.core.merge.call(null,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),"button",new cljs.core.Keyword(null,"onClick","onClick",-1991238530),on_click], null),extras),text], null);
 }));
 
 (evalorder.menu.button.cljs$lang$maxFixedArity = (2));
 
 /** @this {Function} */
-(evalorder.menu.button.cljs$lang$applyTo = (function (seq27341){
-var G__27342 = cljs.core.first.call(null,seq27341);
-var seq27341__$1 = cljs.core.next.call(null,seq27341);
-var G__27343 = cljs.core.first.call(null,seq27341__$1);
-var seq27341__$2 = cljs.core.next.call(null,seq27341__$1);
+(evalorder.menu.button.cljs$lang$applyTo = (function (seq27343){
+var G__27344 = cljs.core.first.call(null,seq27343);
+var seq27343__$1 = cljs.core.next.call(null,seq27343);
+var G__27345 = cljs.core.first.call(null,seq27343__$1);
+var seq27343__$2 = cljs.core.next.call(null,seq27343__$1);
 var self__4758__auto__ = this;
-return self__4758__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27342,G__27343,seq27341__$2);
+return self__4758__auto__.cljs$core$IFn$_invoke$arity$variadic(G__27344,G__27345,seq27343__$2);
 }));
 
 evalorder.menu.menu = (function evalorder$menu$menu(var_args){
 var args__4777__auto__ = [];
-var len__4771__auto___27352 = arguments.length;
-var i__4772__auto___27353 = (0);
+var len__4771__auto___27354 = arguments.length;
+var i__4772__auto___27355 = (0);
 while(true){
-if((i__4772__auto___27353 < len__4771__auto___27352)){
-args__4777__auto__.push((arguments[i__4772__auto___27353]));
+if((i__4772__auto___27355 < len__4771__auto___27354)){
+args__4777__auto__.push((arguments[i__4772__auto___27355]));
 
-var G__27354 = (i__4772__auto___27353 + (1));
-i__4772__auto___27353 = G__27354;
+var G__27356 = (i__4772__auto___27355 + (1));
+i__4772__auto___27355 = G__27356;
 continue;
 } else {
 }
@@ -70,11 +70,11 @@ return cljs.core.vec.call(null,cljs.core.sequence.call(null,cljs.core.seq.call(n
 (evalorder.menu.menu.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(evalorder.menu.menu.cljs$lang$applyTo = (function (seq27351){
+(evalorder.menu.menu.cljs$lang$applyTo = (function (seq27353){
 var self__4759__auto__ = this;
-return self__4759__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq27351));
+return self__4759__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq27353));
 }));
 
 evalorder.menu.screen = reagent.core.atom.call(null,null);
 
-//# sourceMappingURL=menu.js.map?rel=1618911414588
+//# sourceMappingURL=menu.js.map?rel=1618926906633

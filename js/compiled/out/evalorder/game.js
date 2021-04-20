@@ -8,21 +8,18 @@ goog.require('evalorder.util');
 cljs.spec.alpha.def_impl.call(null,new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","and","cljs.spec.alpha/and",-2060279705,null),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","or","cljs.spec.alpha/or",-831679639,null),new cljs.core.Keyword(null,"recursive","recursive",718885872),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","coll-of","cljs.spec.alpha/coll-of",1019430407,null),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","sequential?","cljs.core/sequential?",1777854658,null),new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentVector.EMPTY),new cljs.core.Keyword(null,"number","number",1570378438),new cljs.core.Symbol("cljs.core","number?","cljs.core/number?",-811857295,null),new cljs.core.Keyword(null,"symbol","symbol",-1038572696),new cljs.core.Symbol("cljs.core","symbol?","cljs.core/symbol?",1422196122,null)),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","conformer","cljs.spec.alpha/conformer",2140085535,null),new cljs.core.Symbol("cljs.core","second","cljs.core/second",520555958,null))),cljs.spec.alpha.and_spec_impl.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","or","cljs.spec.alpha/or",-831679639,null),new cljs.core.Keyword(null,"recursive","recursive",718885872),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","coll-of","cljs.spec.alpha/coll-of",1019430407,null),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","sequential?","cljs.core/sequential?",1777854658,null),new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentVector.EMPTY),new cljs.core.Keyword(null,"number","number",1570378438),new cljs.core.Symbol("cljs.core","number?","cljs.core/number?",-811857295,null),new cljs.core.Keyword(null,"symbol","symbol",-1038572696),new cljs.core.Symbol("cljs.core","symbol?","cljs.core/symbol?",1422196122,null)),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","conformer","cljs.spec.alpha/conformer",2140085535,null),new cljs.core.Symbol("cljs.core","second","cljs.core/second",520555958,null))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.spec.alpha.or_spec_impl.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"recursive","recursive",718885872),new cljs.core.Keyword(null,"number","number",1570378438),new cljs.core.Keyword(null,"symbol","symbol",-1038572696)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","coll-of","cljs.spec.alpha/coll-of",1019430407,null),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","sequential?","cljs.core/sequential?",1777854658,null),new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentVector.EMPTY),new cljs.core.Symbol("cljs.core","number?","cljs.core/number?",-811857295,null),new cljs.core.Symbol("cljs.core","symbol?","cljs.core/symbol?",1422196122,null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.spec.alpha.every_impl.call(null,new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentVector.EMPTY,new cljs.core.Keyword("cljs.spec.alpha","kind-form","cljs.spec.alpha/kind-form",-1047104697),new cljs.core.Symbol("cljs.core","sequential?","cljs.core/sequential?",1777854658,null),new cljs.core.Keyword("cljs.spec.alpha","cpred","cljs.spec.alpha/cpred",-693471218),(function (G__27287){
 return cljs.core.sequential_QMARK_.call(null,G__27287);
 }),new cljs.core.Keyword(null,"kind","kind",-717265803),cljs.core.sequential_QMARK_,new cljs.core.Keyword("cljs.spec.alpha","conform-all","cljs.spec.alpha/conform-all",45201917),true,new cljs.core.Keyword("cljs.spec.alpha","describe","cljs.spec.alpha/describe",1883026911),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","coll-of","cljs.spec.alpha/coll-of",1019430407,null),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentVector.EMPTY,new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","sequential?","cljs.core/sequential?",1777854658,null))], null),null),cljs.core.number_QMARK_,cljs.core.symbol_QMARK_], null),null),cljs.spec.alpha.spec_impl.call(null,cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","conformer","cljs.spec.alpha/conformer",2140085535,null),new cljs.core.Symbol("cljs.core","second","cljs.core/second",520555958,null)),cljs.core.second,null,true)], null),null));
-cljs.spec.alpha.def_impl.call(null,new cljs.core.Keyword("evalorder.game","definitions","evalorder.game/definitions",940462640),new cljs.core.Symbol("cljs.core","any?","cljs.core/any?",-2068111842,null),cljs.core.any_QMARK_);
 cljs.spec.alpha.def_impl.call(null,new cljs.core.Keyword("evalorder.game","target","evalorder.game/target",16417835),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","coll-of","cljs.spec.alpha/coll-of",1019430407,null),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","set?","cljs.core/set?",-1176684971,null),new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentHashSet.EMPTY),cljs.spec.alpha.every_impl.call(null,new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentHashSet.EMPTY,new cljs.core.Keyword("cljs.spec.alpha","kind-form","cljs.spec.alpha/kind-form",-1047104697),new cljs.core.Symbol("cljs.core","set?","cljs.core/set?",-1176684971,null),new cljs.core.Keyword("cljs.spec.alpha","cpred","cljs.spec.alpha/cpred",-693471218),(function (G__27288){
 return cljs.core.set_QMARK_.call(null,G__27288);
 }),new cljs.core.Keyword(null,"kind","kind",-717265803),cljs.core.set_QMARK_,new cljs.core.Keyword("cljs.spec.alpha","conform-all","cljs.spec.alpha/conform-all",45201917),true,new cljs.core.Keyword("cljs.spec.alpha","describe","cljs.spec.alpha/describe",1883026911),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","coll-of","cljs.spec.alpha/coll-of",1019430407,null),new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword(null,"into","into",-150836029),cljs.core.PersistentHashSet.EMPTY,new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","set?","cljs.core/set?",-1176684971,null))], null),null));
-cljs.spec.alpha.def_impl.call(null,new cljs.core.Keyword("evalorder.game","level","evalorder.game/level",-84577858),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","keys","cljs.spec.alpha/keys",1109346032,null),new cljs.core.Keyword(null,"req-un","req-un",1074571008),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","target","evalorder.game/target",16417835),new cljs.core.Keyword("evalorder.game","definitions","evalorder.game/definitions",940462640)], null)),cljs.spec.alpha.map_spec_impl.call(null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"req-un","req-un",1074571008),new cljs.core.Keyword(null,"opt-un","opt-un",883442496),new cljs.core.Keyword(null,"gfn","gfn",791517474),new cljs.core.Keyword(null,"pred-exprs","pred-exprs",1792271395),new cljs.core.Keyword(null,"keys-pred","keys-pred",858984739),new cljs.core.Keyword(null,"opt-keys","opt-keys",1262688261),new cljs.core.Keyword(null,"req-specs","req-specs",553962313),new cljs.core.Keyword(null,"req","req",-326448303),new cljs.core.Keyword(null,"req-keys","req-keys",514319221),new cljs.core.Keyword(null,"opt-specs","opt-specs",-384905450),new cljs.core.Keyword(null,"pred-forms","pred-forms",172611832),new cljs.core.Keyword(null,"opt","opt",-794706369)],[new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","target","evalorder.game/target",16417835),new cljs.core.Keyword("evalorder.game","definitions","evalorder.game/definitions",940462640)], null),null,null,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (G__27289){
+cljs.spec.alpha.def_impl.call(null,new cljs.core.Keyword("evalorder.game","level","evalorder.game/level",-84577858),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","keys","cljs.spec.alpha/keys",1109346032,null),new cljs.core.Keyword(null,"req-un","req-un",1074571008),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","target","evalorder.game/target",16417835)], null)),cljs.spec.alpha.map_spec_impl.call(null,cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"req-un","req-un",1074571008),new cljs.core.Keyword(null,"opt-un","opt-un",883442496),new cljs.core.Keyword(null,"gfn","gfn",791517474),new cljs.core.Keyword(null,"pred-exprs","pred-exprs",1792271395),new cljs.core.Keyword(null,"keys-pred","keys-pred",858984739),new cljs.core.Keyword(null,"opt-keys","opt-keys",1262688261),new cljs.core.Keyword(null,"req-specs","req-specs",553962313),new cljs.core.Keyword(null,"req","req",-326448303),new cljs.core.Keyword(null,"req-keys","req-keys",514319221),new cljs.core.Keyword(null,"opt-specs","opt-specs",-384905450),new cljs.core.Keyword(null,"pred-forms","pred-forms",172611832),new cljs.core.Keyword(null,"opt","opt",-794706369)],[new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","target","evalorder.game/target",16417835)], null),null,null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (G__27289){
 return cljs.core.map_QMARK_.call(null,G__27289);
 }),(function (G__27289){
 return cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"expression","expression",202311876));
 }),(function (G__27289){
 return cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"target","target",253001721));
-}),(function (G__27289){
-return cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"definitions","definitions",167529986));
 })], null),(function (G__27289){
-return ((cljs.core.map_QMARK_.call(null,G__27289)) && (cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"expression","expression",202311876))) && (cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"target","target",253001721))) && (cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"definitions","definitions",167529986))));
-}),cljs.core.PersistentVector.EMPTY,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","target","evalorder.game/target",16417835),new cljs.core.Keyword("evalorder.game","definitions","evalorder.game/definitions",940462640)], null),null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"expression","expression",202311876),new cljs.core.Keyword(null,"target","target",253001721),new cljs.core.Keyword(null,"definitions","definitions",167529986)], null),cljs.core.PersistentVector.EMPTY,new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","map?","cljs.core/map?",-1390345523,null),new cljs.core.Symbol(null,"%","%",-950237169,null))),cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","contains?","cljs.core/contains?",-976526835,null),new cljs.core.Symbol(null,"%","%",-950237169,null),new cljs.core.Keyword(null,"expression","expression",202311876))),cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","contains?","cljs.core/contains?",-976526835,null),new cljs.core.Symbol(null,"%","%",-950237169,null),new cljs.core.Keyword(null,"target","target",253001721))),cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","contains?","cljs.core/contains?",-976526835,null),new cljs.core.Symbol(null,"%","%",-950237169,null),new cljs.core.Keyword(null,"definitions","definitions",167529986)))], null),null])));
+return ((cljs.core.map_QMARK_.call(null,G__27289)) && (cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"expression","expression",202311876))) && (cljs.core.contains_QMARK_.call(null,G__27289,new cljs.core.Keyword(null,"target","target",253001721))));
+}),cljs.core.PersistentVector.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("evalorder.game","expression","evalorder.game/expression",-33749742),new cljs.core.Keyword("evalorder.game","target","evalorder.game/target",16417835)], null),null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"expression","expression",202311876),new cljs.core.Keyword(null,"target","target",253001721)], null),cljs.core.PersistentVector.EMPTY,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","map?","cljs.core/map?",-1390345523,null),new cljs.core.Symbol(null,"%","%",-950237169,null))),cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","contains?","cljs.core/contains?",-976526835,null),new cljs.core.Symbol(null,"%","%",-950237169,null),new cljs.core.Keyword(null,"expression","expression",202311876))),cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","contains?","cljs.core/contains?",-976526835,null),new cljs.core.Symbol(null,"%","%",-950237169,null),new cljs.core.Keyword(null,"target","target",253001721)))], null),null])));
 evalorder.game.validate = (function evalorder$game$validate(level){
 var conformed = cljs.spec.alpha.conform.call(null,new cljs.core.Keyword("evalorder.game","level","evalorder.game/level",-84577858),level);
 if(cljs.spec.alpha.invalid_QMARK_.call(null,conformed)){
@@ -235,14 +232,18 @@ return (e instanceof evalorder.game.Error);
 evalorder.game.delim = (function evalorder$game$delim(v){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"delimiter"], null),v], null);
 });
-evalorder.game.expr = (function evalorder$game$expr(value,path){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),(cljs.core.truth_((function (){var and__4149__auto__ = path;
+evalorder.game.expr = (function evalorder$game$expr(value,selected,path,set_path_BANG_){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),(cljs.core.truth_((function (){var and__4149__auto__ = selected;
 if(cljs.core.truth_(and__4149__auto__)){
-return cljs.core.empty_QMARK_.call(null,path);
+return cljs.core.empty_QMARK_.call(null,selected);
 } else {
 return and__4149__auto__;
 }
-})())?"selected expr":"expr")], null),((cljs.core.vector_QMARK_.call(null,value))?new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"list"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.delim,"("], null),(function (){var iter__4564__auto__ = (function evalorder$game$expr_$_iter__27305(s__27306){
+})())?"selected expr":"expr"),new cljs.core.Keyword(null,"onClick","onClick",-1991238530),(cljs.core.truth_(set_path_BANG_)?(function (event){
+event.stopPropagation();
+
+return set_path_BANG_.call(null,path);
+}):null)], null),((cljs.core.vector_QMARK_.call(null,value))?new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"list"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.delim,"("], null),(function (){var iter__4564__auto__ = (function evalorder$game$expr_$_iter__27305(s__27306){
 return (new cljs.core.LazySeq(null,(function (){
 var s__27306__$1 = s__27306;
 while(true){
@@ -259,7 +260,7 @@ if((i__27307 < size__4563__auto__)){
 var vec__27309 = cljs.core._nth.call(null,c__4562__auto__,i__27307);
 var i = cljs.core.nth.call(null,vec__27309,(0),null);
 var el = cljs.core.nth.call(null,vec__27309,(1),null);
-cljs.core.chunk_append.call(null,b__27308,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,el,((cljs.core._EQ_.call(null,i,cljs.core.first.call(null,path)))?cljs.core.rest.call(null,path):null)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),i], null)));
+cljs.core.chunk_append.call(null,b__27308,cljs.core.with_meta(new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,el,((cljs.core._EQ_.call(null,i,cljs.core.first.call(null,selected)))?cljs.core.rest.call(null,selected):null),cljs.core.conj.call(null,path,i),set_path_BANG_], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),i], null)));
 
 var G__27315 = (i__27307 + (1));
 i__27307 = G__27315;
@@ -278,7 +279,7 @@ return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__27308),null);
 var vec__27312 = cljs.core.first.call(null,s__27306__$2);
 var i = cljs.core.nth.call(null,vec__27312,(0),null);
 var el = cljs.core.nth.call(null,vec__27312,(1),null);
-return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,el,((cljs.core._EQ_.call(null,i,cljs.core.first.call(null,path)))?cljs.core.rest.call(null,path):null)], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),i], null)),evalorder$game$expr_$_iter__27305.call(null,cljs.core.rest.call(null,s__27306__$2)));
+return cljs.core.cons.call(null,cljs.core.with_meta(new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,el,((cljs.core._EQ_.call(null,i,cljs.core.first.call(null,selected)))?cljs.core.rest.call(null,selected):null),cljs.core.conj.call(null,path,i),set_path_BANG_], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),i], null)),evalorder$game$expr_$_iter__27305.call(null,cljs.core.rest.call(null,s__27306__$2)));
 }
 } else {
 return null;
@@ -394,7 +395,7 @@ return then;
 return else$;
 }
 })], null);
-evalorder.game._STAR_val_env_STAR_ = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Symbol(null,"pi","pi",176774184,null),3.14], null);
+evalorder.game._STAR_val_env_STAR_ = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Symbol(null,"pi","pi",176774184,null),3.14,new cljs.core.Symbol(null,"answer-to-life-the-universe-and-everything","answer-to-life-the-universe-and-everything",1796384052,null),(42)], null);
 evalorder.game.app = (function evalorder$game$app(value,args){
 if((value instanceof cljs.core.Symbol)){
 return cljs.core.apply.call(null,evalorder.game._STAR_fn_env_STAR_.call(null,value),args);
@@ -439,7 +440,7 @@ var target = cljs.core.get.call(null,map__27329__$1,new cljs.core.Keyword(null,"
 var definitions = cljs.core.get.call(null,map__27329__$1,new cljs.core.Keyword(null,"definitions","definitions",167529986));
 var expr_atom = reagent.core.atom.call(null,expression);
 var path_atom = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
-var history = reagent.core.atom.call(null,cljs.core.PersistentVector.EMPTY);
+var history = reagent.core.atom.call(null,cljs.core.List.EMPTY);
 var validate_path = (function (path){
 if(cljs.core._EQ_.call(null,new cljs.core.Keyword("evalorder.game","not-found","evalorder.game/not-found",-839713790),cljs.core.get_in.call(null,cljs.core.deref.call(null,expr_atom),path,new cljs.core.Keyword("evalorder.game","not-found","evalorder.game/not-found",-839713790)))){
 return null;
@@ -480,20 +481,37 @@ return el.focus();
 return null;
 }
 }),new cljs.core.Keyword(null,"onKeyDown","onKeyDown",648902330),(function (event){
-if(cljs.core.truth_(event.ctrlKey)){
-return null;
-} else {
 var key = event.key;
+if(cljs.core.truth_(event.ctrlKey)){
 var G__27330 = key;
 switch (G__27330) {
+case "z":
+if(cljs.core.seq.call(null,cljs.core.deref.call(null,history))){
+cljs.core.reset_BANG_.call(null,expr_atom,cljs.core.first.call(null,cljs.core.deref.call(null,history)));
+
+cljs.core.reset_BANG_.call(null,path_atom,cljs.core.PersistentVector.EMPTY);
+
+return cljs.core.swap_BANG_.call(null,history,cljs.core.rest);
+} else {
+return null;
+}
+
+break;
+default:
+return null;
+
+}
+} else {
+var G__27331 = key;
+switch (G__27331) {
 case "ArrowUp":
 if(cljs.core.seq.call(null,p)){
-var G__27331 = cljs.core.subvec.call(null,p,(0),(cljs.core.count.call(null,p) - (1)));
-var G__27331__$1 = (((G__27331 == null))?null:validate_path.call(null,G__27331));
-if((G__27331__$1 == null)){
+var G__27332 = cljs.core.subvec.call(null,p,(0),(cljs.core.count.call(null,p) - (1)));
+var G__27332__$1 = (((G__27332 == null))?null:validate_path.call(null,G__27332));
+if((G__27332__$1 == null)){
 return null;
 } else {
-return cljs.core.reset_BANG_.call(null,path_atom,G__27331__$1);
+return cljs.core.reset_BANG_.call(null,path_atom,G__27332__$1);
 }
 } else {
 return null;
@@ -501,23 +519,23 @@ return null;
 
 break;
 case "ArrowDown":
-var G__27332 = cljs.core.conj.call(null,p,(0));
-var G__27332__$1 = (((G__27332 == null))?null:validate_path.call(null,G__27332));
-if((G__27332__$1 == null)){
-return null;
-} else {
-return cljs.core.reset_BANG_.call(null,path_atom,G__27332__$1);
-}
-
-break;
-case "ArrowLeft":
-if(cljs.core.seq.call(null,p)){
-var G__27333 = cljs.core.update.call(null,p,(cljs.core.count.call(null,p) - (1)),cljs.core.dec);
+var G__27333 = cljs.core.conj.call(null,p,(0));
 var G__27333__$1 = (((G__27333 == null))?null:validate_path.call(null,G__27333));
 if((G__27333__$1 == null)){
 return null;
 } else {
 return cljs.core.reset_BANG_.call(null,path_atom,G__27333__$1);
+}
+
+break;
+case "ArrowLeft":
+if(cljs.core.seq.call(null,p)){
+var G__27334 = cljs.core.update.call(null,p,(cljs.core.count.call(null,p) - (1)),cljs.core.dec);
+var G__27334__$1 = (((G__27334 == null))?null:validate_path.call(null,G__27334));
+if((G__27334__$1 == null)){
+return null;
+} else {
+return cljs.core.reset_BANG_.call(null,path_atom,G__27334__$1);
 }
 } else {
 return null;
@@ -526,12 +544,12 @@ return null;
 break;
 case "ArrowRight":
 if(cljs.core.seq.call(null,p)){
-var G__27334 = cljs.core.update.call(null,p,(cljs.core.count.call(null,p) - (1)),cljs.core.inc);
-var G__27334__$1 = (((G__27334 == null))?null:validate_path.call(null,G__27334));
-if((G__27334__$1 == null)){
+var G__27335 = cljs.core.update.call(null,p,(cljs.core.count.call(null,p) - (1)),cljs.core.inc);
+var G__27335__$1 = (((G__27335 == null))?null:validate_path.call(null,G__27335));
+if((G__27335__$1 == null)){
 return null;
 } else {
-return cljs.core.reset_BANG_.call(null,path_atom,G__27334__$1);
+return cljs.core.reset_BANG_.call(null,path_atom,G__27335__$1);
 }
 } else {
 return null;
@@ -549,9 +567,17 @@ return null;
 
 }
 }
-})], null):null)),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"expression"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,e,(function (){var and__4149__auto__ = next_BANG_;
+})], null):null)),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"expression"], null),new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.expr,e,(function (){var and__4149__auto__ = next_BANG_;
 if(cljs.core.truth_(and__4149__auto__)){
 return p;
+} else {
+return and__4149__auto__;
+}
+})(),cljs.core.PersistentVector.EMPTY,(function (){var and__4149__auto__ = next_BANG_;
+if(cljs.core.truth_(and__4149__auto__)){
+return (function (path){
+return cljs.core.reset_BANG_.call(null,path_atom,path);
+});
 } else {
 return and__4149__auto__;
 }
@@ -560,7 +586,7 @@ return and__4149__auto__;
 });
 evalorder.screen.add_reader_BANG_.call(null,new cljs.core.Symbol("game","expression","game/expression",1843886853,null),(function (expr){
 var validated = evalorder.game.validate.call(null,expr);
-if((typeof evalorder !== 'undefined') && (typeof evalorder.game !== 'undefined') && (typeof evalorder.game.t_evalorder$game27336 !== 'undefined')){
+if((typeof evalorder !== 'undefined') && (typeof evalorder.game !== 'undefined') && (typeof evalorder.game.t_evalorder$game27338 !== 'undefined')){
 } else {
 
 /**
@@ -569,55 +595,55 @@ if((typeof evalorder !== 'undefined') && (typeof evalorder.game !== 'undefined')
  * @implements {evalorder.screen.Element}
  * @implements {cljs.core.IWithMeta}
 */
-evalorder.game.t_evalorder$game27336 = (function (expr,validated,meta27337){
+evalorder.game.t_evalorder$game27338 = (function (expr,validated,meta27339){
 this.expr = expr;
 this.validated = validated;
-this.meta27337 = meta27337;
+this.meta27339 = meta27339;
 this.cljs$lang$protocol_mask$partition0$ = 393216;
 this.cljs$lang$protocol_mask$partition1$ = 0;
 });
-(evalorder.game.t_evalorder$game27336.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_27338,meta27337__$1){
+(evalorder.game.t_evalorder$game27338.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_27340,meta27339__$1){
 var self__ = this;
-var _27338__$1 = this;
-return (new evalorder.game.t_evalorder$game27336(self__.expr,self__.validated,meta27337__$1));
+var _27340__$1 = this;
+return (new evalorder.game.t_evalorder$game27338(self__.expr,self__.validated,meta27339__$1));
 }));
 
-(evalorder.game.t_evalorder$game27336.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_27338){
+(evalorder.game.t_evalorder$game27338.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_27340){
 var self__ = this;
-var _27338__$1 = this;
-return self__.meta27337;
+var _27340__$1 = this;
+return self__.meta27339;
 }));
 
-(evalorder.game.t_evalorder$game27336.prototype.evalorder$screen$Element$ = cljs.core.PROTOCOL_SENTINEL);
+(evalorder.game.t_evalorder$game27338.prototype.evalorder$screen$Element$ = cljs.core.PROTOCOL_SENTINEL);
 
-(evalorder.game.t_evalorder$game27336.prototype.evalorder$screen$Element$render$arity$2 = (function (_,next_BANG_){
+(evalorder.game.t_evalorder$game27338.prototype.evalorder$screen$Element$render$arity$2 = (function (_,next_BANG_){
 var self__ = this;
 var ___$1 = this;
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.root,self__.validated,next_BANG_], null);
 }));
 
-(evalorder.game.t_evalorder$game27336.getBasis = (function (){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"expr","expr",-1908713478,null),new cljs.core.Symbol(null,"validated","validated",-1207140351,null),new cljs.core.Symbol(null,"meta27337","meta27337",2134975110,null)], null);
+(evalorder.game.t_evalorder$game27338.getBasis = (function (){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"expr","expr",-1908713478,null),new cljs.core.Symbol(null,"validated","validated",-1207140351,null),new cljs.core.Symbol(null,"meta27339","meta27339",-1876502196,null)], null);
 }));
 
-(evalorder.game.t_evalorder$game27336.cljs$lang$type = true);
+(evalorder.game.t_evalorder$game27338.cljs$lang$type = true);
 
-(evalorder.game.t_evalorder$game27336.cljs$lang$ctorStr = "evalorder.game/t_evalorder$game27336");
+(evalorder.game.t_evalorder$game27338.cljs$lang$ctorStr = "evalorder.game/t_evalorder$game27338");
 
-(evalorder.game.t_evalorder$game27336.cljs$lang$ctorPrWriter = (function (this__4404__auto__,writer__4405__auto__,opt__4406__auto__){
-return cljs.core._write.call(null,writer__4405__auto__,"evalorder.game/t_evalorder$game27336");
+(evalorder.game.t_evalorder$game27338.cljs$lang$ctorPrWriter = (function (this__4404__auto__,writer__4405__auto__,opt__4406__auto__){
+return cljs.core._write.call(null,writer__4405__auto__,"evalorder.game/t_evalorder$game27338");
 }));
 
 /**
- * Positional factory function for evalorder.game/t_evalorder$game27336.
+ * Positional factory function for evalorder.game/t_evalorder$game27338.
  */
-evalorder.game.__GT_t_evalorder$game27336 = (function evalorder$game$__GT_t_evalorder$game27336(expr__$1,validated__$1,meta27337){
-return (new evalorder.game.t_evalorder$game27336(expr__$1,validated__$1,meta27337));
+evalorder.game.__GT_t_evalorder$game27338 = (function evalorder$game$__GT_t_evalorder$game27338(expr__$1,validated__$1,meta27339){
+return (new evalorder.game.t_evalorder$game27338(expr__$1,validated__$1,meta27339));
 });
 
 }
 
-return (new evalorder.game.t_evalorder$game27336(expr,validated,cljs.core.PersistentArrayMap.EMPTY));
+return (new evalorder.game.t_evalorder$game27338(expr,validated,cljs.core.PersistentArrayMap.EMPTY));
 }));
 
-//# sourceMappingURL=game.js.map?rel=1618911414555
+//# sourceMappingURL=game.js.map?rel=1618926906602

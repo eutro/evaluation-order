@@ -1,36 +1,7 @@
-[["These"
-  "will"
-  "appear"
-  "at"
-  "once"]
- #delay/ms 100 "100"
- #delay/ms 100 "ms"
- #delay/ms 100 "pauses"
-
- #game/expression
-     {:expression 1
-      :target #{1}
-      :definitions []}
-
- #game/expression
-     {:expression pi
-      :target #{3.14}
-      :definitions [[pi 3.14]]}
-
- #game/expression
-     {:expression (+ 1 2)
-      :target #{3}
-      :definitions [+]}
-
- #game/expression
-     {:expression (+ 1 2 (* 3 4))
-      :target #{15}
-      :definitions [+ *]}
-
- #game/expression
-     {:expression (if (= answer-to-life-the-universe-and-everything 42) (* 6 9) (* 6 7))
-      :target #{42}
-      :definitions [if = *
-                    [answer-to-life-the-universe-and-everything
-                     {:description "The answer to life, the universe"}
-                     42]]}]
+[#game/expression {:expression 1, :target #{1}}
+ #game/expression {:expression pi, :target #{3.14}}
+ #game/expression {:expression (+ 1 2), :target #{3}}
+ #game/expression {:expression (+ 1 2 (* 3 4)), :target #{15}}
+ #game/expression {:expression
+                   (if (= answer-to-life-the-universe-and-everything 42) (* 6 9) (* 7 6))
+                   :target #{42}}]
