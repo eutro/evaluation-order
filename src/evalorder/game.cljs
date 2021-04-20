@@ -12,11 +12,9 @@
           :symbol symbol?)
     (s/conformer second)))
 
-(s/def ::definitions any?)
-
 (s/def ::target (s/coll-of ::expression, :kind set?, :into #{}))
 
-(s/def ::level (s/keys :req-un [::expression ::target ::definitions]))
+(s/def ::level (s/keys :req-un [::expression ::target]))
 
 (defn validate [level]
   (let [conformed (s/conform ::level level)]
