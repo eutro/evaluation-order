@@ -33,16 +33,25 @@
 (defn delim [v]
   [:span {:class "delimiter"} v])
 
-(defn expr [value path]
-  [:span {:class (if (and path (empty? path))
+(defn expr [value selected path set-path!]
+  [:span {:class (if (and selected (empty? selected))
                    "selected expr"
-                   "expr")}
+                   "expr")
+          :onClick (when set-path!
+                     (fn [event]
+                       (! event :stopPropagation)
+                       (set-path! path)))}
    (cond
      (vector? value)
      [:span {:class "list"}
       [delim "("]
       (for [[i el] (u/enumerate value)]
-        ^{:key i} [expr el (when (= i (first path)) (rest path))])
+        ^{:key i} [expr
+                   el
+                   (when (= i (first selected))
+                     (rest selected))
+                   (conj path i)
+                   set-path!])
       [delim ")"]]
 
      (number? value) [:span {:class "number"} (str value)]
@@ -77,7 +86,8 @@
          (if pred then else))})
 
 (def ^:dynamic *val-env*
-  {'pi 3.14})
+  {'pi 3.14
+   'answer-to-life-the-universe-and-everything 42})
 
 (defn app [value args]
   (cond
@@ -105,7 +115,7 @@
             next!]
   (let [expr-atom (reagent/atom expression)
         path-atom (reagent/atom [])
-        history (reagent/atom [])
+        history (reagent/atom ())
         validate-path (fn [path]
                         (if (= ::not-found (get-in @expr-atom path ::not-found))
                           nil
@@ -125,8 +135,14 @@
                    :ref (fn [el] (when el (! el :focus)))
                    :onKeyDown
                    (fn [event]
-                     (when-not (-> event (! :-ctrlKey))
-                       (let [key (-> event (! :-key))]
+                     (let [key (-> event (! :-key))]
+                       (if (-> event (! :-ctrlKey))
+                         (case key
+                           "z" (when (seq @history)
+                                 (reset! expr-atom (first @history))
+                                 (reset! path-atom [])
+                                 (swap! history rest))
+                          nil)
                          (case key
                            "ArrowUp"
                            (when (seq p)
@@ -148,7 +164,11 @@
                                (swap! history conj e))
                            nil))))}))
          [:div {:class "expression"}
-          [expr e (and next! p)]]]))))
+          [expr
+           e
+           (and next! p)
+           []
+           (and next! (fn [path] (reset! path-atom path)))]]]))))
 
 (screen/add-reader!
   'game/expression

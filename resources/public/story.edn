@@ -9,28 +9,20 @@
 
  #game/expression
      {:expression 1
-      :target #{1}
-      :definitions []}
+      :target #{1}}
 
  #game/expression
      {:expression pi
-      :target #{3.14}
-      :definitions [[pi 3.14]]}
+      :target #{3.14}}
 
  #game/expression
      {:expression (+ 1 2)
-      :target #{3}
-      :definitions [+]}
+      :target #{3}}
 
  #game/expression
      {:expression (+ 1 2 (* 3 4))
-      :target #{15}
-      :definitions [+ *]}
+      :target #{15}}
 
  #game/expression
      {:expression (if (= answer-to-life-the-universe-and-everything 42) (* 6 9) (* 6 7))
-      :target #{42}
-      :definitions [if = *
-                    [answer-to-life-the-universe-and-everything
-                     {:description "The answer to life, the universe"}
-                     42]]}]
+      :target #{42}}]
