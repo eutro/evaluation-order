@@ -12,4 +12,4 @@ evalorder.cookies.set_cookie_BANG_ = (function evalorder$cookies$set_cookie_BANG
 return (document.cookie = clojure.string.join.call(null,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cookie,"=",value,";","max-age=",evalorder.cookies.one_year,"path=/"], null)));
 });
 
-//# sourceMappingURL=cookies.js.map?rel=1618906563939
+//# sourceMappingURL=cookies.js.map?rel=1618911410548

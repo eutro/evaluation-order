@@ -50,12 +50,16 @@
        (catch js/Error. e
          (error-screen (str/split (ex-message e) #"\n")))))
 
-(defn show [story]
-  (let [index (reagent/atom 1)]
+(defn slide [story]
+  (let [next? (reagent/atom false)]
     (fn []
-      (let [target @index
-            before (subvec story 0 (min target (count story)))]
-        [:<> (for [[i el] (u/enumerate before)]
-               ^{:key i} [render el
-                          (when (= (inc i) target)
-                            #(swap! index inc))])]))))
+      [:<>
+       [render
+        (first story)
+        (when-not @next? #(reset! next? true))]
+       (when-let [next-slide (and @next? (next story))]
+         [slide next-slide])])))
+
+(defn show [story]
+  [:div {:class "story"}
+   [slide story]])
