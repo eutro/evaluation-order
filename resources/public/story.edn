@@ -1,7 +1,7 @@
 ["It has been a long day." #delay/ms 1000
  "The last thing you remember is falling asleep" #delay/ms 1000
  "...at the REPL." #delay/ms 2000
- nil "When you open your eyes, just like they said, you feel great enlightenment." #delay/ms 3000
+ nil "In The Dream, just like they said, you feel great enlightenment." #delay/ms 3000
  nil "You see the beauty, the purity, the simplicity of Lisp unfold before you." #delay/ms 3000
 
  nil "You recall the number 1" #delay/ms 1000
@@ -15,41 +15,40 @@
  "Pure." #delay/ms 1000
  "Simple." #delay/ms 1000
  "Beautiful." #delay/ms 1000
- #game/expression {:expression (continue), :target #{(continue)}}
-
- nil "But, of course, if everything evaluates to itself, what point is there to evaluating at all?" #delay/ms 2000
- nil "Symbols, you think, do not evaluate to themselves, but to the value they name." #delay/ms 2000
+ :continue
+ "But, of course, if everything evaluates to itself, what point is there to evaluating at all?" #delay/ms 2000
+ nil "Symbols, for example, do not evaluate to themselves, but to the value they name." #delay/ms 2000
  nil "This is a symbol, try evaluating it too:"
  #game/expression {:expression pi, :target #{3.14}}
  "Pi..." #delay/ms 1000
  "Pi." #delay/ms 1000
  "In your excitement you remember only the first few digits." #delay/ms 1000
  "It doesn't matter. It's enough for most things." #delay/ms 1000
- #game/expression {:expression (continue), :target #{(continue)}}
-
- nil "Lists, too, evaluate to something different to themselves." #delay/ms 1000
+ :continue
+ "Lists, too, evaluate to something different to themselves." #delay/ms 1000
  nil "Try evaluating this as well."
  #game/expression {:expression (+ 1 2), :target #{3}}
  "You breathe in." #delay/ms 2000
  "(+ 1 2)" #delay/ms 2000
  "\"Add 1 and 2\"" #delay/ms 2000
  "A function, followed by its arguments." #delay/ms 2000
- nil "Adding 1 and 2 results in 3. Could there be a better notation for such a thing?" #delay/ms 3000
- nil "Infix notations only lead to disputes over which operation gets to apply first." #delay/ms 3000
- nil "It's now your turn to laugh, at those who laughed at your many parentheses and prefix notation." #delay/ms 3000
+ nil "Adding 1 and 2 results in 3." #delay/ms 2000
+ nil "Could there be a better notation for such a thing?" #delay/ms 2000
+ "Infix notations only lead to disputes over which operation gets to apply first." #delay/ms 3000
+ nil "You remember those who laughed at your many parentheses and prefix notation." #delay/ms 3000
+ nil "It's now your turn to laugh." #delay/ms 2000
  nil "They really have no idea."
- nil
- #game/expression {:expression (continue), :target #{(continue)}}
-
- nil "Lists can, of course, contain other lists." #delay/ms 2000
+ :continue
+ "Lists can, of course, contain other lists." #delay/ms 2000
  nil "Normally sub-expressions may get evaluated first." #delay/ms 2000
  nil "But not here." #delay/ms 2000
- nil "Not now." #delay/ms 2000
- nil "You are in control." #delay/ms 2000
+ "Not now." #delay/ms 2000
+ "You are in control." #delay/ms 2000
  nil "The evaluation order?" #delay/ms 2000
- nil "You choose." #delay/ms 2000
+ "You choose." #delay/ms 2000
+ nil "Lists or symbols will remain as lists or symbols when applied."
  nil "Navigate to inner expressions with the arrow keys or buttons."
  nil "There's an undo button if you make a mistake."
- #game/expression {:expression (+ 1 2 (* 3 4)), :target #{15}}
+ #game/expression {:expression (+ 1 pi (* 3 4)), :target #{16.14}}
  "You feel the expressive power at your fingertips." #delay/ms 2000
  nil "You could do anything."]
