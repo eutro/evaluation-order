@@ -51,15 +51,6 @@
     cursor: wait;
 }
 
-.bar {
-    background: gray;
-    color: white;
-}
-
-.level-option:hover {
-    background: lightgray;
-}
-
 .dark {
     background: #2B2B2B;
     color: lightgray;
@@ -67,8 +58,4 @@
 
 .dark .selected > * {
     background: darkslategray;
-}
-
-.level-option:hover {
-    background: gray;
 }
