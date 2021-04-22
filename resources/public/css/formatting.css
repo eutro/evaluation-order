@@ -1,3 +1,19 @@
 .list > :not(:first-child):not(:nth-last-child(2)):not(:last-child) {
     margin-right: 1ch;
 }
+
+.comment {
+    position: relative;
+}
+
+.comment > .semicolons {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.comment > .content {
+    position: relative;
+    left: 3ch;
+    margin-right: 3ch;
+}
