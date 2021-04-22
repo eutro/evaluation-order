@@ -22,9 +22,15 @@
      ~@(if-some [s @story]
          [(fn [] (reset! menu/screen (partial screen/show s)))]
          [nil {:disabled true}])]
-   [menu/button "Change Theme" (fn [] (swap! theme theme->next))]])
+   [menu/button "Change Theme" (fn [] (swap! theme theme->next))]
+   [menu/button "Reset Progress"
+    (fn [] (ck/set-cookie! "EO_anchor" ""))]])
 
 (defn app []
-  [:div {:class (str "full " @theme)} [(or @menu/screen main-menu)]])
+  (-> js/document
+      (! :querySelector "html")
+      (! :-className)
+      (set! @theme))
+  [(or @menu/screen main-menu)])
 
 (rd/render [app] (! js/document :getElementById "app"))

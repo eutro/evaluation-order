@@ -3,24 +3,52 @@
             [clojure.edn :as edn]
             [clojure.string :as str]
             [reagent.core :as reagent]
-            [evalorder.util :as u])
+            [evalorder.util :as u]
+            [evalorder.cookies :as ck])
   (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defprotocol Element
   (render [_ next!]))
 
-(extend-protocol Element
-  string
-  (render [comment next!]
-    (when next! (next!))
+(defprotocol NoDelay)
+
+(extend-type string
+  NoDelay
+  Element
+  (render [comment _next!]
     [:div {:class "comment"}
-     (str ";; " comment)])
-  PersistentVector
-  (render [els next!]
-    [:<>
-     (for [[i el] (u/enumerate (butlast els))]
-       ^{:key i} [render el])
-     [render (last els) next!]]))
+     (str ";; " comment)]))
+
+(extend-type nil
+  NoDelay
+  Element
+  (render [_ _next!]
+    [:br]))
+
+(defrecord MsDelay [delay]
+  Element
+  (render [_ next!]
+    (when next! (js/setTimeout #(next!) delay))
+    [:<>]))
+
+(defrecord Anchor [name]
+  Element
+  (render [_ next!]
+    (when next!
+      (ck/set-cookie! "EO_anchor" name)
+      (next!))
+    [:<>]))
+
+(defrecord ScrollHere [_]
+  NoDelay
+  Element
+  (render [_ _next!]
+    [:span {:ref (fn [el] (when el (! el :scrollIntoView)))}]))
+
+(extend-type PersistentVector
+  NoDelay
+  Element
+  (render [form _next!] form))
 
 (defn element? [x]
   (satisfies? Element x))
@@ -28,15 +56,12 @@
 (s/def ::screen (s/and not-empty (s/every element?, :kind vector?)))
 
 (defn error-screen [lines]
-  [(apply vector "Something went wrong loading the screen:" lines)])
+  (apply vector "Something went wrong loading the screen:" lines))
 
 (def reader-opts
-  {:readers {'delay/ms
-             (fn [delay]
-               (reify Element
-                 (render [_ next!]
-                   (when next! (js/setTimeout next! delay))
-                   [:<>])))}})
+  {:readers {'delay/ms ->MsDelay,
+             'anchor/name ->Anchor,
+             'scroll/here ->ScrollHere}})
 
 (defn add-reader! [key value]
   (set! reader-opts (update reader-opts :readers assoc key value)))
@@ -50,16 +75,19 @@
        (catch js/Error. e
          (error-screen (str/split (ex-message e) #"\n")))))
 
-(defn slide [story]
-  (let [next? (reagent/atom false)]
-    (fn []
-      [:<>
-       [render
-        (first story)
-        (when-not @next? #(reset! next? true))]
-       (when-let [next-slide (and @next? (next story))]
-         [slide next-slide])])))
+(defn slide [[el & rem] anchor]
+  (if (or (satisfies? NoDelay el)
+          (and anchor (not= el anchor)))
+    [:<>
+     [render el nil]
+     (when rem [slide rem anchor])]
+    (let [next? (reagent/atom false)]
+      (fn []
+        [:<>
+         [render el (when-not @next? #(reset! next? true))]
+         (when-let [next-slide (and @next? rem)]
+           [slide next-slide])]))))
 
 (defn show [story]
   [:div {:class "story"}
-   [slide story]])
+   [slide story (some #{(->Anchor (ck/get-cookie "EO_anchor"))} story)]])
