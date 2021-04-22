@@ -15,5 +15,6 @@
   ([cookie value]
    (-> (! js/document :-cookie)
        (set! (str/join [cookie "=" value ";"
-                        "max-age=" one-year
-                        "path=/"])))))
+                        "max-age=" one-year ";"
+                        "path=/;"
+                        "secure"])))))
