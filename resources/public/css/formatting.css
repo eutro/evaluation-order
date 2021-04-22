@@ -16,6 +16,7 @@
 .comment > .content {
     display: inline-block;
     position: relative;
+    max-width: 1000px;
     left: 3ch;
     margin-right: 3ch;
 }

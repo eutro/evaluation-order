@@ -104,7 +104,8 @@
            (if (vector? v)
              (subvec v 1)
              (error "Not a list")))
-   'list vector})
+   'list vector
+   'continue (constantly '[continue])})
 
 (def ^:dynamic *val-env*
   {'pi 3.14
@@ -112,7 +113,8 @@
 
 (defn app [value args]
   (cond
-    (symbol? value)
+    (and (symbol? value)
+         (*fn-env* value))
     (apply (*fn-env* value) args)
 
     (and (vector? value)

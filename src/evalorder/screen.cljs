@@ -32,14 +32,6 @@
     (when next! (js/setTimeout #(next!) delay))
     [:<>]))
 
-(defrecord Anchor [name]
-  Element
-  (render [_ next!]
-    (when next!
-      (ck/set-cookie! "EO_anchor" name)
-      (next!))
-    [:<>]))
-
 (extend-type PersistentVector
   NoDelay
   Element
@@ -54,8 +46,7 @@
   (apply vector "Something went wrong loading the screen:" lines))
 
 (def reader-opts
-  {:readers {'delay/ms ->MsDelay,
-             'anchor/name ->Anchor}})
+  {:readers {'delay/ms ->MsDelay}})
 
 (defn add-reader! [key value]
   (set! reader-opts (update reader-opts :readers assoc key value)))
@@ -69,21 +60,18 @@
        (catch js/Error. e
          (error-screen (str/split (ex-message e) #"\n")))))
 
-(defn slide [[el & rem] anchor]
-  (if (or (satisfies? NoDelay el)
-          (and anchor (not= el anchor)))
+(defn slide [[el & rem]]
+  (if (satisfies? NoDelay el)
     [:<>
      [render el nil]
-     (when rem [slide rem anchor])]
+     (when rem [slide rem])]
     (let [next? (reagent/atom false)]
       (fn []
         [:<>
          [render el (when-not @next? #(reset! next? true))]
-         (when (and anchor (= el anchor))
-           [:span {:ref (fn [el] (when el (! el :scrollIntoView)))}])
          (when-let [next-slide (and @next? rem)]
            [slide next-slide])]))))
 
 (defn show [story]
   [:div {:class "story"}
-   [slide story (some #{(->Anchor (ck/get-cookie "EO_anchor"))} story)]])
+   [slide story]])

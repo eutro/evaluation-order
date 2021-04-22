@@ -22,9 +22,7 @@
      ~@(if-some [s @story]
          [(fn [] (reset! menu/screen (partial screen/show s)))]
          [nil {:disabled true}])]
-   [menu/button "Change Theme" (fn [] (swap! theme theme->next))]
-   [menu/button "Reset Progress"
-    (fn [] (ck/set-cookie! "EO_anchor" ""))]])
+   [menu/button "Change Theme" (fn [] (swap! theme theme->next))]])
 
 (defn app []
   (-> js/document
