@@ -4,7 +4,9 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@cljs-oss/module-deps": "1.1.1",
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   }
 }
