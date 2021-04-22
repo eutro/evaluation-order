@@ -87,16 +87,49 @@
           (apply / args)))
    '= =
    'if (fn [pred then else]
-         (if pred then else))})
+         (if (boolean? pred)
+           (if pred then else)
+           (error "Condition must be a boolean")))
+   'fn (fn [& body]
+         `[~'fn ~@body])})
 
 (def ^:dynamic *val-env*
   {'pi 3.14
-   'answer-to-life-the-universe-and-everything 42})
+   'answer 42})
 
 (defn app [value args]
   (cond
-    (symbol? value) (apply (*fn-env* value) args)
-    :else (error "Can't be applied")))
+    (symbol? value)
+    (apply (*fn-env* value) args)
+
+    (and (vector? value)
+         (= 'fn (first value)))
+    (let [[_ arglist body] value]
+      (cond
+        (some (complement symbol?) arglist)
+        (error "Parameters must be symbols")
+
+        (not= (count args)
+              (count arglist))
+        (error "Wrong number of arguments")
+
+        :else
+        ((fn sub-in [expr arg->sub]
+           (cond
+             (vector? expr)
+             (if (= 'fn (first expr))
+               (let [[_ its-args its-body] expr
+                     new-subs (reduce dissoc arg->sub its-args)]
+                 `[~'fn ~its-args ~(mapv #(sub-in % new-subs) its-body)])
+               (mapv #(sub-in % arg->sub) expr))
+
+             (symbol? expr)
+             (if-let [[_ v] (find arg->sub expr)] v expr)
+
+             :else expr))
+         body (into {} (map vector arglist args)))))
+
+    :else (error "Not a function")))
 
 (defn evaluate [value]
   (cond

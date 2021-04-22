@@ -61,10 +61,8 @@
  #anchor/name "if-1"
  #game/expression {:expression (if true then else), :target #{then}}
  #game/expression {:expression (if false then else), :target #{else}}
- #game/expression {:expression (if nil then), :target #{nil}}
- "Anything that is not nil or false counts as true,"
- "this includes symbols, lists and numbers."
- #game/expression {:expression (if this-is-undefined then), :target #{then}}
+ "With no else expression, it's taken to be nil."
+ #game/expression {:expression (if false then), :target #{nil}}
  nil
  "Then there is =, the comparison function."
  #game/expression {:expression ((= 1 0) (= 0 0)), :target #{(false true)}}
@@ -76,8 +74,22 @@
  "the Universe, and Everything: 42."
  #anchor/name "if-2"
  #game/expression {:expression
-                   (if (= answer-to-life-the-universe-and-everything 42) (* 6 9) (* 7 6))
+                   (if (= answer answer) (* 6 9) (* 7 6))
                    :target #{42}}
  nil
- "That's all for now. More coming soon!"
- #anchor/name "gg"]
+ "A fn expression creates a function, which can be applied to arguments."
+ "The first argument is the argument list, the next is the function body."
+ #anchor/name "fn-1"
+ #game/expression {:expression
+                   ((fn (x) (* x x)) 5)
+                   :target #{25}}
+ "Applying it to 5 substitutes the value in for x."
+ nil
+ "Here's another example, try to evaluate this to pi:"
+ #anchor/name "fn-2"
+ #game/expression {:expression
+                   ((fn (pi) (- pi pi)) 0)
+                   :target #{3.14}}
+
+ nil
+ "That's all for now. More coming soon!"]
