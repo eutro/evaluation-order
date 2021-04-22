@@ -6,9 +6,11 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.844"]
                  [org.clojure/core.async "1.3.610"]
-                 [reagent "1.0.0" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]]
+                 [cljsjs/react "17.0.1-0"]
+                 [cljsjs/react-dom "17.0.1-0"]
+                 [reagent "0.10.0"]]
   :plugins [[lein-figwheel "0.5.20"]
-            [lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]]
+            [lein-cljsbuild "1.1.7"]]
   :source-paths ["src"]
   :cljsbuild {:builds
               [{:id "dev"
@@ -25,7 +27,7 @@
                            ;; To console.log CLJS data-structures make sure you enable devtools in Chrome
                            ;; https://github.com/binaryage/cljs-devtools
                            :preloads [devtools.preload]}}
-               {:id "min"
+               {:id "prod"
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/evalorder.js"
                            :main evalorder.core
