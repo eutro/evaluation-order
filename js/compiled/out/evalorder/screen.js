@@ -5,8 +5,6 @@ goog.require('cljs.spec.alpha');
 goog.require('clojure.edn');
 goog.require('clojure.string');
 goog.require('reagent.core');
-goog.require('evalorder.util');
-goog.require('evalorder.cookies');
 
 /**
  * @interface
@@ -273,7 +271,100 @@ return (new evalorder.screen.MsDelay(new cljs.core.Keyword(null,"delay","delay",
 var form__$1 = this;
 return form__$1;
 }));
+evalorder.screen.keyword__GT_element = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"continue","continue",-207346553),(function (){
+if((typeof evalorder !== 'undefined') && (typeof evalorder.screen !== 'undefined') && (typeof evalorder.screen.t_evalorder$screen27286 !== 'undefined')){
+} else {
+
+/**
+* @constructor
+ * @implements {cljs.core.IMeta}
+ * @implements {evalorder.screen.Element}
+ * @implements {cljs.core.IWithMeta}
+*/
+evalorder.screen.t_evalorder$screen27286 = (function (meta27287){
+this.meta27287 = meta27287;
+this.cljs$lang$protocol_mask$partition0$ = 393216;
+this.cljs$lang$protocol_mask$partition1$ = 0;
+});
+(evalorder.screen.t_evalorder$screen27286.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (_27288,meta27287__$1){
+var self__ = this;
+var _27288__$1 = this;
+return (new evalorder.screen.t_evalorder$screen27286(meta27287__$1));
+}));
+
+(evalorder.screen.t_evalorder$screen27286.prototype.cljs$core$IMeta$_meta$arity$1 = (function (_27288){
+var self__ = this;
+var _27288__$1 = this;
+return self__.meta27287;
+}));
+
+(evalorder.screen.t_evalorder$screen27286.prototype.evalorder$screen$Element$ = cljs.core.PROTOCOL_SENTINEL);
+
+(evalorder.screen.t_evalorder$screen27286.prototype.evalorder$screen$Element$render$arity$2 = (function (_,next_BANG_){
+var self__ = this;
+var ___$1 = this;
+if(cljs.core.truth_(next_BANG_)){
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"controls"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"class","class",-2030961996),"control button material-icons",new cljs.core.Keyword(null,"title","title",636505583),"Continue (Enter)",new cljs.core.Keyword(null,"onClick","onClick",-1991238530),(function (){
+return next_BANG_.call(null);
+}),new cljs.core.Keyword(null,"onKeyDown","onKeyDown",648902330),(function (p1__27283_SHARP_){
+if(((cljs.core._EQ_.call(null,"Enter",p1__27283_SHARP_.key)) && (cljs.core.not.call(null,p1__27283_SHARP_.ctrlKey)))){
+return next_BANG_.call(null);
+} else {
+return null;
+}
+}),new cljs.core.Keyword(null,"tabIndex","tabIndex",-169286716),(-1),new cljs.core.Keyword(null,"ref","ref",1289896967),(function (p1__27284_SHARP_){
+if(cljs.core.truth_(p1__27284_SHARP_)){
+return p1__27284_SHARP_.focus();
+} else {
+return null;
+}
+})], null),"keyboard_return"], null)], null);
+} else {
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"hr","hr",1377740067),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"ref","ref",1289896967),(function (p1__27285_SHARP_){
+var G__27289 = p1__27285_SHARP_;
+if((G__27289 == null)){
+return null;
+} else {
+return G__27289.scrollIntoView();
+}
+})], null)], null);
+}
+}));
+
+(evalorder.screen.t_evalorder$screen27286.getBasis = (function (){
+return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"meta27287","meta27287",1067464366,null)], null);
+}));
+
+(evalorder.screen.t_evalorder$screen27286.cljs$lang$type = true);
+
+(evalorder.screen.t_evalorder$screen27286.cljs$lang$ctorStr = "evalorder.screen/t_evalorder$screen27286");
+
+(evalorder.screen.t_evalorder$screen27286.cljs$lang$ctorPrWriter = (function (this__4404__auto__,writer__4405__auto__,opt__4406__auto__){
+return cljs.core._write.call(null,writer__4405__auto__,"evalorder.screen/t_evalorder$screen27286");
+}));
+
+/**
+ * Positional factory function for evalorder.screen/t_evalorder$screen27286.
+ */
+evalorder.screen.__GT_t_evalorder$screen27286 = (function evalorder$screen$__GT_t_evalorder$screen27286(meta27287){
+return (new evalorder.screen.t_evalorder$screen27286(meta27287));
+});
+
+}
+
+return (new evalorder.screen.t_evalorder$screen27286(cljs.core.PersistentArrayMap.EMPTY));
+})()
+], null);
+(cljs.core.Keyword.prototype.evalorder$screen$Element$ = cljs.core.PROTOCOL_SENTINEL);
+
+(cljs.core.Keyword.prototype.evalorder$screen$Element$render$arity$2 = (function (kw,next_BANG_){
+var kw__$1 = this;
+return evalorder.screen.render.call(null,evalorder.screen.keyword__GT_element.call(null,kw__$1),next_BANG_);
+}));
 evalorder.screen.element_QMARK_ = (function evalorder$screen$element_QMARK_(x){
+if((x instanceof cljs.core.Keyword)){
+return (!((evalorder.screen.keyword__GT_element.call(null,x) == null)));
+} else {
 if((!((x == null)))){
 if(((false) || ((cljs.core.PROTOCOL_SENTINEL === x.evalorder$screen$Element$)))){
 return true;
@@ -287,9 +378,10 @@ return false;
 } else {
 return cljs.core.native_satisfies_QMARK_.call(null,evalorder.screen.Element,x);
 }
+}
 });
-cljs.spec.alpha.def_impl.call(null,new cljs.core.Keyword("evalorder.screen","screen","evalorder.screen/screen",25646140),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","and","cljs.spec.alpha/and",-2060279705,null),new cljs.core.Symbol("cljs.core","not-empty","cljs.core/not-empty",540057011,null),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","every","cljs.spec.alpha/every",123912744,null),new cljs.core.Symbol("evalorder.screen","element?","evalorder.screen/element?",-1126237899,null),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null))),cljs.spec.alpha.and_spec_impl.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol("cljs.core","not-empty","cljs.core/not-empty",540057011,null),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","every","cljs.spec.alpha/every",123912744,null),new cljs.core.Symbol("evalorder.screen","element?","evalorder.screen/element?",-1126237899,null),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.not_empty,cljs.spec.alpha.every_impl.call(null,new cljs.core.Symbol(null,"element?","element?",-134836339,null),evalorder.screen.element_QMARK_,new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword("cljs.spec.alpha","kind-form","cljs.spec.alpha/kind-form",-1047104697),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null),new cljs.core.Keyword("cljs.spec.alpha","cpred","cljs.spec.alpha/cpred",-693471218),(function (G__27284){
-return cljs.core.vector_QMARK_.call(null,G__27284);
+cljs.spec.alpha.def_impl.call(null,new cljs.core.Keyword("evalorder.screen","screen","evalorder.screen/screen",25646140),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","and","cljs.spec.alpha/and",-2060279705,null),new cljs.core.Symbol("cljs.core","not-empty","cljs.core/not-empty",540057011,null),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","every","cljs.spec.alpha/every",123912744,null),new cljs.core.Symbol("evalorder.screen","element?","evalorder.screen/element?",-1126237899,null),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null))),cljs.spec.alpha.and_spec_impl.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol("cljs.core","not-empty","cljs.core/not-empty",540057011,null),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","every","cljs.spec.alpha/every",123912744,null),new cljs.core.Symbol("evalorder.screen","element?","evalorder.screen/element?",-1126237899,null),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.not_empty,cljs.spec.alpha.every_impl.call(null,new cljs.core.Symbol(null,"element?","element?",-134836339,null),evalorder.screen.element_QMARK_,new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword("cljs.spec.alpha","kind-form","cljs.spec.alpha/kind-form",-1047104697),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null),new cljs.core.Keyword("cljs.spec.alpha","cpred","cljs.spec.alpha/cpred",-693471218),(function (G__27291){
+return cljs.core.vector_QMARK_.call(null,G__27291);
 }),new cljs.core.Keyword(null,"kind","kind",-717265803),cljs.core.vector_QMARK_,new cljs.core.Keyword("cljs.spec.alpha","describe","cljs.spec.alpha/describe",1883026911),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","every","cljs.spec.alpha/every",123912744,null),new cljs.core.Symbol("evalorder.screen","element?","evalorder.screen/element?",-1126237899,null),new cljs.core.Keyword(null,"kind","kind",-717265803),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null))], null),null)], null),null));
 evalorder.screen.error_screen = (function evalorder$screen$error_screen(lines){
 return cljs.core.apply.call(null,cljs.core.vector,"Something went wrong loading the screen:",lines);
@@ -306,21 +398,21 @@ return evalorder.screen.error_screen.call(null,clojure.string.split.call(null,cl
 } else {
 return conformed;
 }
-}catch (e27285){if((e27285 instanceof Error)){
-var e = e27285;
+}catch (e27292){if((e27292 instanceof Error)){
+var e = e27292;
 return evalorder.screen.error_screen.call(null,clojure.string.split.call(null,cljs.core.ex_message.call(null,e),/\n/));
 } else {
-throw e27285;
+throw e27292;
 
 }
 }});
-evalorder.screen.slide = (function evalorder$screen$slide(p__27286){
-var vec__27287 = p__27286;
-var seq__27288 = cljs.core.seq.call(null,vec__27287);
-var first__27289 = cljs.core.first.call(null,seq__27288);
-var seq__27288__$1 = cljs.core.next.call(null,seq__27288);
-var el = first__27289;
-var rem = seq__27288__$1;
+evalorder.screen.slide = (function evalorder$screen$slide(p__27293){
+var vec__27294 = p__27293;
+var seq__27295 = cljs.core.seq.call(null,vec__27294);
+var first__27296 = cljs.core.first.call(null,seq__27295);
+var seq__27295__$1 = cljs.core.next.call(null,seq__27295);
+var el = first__27296;
+var rem = seq__27295__$1;
 if((((!((el == null))))?((((false) || ((cljs.core.PROTOCOL_SENTINEL === el.evalorder$screen$NoDelay$))))?true:(((!el.cljs$lang$protocol_mask$partition$))?cljs.core.native_satisfies_QMARK_.call(null,evalorder.screen.NoDelay,el):false)):cljs.core.native_satisfies_QMARK_.call(null,evalorder.screen.NoDelay,el))){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"<>","<>",1280186386),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.screen.render,el,null], null),((rem)?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.screen.slide,rem], null):null)], null);
 } else {
@@ -349,4 +441,4 @@ evalorder.screen.show = (function evalorder$screen$show(story){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"story"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.screen.slide,story], null)], null);
 });
 
-//# sourceMappingURL=screen.js.map?rel=1619125857491
+//# sourceMappingURL=screen.js.map?rel=1619127699550

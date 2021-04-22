@@ -2,9 +2,7 @@
   (:require [cljs.spec.alpha :as s]
             [clojure.edn :as edn]
             [clojure.string :as str]
-            [reagent.core :as reagent]
-            [evalorder.util :as u]
-            [evalorder.cookies :as ck])
+            [reagent.core :as reagent])
   (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defprotocol Element
@@ -37,8 +35,31 @@
   Element
   (render [form _next!] form))
 
+(def keyword->element
+  {:continue (reify Element
+               (render [_ next!]
+                 (if next!
+                   [:div {:class "controls"}
+                    [:div {:class "control button material-icons"
+                           :title "Continue (Enter)"
+                           :onClick #(next!)
+                           :onKeyDown #(when (and (= "Enter" (! % :-key))
+                                                  (not (! % :-ctrlKey)))
+                                         (next!))
+                           :tabIndex -1
+                           :ref #(when % (! % :focus))}
+                     "keyboard_return"]]
+                   [:hr {:ref #(some-> % (! :scrollIntoView))}])))})
+
+(extend-type Keyword
+  Element
+  (render [kw next!]
+    (render (keyword->element kw) next!)))
+
 (defn element? [x]
-  (satisfies? Element x))
+  (if (keyword? x)
+    (some? (keyword->element x))
+    (satisfies? Element x)))
 
 (s/def ::screen (s/and not-empty (s/every element?, :kind vector?)))
 

@@ -31,7 +31,7 @@ body {
 
 .story {
     padding: 0.5em;
-    margin-bottom: 60vh;
+    margin-bottom: 75vh;
 }
 
 .bar {
@@ -57,9 +57,11 @@ body {
 
 .controls {
     display: flex;
+    cursor: default;
 }
 
 .controls > .control {
+    cursor: pointer;
     text-align: center;
     padding: 0.25em;
     width: 1.5em;
