@@ -17,8 +17,8 @@
   Element
   (render [comment _next!]
     [:div {:class "comment"}
-     [:div {:class "content"} comment]
-     [:div {:class "semicolons"} ";;"]]))
+     [:div {:class "semicolons"} ";;"]
+     [:div {:class "content"} comment]]))
 
 (extend-type nil
   NoDelay

@@ -7,12 +7,14 @@
 }
 
 .comment > .semicolons {
+    display: inline;
     position: absolute;
     left: 0;
     top: 0;
 }
 
 .comment > .content {
+    display: inline-block;
     position: relative;
     left: 3ch;
     margin-right: 3ch;
