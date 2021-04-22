@@ -77,4 +77,4 @@ return self__4759__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.cal
 
 evalorder.menu.screen = reagent.core.atom.call(null,null);
 
-//# sourceMappingURL=menu.js.map?rel=1619050498344
+//# sourceMappingURL=menu.js.map?rel=1619051018392
