@@ -34,7 +34,7 @@
  "as arguments."
  #delay/ms 2500
  nil
- "The expression (+ 1 2) applies the addition function to"
+ "(+ 1 2) applies the addition function to"
  "1 and 2, and returns their sum, which is 3."
  "It may be read as \"add 1 and 2\"."
 
@@ -76,6 +76,22 @@
  #game/expression {:expression
                    (if (= answer answer) (* 6 9) (* 7 6))
                    :target #{42}}
+ nil
+ "Cons is another function, it prepends a value to a list:"
+ #anchor/name "cons"
+ #game/expression {:expression (cons + (1 2 3)), :target #{6}}
+ nil
+ "First can be used to get the first element of a list:"
+ #anchor/name "first"
+ #game/expression {:expression ((first (+ 1 2)) 3 4), :target #{7}}
+ nil
+ "Next can be used to get a list of all but the first element of a list:"
+ #anchor/name "next"
+ #game/expression {:expression (cons * (next (+ 1 2))), :target #{2}}
+ nil
+ "List just creates a list from its arguments:"
+ #anchor/name "list"
+ #game/expression {:expression (list + 1 2 3), :target #{6}}
  nil
  "A fn expression creates a function, which can be applied to arguments."
  "The first argument is the argument list, the next is the function body."

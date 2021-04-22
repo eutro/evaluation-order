@@ -582,4 +582,4 @@ evalorder.screen.show = (function evalorder$screen$show(story){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"story"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.screen.slide,story,cljs.core.some.call(null,cljs.core.PersistentHashSet.createAsIfByAssoc([evalorder.screen.__GT_Anchor.call(null,evalorder.cookies.get_cookie.call(null,"EO_anchor"))]),story)], null)], null);
 });
 
-//# sourceMappingURL=screen.js.map?rel=1619099513646
+//# sourceMappingURL=screen.js.map?rel=1619117993298

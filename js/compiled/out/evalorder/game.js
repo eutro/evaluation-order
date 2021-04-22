@@ -300,12 +300,28 @@ return iter__4564__auto__.call(null,evalorder.util.enumerate.call(null,value));
 })(),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [evalorder.game.delim,")"], null)], null):((typeof value === 'number')?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"number"], null),cljs.core.str.cljs$core$IFn$_invoke$arity$1(value)], null):(((value instanceof cljs.core.Symbol))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"symbol"], null),cljs.core.str.cljs$core$IFn$_invoke$arity$1(value)], null):((cljs.core.boolean_QMARK_.call(null,value))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"bool"], null),cljs.core.str.cljs$core$IFn$_invoke$arity$1(value)], null):(((value == null))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"nil"], null),"nil"], null):((evalorder.game.error_QMARK_.call(null,value))?new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"error"], null),["!",cljs.core.pr_str.call(null,new cljs.core.Keyword(null,"message","message",-406056002).cljs$core$IFn$_invoke$arity$1(value))].join('')], null):new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"error"], null),"!?"], null)
 ))))))], null);
 });
-evalorder.game._STAR_fn_env_STAR_ = new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Symbol(null,"+","+",-740910886,null),(function() { 
+evalorder.game._STAR_fn_env_STAR_ = cljs.core.PersistentHashMap.fromArrays([new cljs.core.Symbol(null,"first","first",996428481,null),new cljs.core.Symbol(null,"if","if",1181717262,null),new cljs.core.Symbol(null,"/","/",-1371932971,null),new cljs.core.Symbol(null,"cons","cons",755448454,null),new cljs.core.Symbol(null,"=","=",-1501502141,null),new cljs.core.Symbol(null,"next","next",1522830042,null),new cljs.core.Symbol(null,"+","+",-740910886,null),new cljs.core.Symbol(null,"*","*",345799209,null),new cljs.core.Symbol(null,"fn","fn",465265323,null),new cljs.core.Symbol(null,"-","-",-471816912,null),new cljs.core.Symbol(null,"list","list",-1889078086,null)],[(function (v){
+if(cljs.core.vector_QMARK_.call(null,v)){
+return cljs.core.first.call(null,v);
+} else {
+return evalorder.game.error.call(null,"Not a list");
+}
+}),(function (pred,then,else$){
+if(cljs.core.boolean_QMARK_.call(null,pred)){
+if(pred){
+return then;
+} else {
+return else$;
+}
+} else {
+return evalorder.game.error.call(null,"Condition must be a boolean");
+}
+}),(function() { 
 var G__27339__delegate = function (args){
 if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.complement.call(null,cljs.core.number_QMARK_),args))){
-return evalorder.game.error.call(null,"Can only add numbers");
+return evalorder.game.error.call(null,"Can only divide numbers");
 } else {
-return cljs.core.apply.call(null,cljs.core._PLUS_,args);
+return cljs.core.apply.call(null,cljs.core._SLASH_,args);
 }
 };
 var G__27339 = function (var_args){
@@ -324,12 +340,24 @@ return G__27339__delegate(args);
 G__27339.cljs$core$IFn$_invoke$arity$variadic = G__27339__delegate;
 return G__27339;
 })()
-,new cljs.core.Symbol(null,"*","*",345799209,null),(function() { 
+,(function (x,v){
+if(cljs.core.vector_QMARK_.call(null,v)){
+return cljs.core.vec.call(null,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,(new cljs.core.List(null,x,null,(1),null)),v))));
+} else {
+return evalorder.game.error.call(null,"Not a list");
+}
+}),cljs.core._EQ_,(function (v){
+if(cljs.core.vector_QMARK_.call(null,v)){
+return cljs.core.subvec.call(null,v,(1));
+} else {
+return evalorder.game.error.call(null,"Not a list");
+}
+}),(function() { 
 var G__27342__delegate = function (args){
 if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.complement.call(null,cljs.core.number_QMARK_),args))){
-return evalorder.game.error.call(null,"Can only multiply numbers");
+return evalorder.game.error.call(null,"Can only add numbers");
 } else {
-return cljs.core.apply.call(null,cljs.core._STAR_,args);
+return cljs.core.apply.call(null,cljs.core._PLUS_,args);
 }
 };
 var G__27342 = function (var_args){
@@ -348,12 +376,12 @@ return G__27342__delegate(args);
 G__27342.cljs$core$IFn$_invoke$arity$variadic = G__27342__delegate;
 return G__27342;
 })()
-,new cljs.core.Symbol(null,"-","-",-471816912,null),(function() { 
+,(function() { 
 var G__27345__delegate = function (args){
 if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.complement.call(null,cljs.core.number_QMARK_),args))){
-return evalorder.game.error.call(null,"Can only subtract numbers");
+return evalorder.game.error.call(null,"Can only multiply numbers");
 } else {
-return cljs.core.apply.call(null,cljs.core._,args);
+return cljs.core.apply.call(null,cljs.core._STAR_,args);
 }
 };
 var G__27345 = function (var_args){
@@ -372,61 +400,51 @@ return G__27345__delegate(args);
 G__27345.cljs$core$IFn$_invoke$arity$variadic = G__27345__delegate;
 return G__27345;
 })()
-,new cljs.core.Symbol(null,"/","/",-1371932971,null),(function() { 
-var G__27348__delegate = function (args){
-if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.complement.call(null,cljs.core.number_QMARK_),args))){
-return evalorder.game.error.call(null,"Can only divide numbers");
-} else {
-return cljs.core.apply.call(null,cljs.core._SLASH_,args);
-}
+,(function() { 
+var G__27348__delegate = function (body){
+return cljs.core.vec.call(null,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,(new cljs.core.List(null,new cljs.core.Symbol(null,"fn","fn",465265323,null),null,(1),null)),body))));
 };
 var G__27348 = function (var_args){
-var args = null;
+var body = null;
 if (arguments.length > 0) {
 var G__27349__i = 0, G__27349__a = new Array(arguments.length -  0);
 while (G__27349__i < G__27349__a.length) {G__27349__a[G__27349__i] = arguments[G__27349__i + 0]; ++G__27349__i;}
-  args = new cljs.core.IndexedSeq(G__27349__a,0,null);
+  body = new cljs.core.IndexedSeq(G__27349__a,0,null);
 } 
-return G__27348__delegate.call(this,args);};
+return G__27348__delegate.call(this,body);};
 G__27348.cljs$lang$maxFixedArity = 0;
 G__27348.cljs$lang$applyTo = (function (arglist__27350){
-var args = cljs.core.seq(arglist__27350);
-return G__27348__delegate(args);
+var body = cljs.core.seq(arglist__27350);
+return G__27348__delegate(body);
 });
 G__27348.cljs$core$IFn$_invoke$arity$variadic = G__27348__delegate;
 return G__27348;
 })()
-,new cljs.core.Symbol(null,"=","=",-1501502141,null),cljs.core._EQ_,new cljs.core.Symbol(null,"if","if",1181717262,null),(function (pred,then,else$){
-if(cljs.core.boolean_QMARK_.call(null,pred)){
-if(pred){
-return then;
+,(function() { 
+var G__27351__delegate = function (args){
+if(cljs.core.truth_(cljs.core.some.call(null,cljs.core.complement.call(null,cljs.core.number_QMARK_),args))){
+return evalorder.game.error.call(null,"Can only subtract numbers");
 } else {
-return else$;
+return cljs.core.apply.call(null,cljs.core._,args);
 }
-} else {
-return evalorder.game.error.call(null,"Condition must be a boolean");
-}
-}),new cljs.core.Symbol(null,"fn","fn",465265323,null),(function() { 
-var G__27351__delegate = function (body){
-return cljs.core.vec.call(null,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,(new cljs.core.List(null,new cljs.core.Symbol(null,"fn","fn",465265323,null),null,(1),null)),body))));
 };
 var G__27351 = function (var_args){
-var body = null;
+var args = null;
 if (arguments.length > 0) {
 var G__27352__i = 0, G__27352__a = new Array(arguments.length -  0);
 while (G__27352__i < G__27352__a.length) {G__27352__a[G__27352__i] = arguments[G__27352__i + 0]; ++G__27352__i;}
-  body = new cljs.core.IndexedSeq(G__27352__a,0,null);
+  args = new cljs.core.IndexedSeq(G__27352__a,0,null);
 } 
-return G__27351__delegate.call(this,body);};
+return G__27351__delegate.call(this,args);};
 G__27351.cljs$lang$maxFixedArity = 0;
 G__27351.cljs$lang$applyTo = (function (arglist__27353){
-var body = cljs.core.seq(arglist__27353);
-return G__27351__delegate(body);
+var args = cljs.core.seq(arglist__27353);
+return G__27351__delegate(args);
 });
 G__27351.cljs$core$IFn$_invoke$arity$variadic = G__27351__delegate;
 return G__27351;
 })()
-], null);
+,cljs.core.vector]);
 evalorder.game._STAR_val_env_STAR_ = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Symbol(null,"pi","pi",176774184,null),3.14,new cljs.core.Symbol(null,"answer","answer",897898364,null),(42)], null);
 evalorder.game.app = (function evalorder$game$app(value,args){
 if((value instanceof cljs.core.Symbol)){
@@ -890,4 +908,4 @@ return (new evalorder.game.t_evalorder$game27412(expr__$1,validated__$1,meta2741
 return (new evalorder.game.t_evalorder$game27412(expr,validated,cljs.core.PersistentArrayMap.EMPTY));
 }));
 
-//# sourceMappingURL=game.js.map?rel=1619099513805
+//# sourceMappingURL=game.js.map?rel=1619117993472
