@@ -17,7 +17,8 @@
   Element
   (render [comment _next!]
     [:div {:class "comment"}
-     (str ";; " comment)]))
+     [:div {:class "content"} comment]
+     [:div {:class "semicolons"} ";;"]]))
 
 (extend-type nil
   NoDelay
@@ -39,12 +40,6 @@
       (next!))
     [:<>]))
 
-(defrecord ScrollHere [_]
-  NoDelay
-  Element
-  (render [_ _next!]
-    [:span {:ref (fn [el] (when el (! el :scrollIntoView)))}]))
-
 (extend-type PersistentVector
   NoDelay
   Element
@@ -60,8 +55,7 @@
 
 (def reader-opts
   {:readers {'delay/ms ->MsDelay,
-             'anchor/name ->Anchor,
-             'scroll/here ->ScrollHere}})
+             'anchor/name ->Anchor}})
 
 (defn add-reader! [key value]
   (set! reader-opts (update reader-opts :readers assoc key value)))
@@ -85,6 +79,8 @@
       (fn []
         [:<>
          [render el (when-not @next? #(reset! next? true))]
+         (when (and anchor (= el anchor))
+           [:span {:ref (fn [el] (when el (! el :scrollIntoView)))}])
          (when-let [next-slide (and @next? rem)]
            [slide next-slide])]))))
 
