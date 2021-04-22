@@ -91,7 +91,20 @@
            (if pred then else)
            (error "Condition must be a boolean")))
    'fn (fn [& body]
-         `[~'fn ~@body])})
+         `[~'fn ~@body])
+   'cons (fn [x v]
+           (if (vector? v)
+             `[~x ~@v]
+             (error "Not a list")))
+   'first (fn [v]
+            (if (vector? v)
+              (first v)
+              (error "Not a list")))
+   'next (fn [v]
+           (if (vector? v)
+             (subvec v 1)
+             (error "Not a list")))
+   'list vector})
 
 (def ^:dynamic *val-env*
   {'pi 3.14
