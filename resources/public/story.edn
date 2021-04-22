@@ -51,46 +51,5 @@
  nil "Navigate to inner expressions with the arrow keys or buttons."
  nil "There's an undo button if you make a mistake."
  #game/expression {:expression (+ 1 2 (* 3 4)), :target #{15}}
-
- #_[
-    nil
-    "The if function can be used to select a value based on a condition."
-    "Try these examples:"
-    #game/expression {:expression (if true then else), :target #{then}}
-    #game/expression {:expression (if false then else), :target #{else}}
-    "With no else expression, it's taken to be nil."
-    #game/expression {:expression (if false then), :target #{nil}}
-    nil
-    "Then there is =, the comparison function."
-    #game/expression {:expression ((= 1 0) (= 0 0)), :target #{(false true)}}
-    "Different types cannot compare equal:"
-    #game/expression {:expression ((= a 0) (= b (1 2 3))), :target #{(false false)}}
-    nil
-    "Now see if you can use this to compute The Answer to the Ultimate Question of Life, the Universe, and Everything: 42."
-    #game/expression {:expression
-                      (if (= answer answer) (* 6 9) (* 7 6))
-                      :target #{42}}
-    nil
-    "Cons is another function, it prepends a value to a list:"
-    #game/expression {:expression (cons + (1 2 3)), :target #{6}}
-    nil
-    "First can be used to get the first element of a list:"
-    #game/expression {:expression ((first (+ 1 2)) 3 4), :target #{7}}
-    nil
-    "Next can be used to get a list of all but the first element of a list:"
-    #game/expression {:expression (cons * (next (+ 1 2))), :target #{2}}
-    nil
-    "List just creates a list from its arguments:"
-    #game/expression {:expression (list + 1 2 3), :target #{6}}
-    nil
-    "A fn expression creates a function, which can be applied to arguments."
-    "There is no need to evaluate the fn expression, just use it as a function directly."
-    "The first argument is the argument list, the next is the function body."
-    #game/expression {:expression ((fn (x) (* x x)) 5), :target #{25}}
-    "Applying it to 5 substitutes the value in for x."
-    nil
-    "Here's another example, try to evaluate this to pi:"
-    #game/expression {:expression ((fn (pi) (- pi pi)) 0), :target #{3.14}}
-
-    nil
-    "That's all for now. More coming soon!"]]
+ "You feel the expressive power at your fingertips." #delay/ms 2000
+ nil "You could do anything."]
