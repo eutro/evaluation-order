@@ -9,7 +9,7 @@ return clojure.string.split.call(null,p1__22637_SHARP_,/=/,(2));
 });
 evalorder.cookies.one_year = ((((60) * (60)) * (24)) * (356));
 evalorder.cookies.set_cookie_BANG_ = (function evalorder$cookies$set_cookie_BANG_(cookie,value){
-return (document.cookie = clojure.string.join.call(null,new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cookie,"=",value,";","max-age=",evalorder.cookies.one_year,"path=/"], null)));
+return (document.cookie = clojure.string.join.call(null,new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [cookie,"=",value,";","max-age=",evalorder.cookies.one_year,";","path=/;","secure"], null)));
 });
 
-//# sourceMappingURL=cookies.js.map?rel=1618926902979
+//# sourceMappingURL=cookies.js.map?rel=1619050493768

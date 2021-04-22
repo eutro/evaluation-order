@@ -2,12 +2,13 @@
     font-size: 2em;
 }
 
-.full {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    margin: 0;
 }
 
 .menu {
@@ -24,17 +25,13 @@
     font-size: 1.1em;
 }
 
-* {
-    box-sizing: border-box;
-    font-family: monospace;
-}
-
 .code {
     outline: none;
 }
 
 .story {
     padding: 0.5em;
+    margin-bottom: 50vh;
 }
 
 .bar {
@@ -58,6 +55,15 @@
     cursor: pointer;
 }
 
-*:hover > .dropdown-content {
-    display: block;
+.controls {
+    display: flex;
+}
+
+.controls > .control {
+    text-align: center;
+    padding: 5px;
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 5px;
+    margin-top: 5px;
 }

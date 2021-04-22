@@ -9,7 +9,9 @@
   (s/and
     (s/or :recursive (s/coll-of ::expression, :kind sequential?, :into [])
           :number number?
-          :symbol symbol?)
+          :symbol symbol?
+          :boolean boolean?
+          :nil nil?)
     (s/conformer second)))
 
 (s/def ::target (s/coll-of ::expression, :kind set?, :into #{}))
@@ -31,20 +33,24 @@
 (defn delim [v]
   [:span {:class "delimiter"} v])
 
-(defn expr [value selected path set-path!]
-  [:span {:class (if (and selected (empty? selected))
-                   "selected expr"
-                   "expr")
-          :onClick (when set-path!
-                     (fn [event]
-                       (! event :stopPropagation)
-                       (set-path! path)))}
+(defn expr-el [value selected path set-path!]
+  [:span (merge
+           (if (and selected (empty? selected))
+             {:class "selected expr"
+              :ref #(when % (! % :focus))}
+             {:class "expr"})
+           (when set-path!
+             (let [select!
+                   (fn [event]
+                     (! event :stopPropagation)
+                     (set-path! path))]
+               {:onClick select!, :onFocus select!, :tabIndex 0})))
    (cond
      (vector? value)
      [:span {:class "list"}
       [delim "("]
       (for [[i el] (u/enumerate value)]
-        ^{:key i} [expr
+        ^{:key i} [expr-el
                    el
                    (when (= i (first selected))
                      (rest selected))
@@ -55,7 +61,7 @@
      (number? value) [:span {:class "number"} (str value)]
      (symbol? value) [:span {:class "symbol"} (str value)]
      (boolean? value) [:span {:class "bool"} (str value)]
-     (nil? value) [:span {:class "nil"} (str value)]
+     (nil? value) [:span {:class "nil"} "nil"]
      (error? value) [:span {:class "error"}
                      (str "!" (pr-str (:message value)))]
 
@@ -107,66 +113,88 @@
     (update-in value path evaluate)
     (evaluate value)))
 
+(defn to-first [[value & tail] f & args]
+  (cons (apply f value args) tail))
+
+(defn to-cons [value f & args]
+  (cons (apply f (first value) args) value))
+
+(defn controls [& buttons]
+  [:div {:class "controls"}
+   (for [[label do! title] buttons]
+     ^{:key label} [:div {:class "control button material-icons", :onClick do!, :title title} label])])
+
 (defn root [{:keys [expression
-                    target
-                    definitions]}
-            next!]
-  (let [expr-atom (reagent/atom expression)
-        path-atom (reagent/atom [])
-        history (reagent/atom ())
+                    _target
+                    _definitions]}
+            _next!]
+  (let [hist (reagent/atom (list {:expr expression
+                                  :path []}))
         validate-path (fn [path]
-                        (if (= ::not-found (get-in @expr-atom path ::not-found))
+                        (if (-> @hist first :expr
+                                (get-in path ::not-found)
+                                (= ::not-found))
                           nil
                           path))]
-    (fn []
-      (let [e @expr-atom
-            p @path-atom]
-        (when (and next! p
-                   (seq @history)
-                   (target e))
-          (reset! path-atom nil)
+    (fn [{:keys [_expression
+                 target
+                 _definitions]}
+         next!]
+      (let [[{:keys [expr path]} & history] @hist
+            evaluate! (fn [] (swap! hist to-cons update :expr evaluate-in path))
+            undo! (fn [] (when history (reset! hist history)))
+            up! (fn []
+                  (when (seq path)
+                    (some->> (subvec path 0 (dec (count path)))
+                             validate-path (swap! hist to-first assoc :path))))
+            down! (fn []
+                    (some->> (conj path 0)
+                             validate-path (swap! hist to-first assoc :path)))
+            left! (fn []
+                    (when (seq path)
+                      (some->> (update path (dec (count path)) dec)
+                               validate-path (swap! hist to-first assoc :path))))
+            right! (fn []
+                     (when (seq path)
+                       (some->> (update path (dec (count path)) inc)
+                                validate-path (swap! hist to-first assoc :path))))]
+        (when (and next! path history (contains? target expr))
+          (swap! hist to-cons assoc :path nil)
           (next!))
         [:div (merge
                 {:class "code"}
                 (when next!
-                  {:tabIndex -1
-                   :ref (fn [el] (when el (! el :focus)))
-                   :onKeyDown
+                  {:onKeyDown
                    (fn [event]
                      (let [key (-> event (! :-key))]
-                       (if (-> event (! :-ctrlKey))
-                         (case key
-                           "z" (when (seq @history)
-                                 (reset! expr-atom (first @history))
-                                 (reset! path-atom [])
-                                 (swap! history rest))
-                          nil)
-                         (case key
-                           "ArrowUp"
-                           (when (seq p)
-                             (some->> (subvec p 0 (dec (count p)))
-                                      validate-path (reset! path-atom)))
-                           "ArrowDown"
-                           (some->> (conj p 0)
-                                    validate-path (reset! path-atom))
-                           "ArrowLeft"
-                           (when (seq p)
-                             (some->> (update p (dec (count p)) dec)
-                                      validate-path (reset! path-atom)))
-                           "ArrowRight"
-                           (when (seq p)
-                             (some->> (update p (dec (count p)) inc)
-                                      validate-path (reset! path-atom)))
-                           "Enter"
-                           (do (swap! expr-atom evaluate-in p)
-                               (swap! history conj e))
-                           nil))))}))
+                       (when-some [act!
+                                   (if (-> event (! :-ctrlKey))
+                                     (case key
+                                       "z" undo!
+                                       nil)
+                                     (case key
+                                       "ArrowUp" up!
+                                       "ArrowDown" down!
+                                       "ArrowLeft" left!
+                                       "ArrowRight" right!
+                                       "Enter" evaluate!
+                                       nil))]
+                         (act!)
+                         (! event :preventDefault))))}))
          [:div {:class "expression"}
-          [expr
-           e
-           (and next! p)
+          [expr-el
+           expr
+           (when next! path)
            []
-           (and next! (fn [path] (reset! path-atom path)))]]]))))
+           (fn [path] (swap! hist to-first assoc :path path))]
+          (when next!
+            [controls
+             ["play_arrow" evaluate! "Evaluate (Enter)"]
+             ["undo" undo! "Undo (Ctrl + Z)"]
+             ["keyboard_arrow_left" left! "Left (Left Arrow)"]
+             ["keyboard_arrow_up" up! "Outer (Up Arrow)"]
+             ["keyboard_arrow_down" down! "Inner (Down Arrow)"]
+             ["keyboard_arrow_right" right! "Right (Right Arrow)"]])]]))))
 
 (screen/add-reader!
   'game/expression

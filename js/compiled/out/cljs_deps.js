@@ -106,7 +106,7 @@ goog.addDependency("../cljs/reader.js", ['cljs.reader'], ['cljs.tools.reader.edn
 goog.addDependency("../clojure/edn.js", ['clojure.edn'], ['cljs.core', 'cljs.reader']);
 goog.addDependency("../cljs/spec/gen/alpha.js", ['cljs.spec.gen.alpha'], ['goog.Uri', 'cljs.core']);
 goog.addDependency("../cljs/spec/alpha.js", ['cljs.spec.alpha'], ['cljs.core', 'goog.object', 'clojure.string', 'clojure.walk', 'cljs.spec.gen.alpha']);
-goog.addDependency("../evalorder/screen.js", ['evalorder.screen'], ['evalorder.util', 'reagent.core', 'cljs.core', 'clojure.edn', 'clojure.string', 'cljs.spec.alpha']);
+goog.addDependency("../evalorder/screen.js", ['evalorder.screen'], ['evalorder.cookies', 'evalorder.util', 'reagent.core', 'cljs.core', 'clojure.edn', 'clojure.string', 'cljs.spec.alpha']);
 goog.addDependency("../evalorder/game.js", ['evalorder.game'], ['evalorder.util', 'reagent.core', 'cljs.core', 'evalorder.screen', 'cljs.spec.alpha']);
 goog.addDependency("../evalorder/menu.js", ['evalorder.menu'], ['reagent.core', 'cljs.core']);
 goog.addDependency("../reagent/dom.js", ['reagent.dom'], ['reagent.impl.util', 'reagent.impl.protocols', 'reagent.ratom', 'cljs.core', 'reagent.impl.template', 'reagent.impl.batching', 'reagent.impl.input']);
