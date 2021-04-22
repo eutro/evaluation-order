@@ -7,7 +7,7 @@
  [:div {:class "number"} 1]
  #delay/ms 1000 "It is also an expression."
  #delay/ms 1000 nil "Try evaluating it, by pressing the button or the enter key."
- #anchor/name "number" #scroll/here nil
+ #anchor/name "number"
  #game/expression {:expression 1, :target #{1}}
  "Nothing happened."
 
@@ -18,7 +18,7 @@
  "the result is the same value."
 
  #delay/ms 2000 nil "This is a symbol, try evaluating it too:"
- #anchor/name "symbol" #scroll/here nil
+ #anchor/name "symbol"
  #game/expression {:expression pi, :target #{3.14}}
  "The result is the number 3.14."
  #delay/ms 1000 nil "Evaluating a symbol yields the value that it names."
@@ -27,7 +27,7 @@
  nil
  "This is a list, a series of values between parentheses."
  "Try evaluating it as well."
- #anchor/name "list" #scroll/here nil
+ #anchor/name "list"
  #game/expression {:expression (+ 1 2), :target #{3}}
  "When a list is evaluated, the first value in the list"
  "is applied, as a function, to the rest of the values in the list,"
@@ -52,13 +52,13 @@
  nil
  "Navigate to inner expressions with the arrow keys or buttons."
  "There's an undo button if you make a mistake."
- #anchor/name "nested-list" #scroll/here nil
+ #anchor/name "nested-list"
  #game/expression {:expression (+ 1 2 (* 3 4)), :target #{15}}
 
  nil
  "The if function can be used to select a value based on a condition."
  "Try these examples:"
- #anchor/name "if-1" #scroll/here nil
+ #anchor/name "if-1"
  #game/expression {:expression (if true then else), :target #{then}}
  #game/expression {:expression (if false then else), :target #{else}}
  #game/expression {:expression (if nil then), :target #{nil}}
@@ -74,10 +74,10 @@
  "Now see if you can use this to compute"
  "The Answer to the Ultimate Question of Life,"
  "the Universe, and Everything: 42."
- #anchor/name "if-2" #scroll/here nil
+ #anchor/name "if-2"
  #game/expression {:expression
                    (if (= answer-to-life-the-universe-and-everything 42) (* 6 9) (* 7 6))
                    :target #{42}}
  nil
  "That's all for now. More coming soon!"
- #anchor/name "gg" #scroll/here nil]
+ #anchor/name "gg"]
