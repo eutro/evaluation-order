@@ -61,7 +61,14 @@
     (some? (keyword->element x))
     (satisfies? Element x)))
 
-(s/def ::screen (s/and not-empty (s/every element?, :kind vector?)))
+(s/def ::scene (s/and not-empty (s/every element?, :kind vector?)))
+
+(s/def ::name string?)
+
+(s/def ::level
+  (s/keys :req-un [::scene ::name]))
+
+(s/def ::story (s/and not-empty (s/every ::level, :kind sequential?, :into [])))
 
 (defn error-screen [lines]
   (apply vector "Something went wrong loading the screen:" lines))
@@ -72,14 +79,14 @@
 (defn add-reader! [key value]
   (set! reader-opts (update reader-opts :readers assoc key value)))
 
-(defn read-screen [s]
+(defn read-story [s]
   (try (let [raw (edn/read-string reader-opts s)
-             conformed (s/conform ::screen raw)]
+             conformed (s/conform ::story raw)]
          (if (s/invalid? conformed)
-           (error-screen (-> (s/explain-str ::screen raw) (str/split #"\n")))
+           [(error-screen (-> (s/explain-str ::screen raw) (str/split #"\n")))]
            conformed))
        (catch js/Error. e
-         (error-screen (str/split (ex-message e) #"\n")))))
+         [(error-screen (str/split (ex-message e) #"\n"))])))
 
 (defn slide [[el & rem]]
   (if (satisfies? NoDelay el)
@@ -93,6 +100,6 @@
          (when-let [next-slide (and @next? rem)]
            [slide next-slide])]))))
 
-(defn show [story]
+(defn show [scene]
   [:div {:class "story"}
-   [slide story]])
+   [slide scene]])
