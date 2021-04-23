@@ -35,20 +35,23 @@
   Element
   (render [form _next!] form))
 
+(defn single-control [title icon act!]
+  [:div {:class "controls"}
+   [:div {:class "control button material-icons"
+          :title title
+          :onClick #(act!)
+          :onKeyDown #(when (and (= "Enter" (! % :-key))
+                                 (not (! % :-ctrlKey)))
+                        (act!))
+          :tabIndex -1
+          :ref #(some-> % (! :focus))}
+    icon]])
+
 (def keyword->element
   {:continue (reify Element
                (render [_ next!]
                  (if next!
-                   [:div {:class "controls"}
-                    [:div {:class "control button material-icons"
-                           :title "Continue (Enter)"
-                           :onClick #(next!)
-                           :onKeyDown #(when (and (= "Enter" (! % :-key))
-                                                  (not (! % :-ctrlKey)))
-                                         (next!))
-                           :tabIndex -1
-                           :ref #(when % (! % :focus))}
-                     "keyboard_return"]]
+                   [single-control "Continue" "keyboard_return" next!]
                    [:hr {:ref #(some-> % (! :scrollIntoView))}])))})
 
 (extend-type Keyword
@@ -88,18 +91,19 @@
        (catch js/Error. e
          [(error-screen (str/split (ex-message e) #"\n"))])))
 
-(defn slide [[el & rem]]
-  (if (satisfies? NoDelay el)
-    [:<>
-     [render el nil]
-     (when rem [slide rem])]
-    (let [next? (reagent/atom false)]
-      (fn []
-        [:<>
-         [render el (when-not @next? #(reset! next? true))]
-         (when-let [next-slide (and @next? rem)]
-           [slide next-slide])]))))
+(defn slide [[el & rem] finish!]
+  (let [cont
+        (if rem
+          [slide rem finish!]
+          [single-control "Finish" "done" finish!])]
+    (if (satisfies? NoDelay el)
+      [:<> [render el nil] cont]
+      (let [next? (reagent/atom false)]
+        (fn []
+          [:<>
+           [render el (when-not @next? #(reset! next? true))]
+           (when @next? cont)])))))
 
-(defn show [scene]
+(defn show [scene finish!]
   [:div {:class "story"}
-   [slide scene]])
+   [slide scene finish!]])
