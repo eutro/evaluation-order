@@ -54,6 +54,7 @@
    #game/expression {:expression (+ 1 pi (* 3 4)), :target #{16.14}}
    "You feel the expressive power at your fingertips." #delay/ms 2000
    nil "You could do anything."]}
- {:name "Eternal Suffering"
-  :scene
-  ["Yeah."]}]
+ {:name "Eternal Suffering", :scene ["Yeah."]}
+ {:name "Further Suffering", :scene ["Ha." #delay/ms 200 "Yeah."]}
+ {:name "Even Further Suffering", :scene ["Ha." #delay/ms 200 "Yeah."]}
+ {:name "Furthest Suffering", :scene ["Ha." #delay/ms 200 "Yeah."]}]

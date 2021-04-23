@@ -5,6 +5,7 @@
             [evalorder.screen :as screen]
             [evalorder.cookies :as ck]
             [evalorder.menu :as menu]
+            [evalorder.util :as u]
             [clojure.core.async :as a]
             [cljs.core.async.interop :refer-macros [<p!]])
   (:require-macros [evalorder.macros :refer [! !js]]))
@@ -24,11 +25,21 @@
     (fn []
       (if @selecting
         `[:<>
-          ~@(for [level @story]
-              ^{:key name}
-              [menu/button
-               (:name level)
-               #(reset! menu/screen (partial screen/show (:scene level)))])]
+          ~@(for [[index level] (u/enumerate @story)]
+              ^{:key (:name level)}
+              `[~menu/button
+                ~(:name level)
+                ~@(if (<= index @progress)
+                    [(fn []
+                       (reset! menu/screen
+                               (partial
+                                screen/show
+                                (:scene level)
+                                (fn []
+                                  (swap! progress max (inc index))
+                                  (reset! menu/screen nil)))))
+                     nil]
+                    [(fn []) {:disabled true}])])]
         [menu/button "Level Select" #(reset! selecting true)]))))
 
 (defn main-menu []
