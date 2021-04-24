@@ -1,5 +1,5 @@
 (defproject evalorder "0.1.0-SNAPSHOT"
-  :description "("
+  :description "A game about lists, functions and enlightenment."
   :url "http://eutro.github.io/evaluation-order/index.html"
   :license {:name "MIT", :url "https://mit-license.org/"}
   :min-lein-version "2.9.1"

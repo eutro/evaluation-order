@@ -2,7 +2,8 @@
   (:require [reagent.core :as reagent]
             [cljs.spec.alpha :as s]
             [evalorder.screen :as screen]
-            [evalorder.util :as u])
+            [evalorder.util :as u]
+            [evalorder.audio :as audio])
   (:require-macros [evalorder.macros :refer [! !js]]))
 
 (s/def ::expression
@@ -170,7 +171,11 @@
 (defn controls [& buttons]
   [:div {:class "controls"}
    (for [[label do! title] buttons]
-     ^{:key label} [:div {:class "control button material-icons", :onClick do!, :title title} label])])
+     ^{:key label}
+     [:div {:class "control button material-icons"
+            :onClick do!
+            :title title}
+      label])])
 
 (defn root [{:keys [expression
                     _target
@@ -189,23 +194,37 @@
                  _definitions]}
          next!]
       (let [[{:keys [expr path]} & history] @hist
-            evaluate! (fn [] (swap! hist to-cons update :expr evaluate-in path))
-            undo! (fn [] (when history (reset! hist history)))
+            evaluate! (fn []
+                        (swap! hist to-cons update :expr evaluate-in path)
+                        (audio/play audio/eval))
+            undo! (fn []
+                    (if history
+                      (do (reset! hist history)
+                          (audio/play audio/undo))
+                      (audio/play audio/failed)))
             up! (fn []
-                  (when (seq path)
-                    (some->> (subvec path 0 (dec (count path)))
-                             validate-path (swap! hist to-first assoc :path))))
+                  (if-some [np (and (seq path)
+                                    (validate-path (subvec path 0 (dec (count path)))))]
+                    (do (swap! hist to-first assoc :path np)
+                        (audio/play audio/up))
+                    (audio/play audio/failed)))
             down! (fn []
-                    (some->> (conj path 0)
-                             validate-path (swap! hist to-first assoc :path)))
+                    (if-some [np (validate-path (conj path 0))]
+                      (do (swap! hist to-first assoc :path np)
+                          (audio/play audio/down))
+                      (audio/play audio/failed)))
             left! (fn []
-                    (when (seq path)
-                      (some->> (update path (dec (count path)) dec)
-                               validate-path (swap! hist to-first assoc :path))))
+                    (if-some [np (and (seq path)
+                                      (validate-path (update path (dec (count path)) dec)))]
+                      (do (swap! hist to-first assoc :path np)
+                          (audio/play audio/left))
+                      (audio/play audio/failed)))
             right! (fn []
-                     (when (seq path)
-                       (some->> (update path (dec (count path)) inc)
-                                validate-path (swap! hist to-first assoc :path))))]
+                     (if-some [np (and (seq path)
+                                       (validate-path (update path (dec (count path)) inc)))]
+                       (do (swap! hist to-first assoc :path np)
+                           (audio/play audio/right))
+                       (audio/play audio/failed)))]
         (when (and next! path history (contains? target expr))
           (swap! hist to-cons assoc :path nil)
           (next!))
