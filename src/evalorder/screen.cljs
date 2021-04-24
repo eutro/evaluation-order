@@ -2,7 +2,8 @@
   (:require [cljs.spec.alpha :as s]
             [clojure.edn :as edn]
             [clojure.string :as str]
-            [reagent.core :as reagent])
+            [reagent.core :as reagent]
+            [evalorder.audio :as audio])
   (:require-macros [evalorder.macros :refer [! !js]]))
 
 (defprotocol Element
@@ -51,7 +52,12 @@
   {:continue (reify Element
                (render [_ next!]
                  (if next!
-                   [single-control "Continue" "keyboard_return" next!]
+                   [single-control
+                    "Continue"
+                    "keyboard_return"
+                    (fn []
+                      (next!)
+                      (audio/play audio/eval))]
                    [:hr {:ref #(some-> % (! :scrollIntoView))}])))})
 
 (extend-type Keyword
@@ -95,7 +101,12 @@
   (let [cont
         (if rem
           [slide rem finish!]
-          [single-control "Finish" "done" finish!])]
+          [single-control
+           "Finish"
+           "done"
+           (fn []
+             (finish!)
+             (audio/play audio/eval))])]
     (if (satisfies? NoDelay el)
       [:<> [render el nil] cont]
       (let [next? (reagent/atom false)]
