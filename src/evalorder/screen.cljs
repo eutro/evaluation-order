@@ -74,13 +74,17 @@
 
 (s/def ::name string?)
 
+(s/def ::music audio/music)
+
 (s/def ::level
-  (s/keys :req-un [::scene ::name]))
+  (s/keys :req-un [::scene ::name]
+          :opt-un [::music]))
 
 (s/def ::story (s/and not-empty (s/every ::level, :kind sequential?, :into [])))
 
 (defn error-screen [lines]
-  (apply vector "Something went wrong loading the screen:" lines))
+  {:name "Something went wrong"
+   :scene (vec lines)})
 
 (def reader-opts
   {:readers {'delay/ms ->MsDelay}})
@@ -106,7 +110,8 @@
            "done"
            (fn []
              (finish!)
-             (audio/play audio/eval))])]
+             (audio/play audio/eval)
+             (reset! audio/current-track nil))])]
     (if (satisfies? NoDelay el)
       [:<> [render el nil] cont]
       (let [next? (reagent/atom false)]
@@ -115,6 +120,7 @@
            [render el (when-not @next? #(reset! next? true))]
            (when @next? cont)])))))
 
-(defn show [scene finish!]
+(defn show [{:keys [scene music]} finish!]
+  (reset! audio/current-track (audio/music music))
   [:div {:class "story"}
    [slide scene finish!]])
