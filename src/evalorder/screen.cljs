@@ -110,8 +110,7 @@
            "done"
            (fn []
              (finish!)
-             (audio/play audio/eval)
-             (reset! audio/current-track nil))])]
+             (audio/play audio/eval))])]
     (if (satisfies? NoDelay el)
       [:<> [render el nil] cont]
       (let [next? (reagent/atom false)]
@@ -121,6 +120,6 @@
            (when @next? cont)])))))
 
 (defn show [{:keys [scene music]} finish!]
-  (reset! audio/current-track (audio/music music))
+  (audio/play-track! (audio/music music))
   [:div {:class "story"}
    [slide scene finish!]])
