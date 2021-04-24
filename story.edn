@@ -7,7 +7,7 @@
    nil "In The Dream, just like they said, you feel great enlightenment." #delay/ms 3000
    nil "You see the beauty, the purity, the simplicity of Lisp unfold before you." #delay/ms 2000
    :continue
-   nil "You recall the number 1" #delay/ms 1000
+   "You recall the number 1" #delay/ms 1000
    [:div {:class "number"} 1] #delay/ms 2000
    "and how it is also an expression, evaluating to itself." #delay/ms 2000 nil
    "Try evaluating it, by pressing the button or the enter key."
