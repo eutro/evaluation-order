@@ -96,7 +96,7 @@
   (try (let [raw (edn/read-string reader-opts s)
              conformed (s/conform ::story raw)]
          (if (s/invalid? conformed)
-           [(error-screen (-> (s/explain-str ::screen raw) (str/split #"\n")))]
+           [(error-screen (-> (s/explain-str ::story raw) (str/split #"\n")))]
            conformed))
        (catch js/Error. e
          [(error-screen (str/split (ex-message e) #"\n"))])))

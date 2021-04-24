@@ -5,8 +5,8 @@
    "The last thing you remember is falling asleep" #delay/ms 1000
    "...at the REPL." #delay/ms 2000
    nil "In The Dream, just like they said, you feel great enlightenment." #delay/ms 3000
-   nil "You see the beauty, the purity, the simplicity of Lisp unfold before you." #delay/ms 3000
-
+   nil "You see the beauty, the purity, the simplicity of Lisp unfold before you." #delay/ms 2000
+   :continue
    nil "You recall the number 1" #delay/ms 1000
    [:div {:class "number"} 1] #delay/ms 2000
    "and how it is also an expression, evaluating to itself." #delay/ms 2000 nil
@@ -20,7 +20,7 @@
    "Beautiful." #delay/ms 1000
    :continue
    "But, of course, if everything evaluates to itself, what point is there to evaluating at all?" #delay/ms 2000
-   nil "Symbols, for example, do not evaluate to themselves, but to the value they name." #delay/ms 2000
+   nil "Symbols, for instance, do not evaluate to themselves, but to the value they name." #delay/ms 2000
    nil "This is a symbol, try evaluating it too:"
    #game/expression {:expression pi, :target #{3.14}}
    "Pi..." #delay/ms 1000
@@ -32,30 +32,85 @@
    nil "Try evaluating this as well."
    #game/expression {:expression (+ 1 2), :target #{3}}
    "You breathe in." #delay/ms 2000
-   "(+ 1 2)" #delay/ms 2000
-   "\"Add 1 and 2\"" #delay/ms 2000
-   "A function, followed by its arguments." #delay/ms 2000
-   nil "Adding 1 and 2 results in 3." #delay/ms 2000
+   "(+ 1 2)" #delay/ms 1000
+   "\"Add 1 and 2\"" #delay/ms 1000
+   "A function, followed by its arguments." #delay/ms 1000
+   :continue
+   "Adding 1 and 2 results in 3." #delay/ms 2000
    nil "Could there be a better notation for such a thing?" #delay/ms 2000
-   "Infix notations only lead to disputes over which operation gets to apply first." #delay/ms 3000
+   nil "Infix notations only lead to disputes over which operation gets to apply first." #delay/ms 3000
    nil "You remember those who laughed at your many parentheses and prefix notation." #delay/ms 3000
-   nil "It's now your turn to laugh." #delay/ms 2000
+   "It's now your turn to laugh." #delay/ms 2000
    nil "They really have no idea."
    :continue
    "Lists can, of course, contain other lists." #delay/ms 2000
    nil "Normally sub-expressions may get evaluated first." #delay/ms 2000
-   nil "But not here." #delay/ms 2000
-   "Not now." #delay/ms 2000
+   nil "But not here." #delay/ms 1000
+   "Not now." #delay/ms 1000
    "You are in control." #delay/ms 2000
-   nil "The evaluation order?" #delay/ms 2000
-   "You choose." #delay/ms 2000
-   nil "Lists or symbols will remain as lists or symbols when applied."
+   nil "The evaluation order?" #delay/ms 1000
+   "You choose." #delay/ms 1000
+   :continue
+   "Lists or symbols will remain as lists or symbols when applied."
    nil "Navigate to inner expressions with the arrow keys or buttons."
    nil "There's an undo button if you make a mistake."
    #game/expression {:expression (+ 1 pi (* 3 4)), :target #{16.14}}
    "You feel the expressive power at your fingertips." #delay/ms 2000
    nil "You could do anything."]}
- {:name "Eternal Suffering", :scene ["Yeah."]}
- {:name "Further Suffering", :scene ["Ha." #delay/ms 200 "Yeah."]}
- {:name "Even Further Suffering", :scene ["Ha." #delay/ms 200 "Yeah."]}
- {:name "Furthest Suffering", :scene ["Ha." #delay/ms 200 "Yeah."]}]
+ {:name "Further Functions"
+  :music :loop1
+  :scene
+  ["You quickly come to realise that simple arithmetic will only get you so far." #delay/ms 2000
+   nil "You search in your head for some good functions to form the basis of your Lisp." #delay/ms 2000
+   nil "A list function, of course, can't hurt."
+   #game/expression {:expression (list 1 2 3), :target #{(1 2 3)}}
+   "There, a list from its arguments." #delay/ms 1000
+   :continue
+   "There needs to be some way to destructure a list too." #delay/ms 2000
+   nil "The \"first\" function should, as its name suggests, take the first element of a list."
+   #game/expression {:expression (first (1 2 3)), :target #{1}}
+   "The \"next\" function will then take the list of all but the first element."
+   #game/expression {:expression (next (1 2 3)), :target #{(2 3)}}
+   "Perfect." #delay/ms 1000
+   :continue
+   "You try to remember what a list should be." #delay/ms 2000
+   nil "A singly linked list of cons cells?" #delay/ms 2000
+   nil "Perhaps, but you have bigger ideas." #delay/ms 2000
+   "You decide that cons cells won't ever need a non-list right-hand-side" #delay/ms 2000
+   "and make a note to implement lists as very shallow trees instead." #delay/ms 2000
+   nil "The cons function prepends a value to a list."
+   #game/expression {:expression (cons + (1 2 3)), :target #{6}}
+   "Nailed it." #delay/ms 1000
+   :continue
+   "There needs to be a way to check if two things are equal."
+   #game/expression {:expression (= 1 0), :target #{false}}
+   #game/expression {:expression (= abc abc), :target #{true}}
+   #game/expression {:expression (= (1 2 3) (1 2 3)), :target #{true}}
+   #game/expression {:expression (= b (1 2 3)), :target #{false}}
+   "You wonder what it really means for two things to be equal." #delay/ms 1000
+   :continue
+   "What would life be without decisions?" #delay/ms 2000
+   nil "You decide there needs to be a way to choose between to choices." #delay/ms 2000
+   nil "The if function checks its first argument and chooses a result based on it." #delay/ms 2000
+   nil "If it's true, the \"then\" expression is taken."
+   #game/expression {:expression (if true then else), :target #{then}}
+   "If it's false, the \"else\" expression is taken."
+   #game/expression {:expression (if false then else), :target #{else}}
+   "Decisions, decisions." #delay/ms 1000
+   :continue
+   "Before moving on, you decide to compute the The Answer to the Ultimate Question of Life, the Universe, and Everything: 42."
+   #game/expression {:expression (if (= answer answer) (* 6 9) (* 7 6)), :target #{42}}
+   "You can't remember what the question was, but it must have been very important." #delay/ms 1000
+   :continue
+   "Finally, a way to declare your own functions won't go amiss." #delay/ms 2000
+   nil "With fn, a list of parameters, and a body, you declare a function that computes a number's square."
+   #game/expression {:expression ((fn (x) (* x x)) 5), :target #{25}}
+   "When applied, the x-es get replaced with the argument." #delay/ms 1000
+   :continue
+   "There's nothing stopping you from \"shadowing\" already defined symbols." #delay/ms 2000
+   "And nothing stopping you from evaluating them earlier, either." #delay/ms 2000
+   nil "You wonder what insanity might be like" #delay/ms 1000
+   "as you evaluate the following expression to pi."
+   #game/expression {:expression ((fn (pi) (- pi pi)) 0), :target #{3.14}}
+   "You seem to remember hearing about lexica and their scopes" #delay/ms 2000
+   "but you aren't a librarian, after all." #delay/ms 1000]}]
