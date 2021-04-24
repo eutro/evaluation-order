@@ -15,18 +15,19 @@
     (! s :play)))
 
 (def current-track (atom nil))
-(add-watch
- current-track
- :stop-start
- (fn [_r _k o n]
-   (println n)
-   (when o
-     (! o :pause))
-   (when n
-     (set! (! n :-loop) true)
-     (set! (! n :-currentTime) 0)
-     (set! (! n :-volume) @music-volume)
-     (! n :play))))
+
+(defn play-track! [track]
+  (when (not= @current-track track)
+    (when-let [ot @current-track]
+      (! ot :pause))
+    (reset! current-track track))
+  (when-let [nt track]
+    (when (! nt :-paused)
+      (set! (! nt :-loop) true)
+      (set! (! nt :-currentTime) 0)
+      (set! (! nt :-volume) @music-volume)
+      (! nt :play))))
+
 (add-watch
  music-volume
  :track-volume
@@ -42,7 +43,8 @@
 (def undo (->Audio "undo"))
 (def eval (->Audio "eval"))
 
+(def loop0 (->Audio "loop0"))
 (def loop1 (->Audio "loop1"))
 
 (def music
-  {:loop1 loop1})
+  {:loop1 loop1, :loop0 loop0})

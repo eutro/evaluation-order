@@ -15,3 +15,4 @@
     ~@elements])
 
 (def screen (reagent/atom nil))
+(def overlay (reagent/atom nil))
