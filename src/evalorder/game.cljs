@@ -17,12 +17,12 @@
 
 (s/def ::target (s/coll-of ::expression, :kind set?, :into #{}))
 
-(s/def ::level (s/keys :req-un [::expression ::target]))
+(s/def ::puzzle (s/keys :req-un [::expression ::target]))
 
 (defn validate [level]
-  (let [conformed (s/conform ::level level)]
+  (let [conformed (s/conform ::puzzle level)]
     (when (s/invalid? conformed)
-      (throw (js/Error. (str "Invalid expression:\n" (s/explain-str ::level level)))))
+      (throw (js/Error. (str "Invalid expression:\n" (s/explain-str ::puzzle level)))))
     conformed))
 
 (defrecord Error [message])
@@ -177,9 +177,7 @@
             :title title}
       label])])
 
-(defn root [{:keys [expression
-                    _target
-                    _definitions]}
+(defn root [{:keys [expression]}
             _next!]
   (let [hist (reagent/atom (list {:expr expression
                                   :path []}))
@@ -189,9 +187,7 @@
                                 (= ::not-found))
                           nil
                           path))]
-    (fn [{:keys [_expression
-                 target
-                 _definitions]}
+    (fn [{:keys [target]}
          next!]
       (let [[{:keys [expr path]} & history] @hist
             evaluate! (fn []

@@ -6,6 +6,7 @@
             [evalorder.cookies :as ck]
             [evalorder.menu :as menu]
             [evalorder.util :as u]
+            [evalorder.audio :as audio]
             [clojure.core.async :as a]
             [cljs.core.async.interop :refer-macros [<p!]])
   (:require-macros [evalorder.macros :refer [! !js]]))
@@ -34,7 +35,7 @@
                        (reset! menu/screen
                                (partial
                                 screen/show
-                                (:scene level)
+                                level
                                 (fn []
                                   (swap! progress max (inc index))
                                   (reset! menu/screen nil)))))
