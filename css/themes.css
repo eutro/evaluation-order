@@ -48,7 +48,7 @@
 
 .button[disabled] {
     background:#48c78e;
-    cursor: wait;
+    cursor: not-allowed;
 }
 
 .dark {
