@@ -1,7 +1,9 @@
 # Evaluation Order
 
 > It has been a long day.
+>
 > The last thing you remember is falling asleep
+>
 > ...at the REPL.
 
 In this game you take the role of an avid Lisp programmer,
