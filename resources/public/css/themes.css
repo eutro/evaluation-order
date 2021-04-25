@@ -13,7 +13,7 @@
 }
 
 .bool,
-*:nth-child(2) > .symbol {
+.list-contents > :first-child > .symbol {
     color: darkorange;
 }
 
