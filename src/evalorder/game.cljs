@@ -4,7 +4,8 @@
             [evalorder.screen :as screen]
             [evalorder.util :as u]
             [evalorder.audio :as audio])
-  (:require-macros [evalorder.macros :refer [! !js]]))
+  (:require-macros [evalorder.macros :refer [! !js]]
+                   [evalorder.game :refer [numericfn]]))
 
 (s/def ::expression
   (s/and
@@ -68,25 +69,25 @@
 
      :else [:span {:class "error"} "!?"])])
 
+(declare app)
 ;; lisp 2 moment
 (def ^:dynamic *fn-env*
-  {'+ (fn [& args]
-        (if (some (complement number?) args)
-          (error "Can only add numbers")
-          (apply + args)))
-   '* (fn [& args]
-        (if (some (complement number?) args)
-          (error "Can only multiply numbers")
-          (apply * args)))
-   '- (fn [& args]
-        (if (some (complement number?) args)
-          (error "Can only subtract numbers")
-          (apply - args)))
-   '/ (fn [& args]
-        (if (some (complement number?) args)
-          (error "Can only divide numbers")
-          (apply / args)))
+  {'+ (numericfn + "add")
+   '* (numericfn * "multiply")
+   '- (numericfn - "subtract")
+   '/ (numericfn / "divide")
    '= =
+   '< (numericfn < "compare" false)
+   '> (numericfn > "compare" false)
+   '<= (numericfn <= "compare" false)
+   '>= (numericfn >= "compare" false)
+   'list? #(vector? %)
+   'symbol? #(symbol? %)
+   'number? #(number? %)
+   'empty? (fn [v]
+             (if (vector? v)
+               (empty? v)
+               false))
    'if (fn [pred then else]
          (if (boolean? pred)
            (if pred then else)
@@ -99,24 +100,50 @@
              (error "Not a list")))
    'first (fn [v]
             (if (vector? v)
-              (first v)
+              (if (seq v)
+                (first v)
+                (error "List is empty"))
               (error "Not a list")))
    'next (fn [v]
            (if (vector? v)
-             (subvec v 1)
+             (if (seq v)
+               (subvec v 1)
+               (error "List is empty"))
              (error "Not a list")))
    'list vector
-   'continue (constantly '[continue])})
+   'range (fn [from to]
+            (if (and (integer? from)
+                     (integer? to))
+              (vec (range from to))
+              (error "Not an integer")))
+   'concat (fn [a b]
+             (if (and (vector? a)
+                      (vector? b))
+               (into a b)
+               (error "Not a list")))
+   'map (fn [f l]
+          (if (vector? l)
+            (mapv #(app f [%]) l)
+            (error "Not a list")))
+   'reduce (fn [f init l]
+             (if (vector? l)
+               (reduce #(app f [%1 %2]) init l)
+               (error "Not a list")))})
 
 (def ^:dynamic *val-env*
   {'pi 3.14
-   'answer 42})
+   'answer 42
+   'Y '[fn [f] [f [Y f]]]})
 
 (defn app [value args]
   (cond
     (and (symbol? value)
          (*fn-env* value))
     (apply (*fn-env* value) args)
+
+    (and (symbol? value)
+         (*val-env* value))
+    (app (*val-env* value) args)
 
     (and (vector? value)
          (= 'fn (first value)))
@@ -125,25 +152,30 @@
         (some (complement symbol?) arglist)
         (error "Parameters must be symbols")
 
-        (not= (count args)
-              (count arglist))
-        (error "Wrong number of arguments")
+        (> (count args)
+           (count arglist))
+        (error "Too many arguments")
 
         :else
-        ((fn sub-in [expr arg->sub]
-           (cond
-             (vector? expr)
-             (if (= 'fn (first expr))
-               (let [[_ its-args its-body] expr
-                     new-subs (reduce dissoc arg->sub its-args)]
-                 `[~'fn ~its-args ~(mapv #(sub-in % new-subs) its-body)])
-               (mapv #(sub-in % arg->sub) expr))
+        (let [subbed
+              ((fn sub-in [expr arg->sub]
+                 (cond
+                   (vector? expr)
+                   (if (= 'fn (first expr)) ;; is it worth discriminating?
+                     (let [[_ its-args its-body] expr
+                           new-subs (reduce dissoc arg->sub its-args)]
+                       (vector 'fn its-args (mapv #(sub-in % new-subs) its-body)))
+                     (mapv #(sub-in % arg->sub) expr))
 
-             (symbol? expr)
-             (if-let [[_ v] (find arg->sub expr)] v expr)
+                   (symbol? expr)
+                   (if-let [[_ v] (find arg->sub expr)] v expr)
 
-             :else expr))
-         body (into {} (map vector arglist args)))))
+                   :else expr))
+               body (into {} (map vector arglist args)))]
+          (if (< (count args)
+                 (count arglist))
+            (vector 'fn (subvec arglist (count args)) subbed)
+            subbed))))
 
     :else (error "Not a function")))
 
