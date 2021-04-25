@@ -18,3 +18,7 @@
                         "max-age=" one-year ";"
                         "path=/;"
                         "secure"])))))
+
+(defn cookie-atom [atom-fn name]
+  (doto (atom-fn (get-cookie name))
+    (add-watch :cookie (fn [_k _r _o n] (set-cookie! name n)))))

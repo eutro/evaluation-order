@@ -55,6 +55,29 @@ body {
     cursor: pointer;
 }
 
+.volume-control {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%;
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.volume-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.volume-control::-moz-range-thumb,
+.volume-control::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
 .controls {
     display: flex;
     cursor: default;
@@ -68,4 +91,25 @@ body {
     height: 1.5em;
     margin-right: 0.5em;
     margin-top: 0.5em;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+.faded {
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.pause {
+    position: fixed;
+    bottom: 0.5em;
+    right: 0;
 }

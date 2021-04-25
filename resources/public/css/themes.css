@@ -51,9 +51,29 @@
     cursor: not-allowed;
 }
 
+.volume-control {
+    background: gray;
+}
+
+.volume-control::-moz-range-thumb,
+.volume-control::-webkit-slider-thumb {
+    background: #48c774;
+}
+
+.overlay {
+    background: white;
+    box-shadow: 10px 10px 5px gray;
+    border: solid 2px #2B2B2B;
+}
+
 .dark {
     background: #2B2B2B;
     color: lightgray;
+}
+
+.dark .overlay {
+    background: #2B2B2B;
+    border: solid 2px white;
 }
 
 .dark .selected > * {
