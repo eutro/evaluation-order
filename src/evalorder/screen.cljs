@@ -92,14 +92,20 @@
 (defn add-reader! [key value]
   (set! reader-opts (update reader-opts :readers assoc key value)))
 
-(defn read-story [s]
+(defn read-and-verify [spec s wrap]
   (try (let [raw (edn/read-string reader-opts s)
-             conformed (s/conform ::story raw)]
+             conformed (s/conform spec raw)]
          (if (s/invalid? conformed)
-           [(error-screen (-> (s/explain-str ::story raw) (str/split #"\n")))]
+           (wrap (error-screen (-> (s/explain-str spec raw) (str/split #"\n"))))
            conformed))
        (catch js/Error. e
-         [(error-screen (str/split (ex-message e) #"\n"))])))
+         (wrap (error-screen (str/split (ex-message e) #"\n"))))))
+
+(defn read-level [s]
+  (read-and-verify ::level s identity))
+
+(defn read-story [s]
+  (read-and-verify ::story s vector))
 
 (defn slide [[el & rem] finish!]
   (let [cont

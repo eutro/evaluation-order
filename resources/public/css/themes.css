@@ -69,7 +69,8 @@
     border: solid 2px #2B2B2B;
 }
 
-.dark {
+.dark,
+.dark .editor {
     background: #2B2B2B;
     color: lightgray;
 }
