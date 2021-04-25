@@ -51,7 +51,7 @@
    nil "The evaluation order?" #delay/ms 1000
    "You choose." #delay/ms 1000
    :continue
-   "Lists or symbols will remain as lists or symbols when applied."
+   "Lists or symbols will remain as lists or symbols when applied." #delay/ms 1000
    nil "Navigate to inner expressions with the arrow keys or buttons."
    nil "There's an undo button if you make a mistake."
    #game/expression {:expression (+ 1 pi (* 3 4)), :target #{16.14}}
@@ -90,7 +90,7 @@
    "You wonder what it really means for two things to be equal." #delay/ms 1000
    :continue
    "What would life be without decisions?" #delay/ms 2000
-   nil "You decide there needs to be a way to choose between to choices." #delay/ms 2000
+   nil "You decide there needs to be a way to choose between two choices." #delay/ms 2000
    nil "The if function checks its first argument and chooses a result based on it." #delay/ms 2000
    nil "If it's true, the \"then\" expression is taken."
    #game/expression {:expression (if true then else), :target #{then}}
@@ -100,7 +100,7 @@
    :continue
    "Before moving on, you decide to compute the The Answer to the Ultimate Question of Life, the Universe, and Everything: 42."
    #game/expression {:expression (if (= answer answer) (* 6 9) (* 7 6)), :target #{42}}
-   "You can't remember what the question was, but it must have been very important." #delay/ms 1000
+   "You don't know what the question was, but it must have been very important." #delay/ms 1000
    :continue
    "Finally, a way to declare your own functions won't go amiss." #delay/ms 2000
    nil "With fn, a list of parameters, and a body, you declare a function that computes a number's square."
@@ -110,7 +110,7 @@
    "There's nothing stopping you from \"shadowing\" already defined symbols." #delay/ms 2000
    "And nothing stopping you from evaluating them earlier, either." #delay/ms 2000
    nil "You wonder what insanity might be like" #delay/ms 1000
-   "as you evaluate the following expression to pi."
+   "as you evaluate the following expression to pi." #delay/ms 1000
    #game/expression {:expression ((fn (pi) (- pi pi)) 0), :target #{3.14}}
-   "You seem to remember hearing about lexica and their scopes" #delay/ms 2000
-   "but you aren't a librarian, after all." #delay/ms 1000]}]
+   "Someone told you about lexica and their scopes once." #delay/ms 2000
+   "You're not sorry." #delay/ms 1000]}]
