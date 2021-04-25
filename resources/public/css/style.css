@@ -57,7 +57,6 @@ body {
 
 .volume-control {
     -webkit-appearance: none;
-    appearance: none;
     width: 80%;
     height: 10px;
     border-radius: 5px;
@@ -67,14 +66,18 @@ body {
 .volume-control::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-}
-
-.volume-control::-moz-range-thumb,
-.volume-control::-webkit-slider-thumb {
+    outline: none;
     width: 25px;
     height: 25px;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-control::-moz-range-thumb {
     border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
     cursor: pointer;
 }
 
