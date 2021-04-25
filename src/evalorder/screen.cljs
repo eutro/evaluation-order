@@ -44,7 +44,7 @@
           :onKeyDown #(when (and (= "Enter" (! % :-key))
                                  (not (! % :-ctrlKey)))
                         (act!))
-          :tabIndex -1
+          :tabIndex 0
           :ref #(some-> % (! :focus))}
     icon]])
 
@@ -119,7 +119,15 @@
            [render el (when-not @next? #(reset! next? true))]
            (when @next? cont)])))))
 
-(defn show [{:keys [scene music]} finish!]
+(defn show [{:keys [scene music]} finish! pause!]
   (audio/play-track! (audio/music music))
-  [:div {:class "story"}
-   [slide scene finish!]])
+  [:div {:class "story"
+         :tabIndex 0
+         :ref #(some-> % (! :focus))
+         :onKeyDown
+         (fn [evt]
+           (when (= "Escape" (! evt :-key))
+             (pause!)))}
+   [slide scene finish!]
+   [:div {:class "pause"}
+    [single-control "Pause" "pause" pause!]]])
