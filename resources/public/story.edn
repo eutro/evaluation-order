@@ -82,8 +82,9 @@
    #game/expression {:expression (cons + (1 2 3)), :target #{6}}
    "Nailed it." #delay/ms 1000
    :continue
-   "There needs to be a way to check if two things are equal."
+   "There needs to be a way to compare things."
    #game/expression {:expression (= 1 0), :target #{false}}
+   #game/expression {:expression (<= 1 1 2 3), :target #{true}}
    #game/expression {:expression (= abc abc), :target #{true}}
    #game/expression {:expression (= (1 2 3) (1 2 3)), :target #{true}}
    #game/expression {:expression (= b (1 2 3)), :target #{false}}
@@ -113,4 +114,60 @@
    "as you evaluate the following expression to pi." #delay/ms 1000
    #game/expression {:expression ((fn (pi) (- pi pi)) 0), :target #{3.14}}
    "Someone told you about lexica and their scopes once." #delay/ms 2000
-   "You're not sorry." #delay/ms 1000]}]
+   "You're not sorry." #delay/ms 1000]}
+ {:name "Recursion"
+  :music :loop1
+  :scene
+  ["Imperative loops aren't an option, you need recursion to express repetitions." #delay/ms 2000
+   nil "The fixed-point combinator will do." #delay/ms 2000
+   "You call it Y."
+   #game/expression {:expression (Y g), :target #{(g (g (Y g)))}}
+   "Fixed." #delay/ms 1000
+   :continue
+   "You use this to generate the numbers from 1 to 3 inclusive."
+   #game/expression {:expression ((Y (fn (range from to)
+                                       (if (>= from to)
+                                         ()
+                                         (cons from (range (+ from 1) to)))))
+                                  1 4)
+                     :target #{(1 2 3)}}
+   "You've always wondered whether lists are greater than numbers, actually." #delay/ms 1000
+   :continue
+   "You decide you want to concatenate two lists."
+   #game/expression {:expression ((Y (fn (concat a b)
+                                       (if (empty? a)
+                                         b
+                                         (cons (first a) (concat (next a) b)))))
+                                  (1 2) (3 4))
+                     :target #{(1 2 3 4)}}
+   "One, two, three, four!" #delay/ms 1000
+   :continue
+   "How about mapping a function over a list of elements?"
+   #game/expression {:expression ((Y (fn (map f l)
+                                       (if (empty? l)
+                                         ()
+                                         (cons (f (first l))
+                                               (map f (next l))))))
+                                  (fn (x) (+ x 1))
+                                  (1 2 3))
+                     :target #{(2 3 4)}}
+   :continue
+   "You'd prefer to have the more general reduce function available too, actually."
+   #game/expression {:expression ((Y (fn (reduce f init l)
+                                       (if (empty? l)
+                                         init
+                                         (reduce f
+                                                 (f init (first l))
+                                                 (next l)))))
+                                  (fn (a b) (cons b a))
+                                  ()
+                                  (1 2 3))
+                     :target #{(3 2 1)}}
+   "Huh, it's reversed." #delay/ms 1000
+   :continue
+   "All these functions are available now:"
+   #game/expression {:expression (range 1 4), :target #{(1 2 3)}}
+   #game/expression {:expression (concat (1 2) (3 4)), :target #{(1 2 3 4)}}
+   #game/expression {:expression (map (fn (x) (+ x 1)) (1 2 3)), :target #{(2 3 4)}}
+   #game/expression {:expression (reduce (fn (a b) (cons b a)) () (1 2 3)), :target #{(3 2 1)}}
+   "How convenient." #delay/ms 1000]}]
