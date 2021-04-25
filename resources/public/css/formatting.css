@@ -1,4 +1,4 @@
-.list > :not(:first-child):not(:nth-last-child(2)):not(:last-child) {
+.list-contents > :not(:last-child) {
     margin-right: 1ch;
 }
 

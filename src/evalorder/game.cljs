@@ -49,16 +49,21 @@
                {:onClick select!, :onFocus select!, :tabIndex 0})))
    (cond
      (vector? value)
-     [:span {:class "list"}
-      [delim "("]
-      (for [[i el] (u/enumerate value)]
-        ^{:key i} [expr-el
-                   el
-                   (when (= i (first selected))
-                     (rest selected))
-                   (conj path i)
-                   set-path!])
-      [delim ")"]]
+     (let [wrapped (reagent/atom false)]
+       [(fn []
+          [:span (when (symbol? (first value))
+                   {:class (str "expr-" (first value))})
+           [:span {:class "list"}
+            [delim "("]
+            [:span {:class "list-contents"}
+             (for [[i el] (u/enumerate value)]
+               ^{:key i} [expr-el
+                          el
+                          (when (= i (first selected))
+                            (rest selected))
+                          (conj path i)
+                          set-path!])]
+            [delim ")"]]])])
 
      (number? value) [:span {:class "number"} (str value)]
      (symbol? value) [:span {:class "symbol"} (str value)]
