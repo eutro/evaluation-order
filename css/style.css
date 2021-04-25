@@ -111,9 +111,10 @@ a.button {
     top: 0;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    height: 90%;
     width: 80%;
+    overflow-y: auto;
 }
 
 .faded {
