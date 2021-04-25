@@ -55,7 +55,10 @@
     background: gray;
 }
 
-.volume-control::-moz-range-thumb,
+.volume-control::-moz-range-thumb {
+    background: #48c774;
+}
+
 .volume-control::-webkit-slider-thumb {
     background: #48c774;
 }
