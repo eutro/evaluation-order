@@ -13,7 +13,9 @@
 
 (defn button [text on-click & [extras]]
   [:button (merge {:class "button"
-                   :onClick on-click}
+                   :onClick (fn []
+                              (audio/play audio/eval)
+                              (on-click))}
                   extras)
    text])
 

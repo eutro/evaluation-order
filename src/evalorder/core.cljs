@@ -72,6 +72,10 @@
     "Level Editor"
     (fn []
       (reset! menu/screen [level-editor]))]
+   [:a {:class "button"
+        :href "https://github.com/eutro/evaluation-order"
+        :target "_blank"}
+    "Source Code"]
    (when @failed-to-play
      [menu/button
       "Play Music"
