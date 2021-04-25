@@ -11,6 +11,18 @@ body {
     margin: 0;
 }
 
+.editor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    border: 0;
+    margin: 0;
+    resize: none;
+    font-size: 1em;
+}
+
 .menu {
     text-align: center;
     display: flex;
@@ -32,12 +44,6 @@ body {
 .story {
     padding: 0.5em;
     margin-bottom: 75vh;
-}
-
-.bar {
-    min-height: 1.25em;
-    line-height: 1.25;
-    padding-left: 0.5ch;
 }
 
 .button {
@@ -111,6 +117,11 @@ body {
     z-index: -1;
 }
 
+.editor-buttons > * {
+    margin-right: 0.5em;
+}
+
+.editor-buttons,
 .pause {
     position: fixed;
     bottom: 0.5em;
