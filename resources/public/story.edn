@@ -98,7 +98,7 @@
    #game/expression {:expression (if false then else), :target #{else}}
    "Decisions, decisions." #delay/ms 1000
    :continue
-   "Before moving on, you decide to compute the The Answer to the Ultimate Question of Life, the Universe, and Everything: 42."
+   "Before moving on, you decide to compute The Answer to the Ultimate Question of Life, the Universe, and Everything: 42."
    #game/expression {:expression (if (= answer answer) (* 6 9) (* 7 6)), :target #{42}}
    "You don't know what the question was, but it must have been very important." #delay/ms 1000
    :continue
