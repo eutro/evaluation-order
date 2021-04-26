@@ -151,6 +151,7 @@
                                   (fn (x) (+ x 1))
                                   (1 2 3))
                      :target #{(2 3 4)}}
+   "Don't get lost, now." #delay/ms 1000
    :continue
    "You'd prefer to have the more general reduce function available too, actually."
    #game/expression {:expression ((Y (fn (reduce f init l)
@@ -170,4 +171,36 @@
    #game/expression {:expression (concat (1 2) (3 4)), :target #{(1 2 3 4)}}
    #game/expression {:expression (map (fn (x) (+ x 1)) (1 2 3)), :target #{(2 3 4)}}
    #game/expression {:expression (reduce (fn (a b) (cons b a)) () (1 2 3)), :target #{(3 2 1)}}
-   "How convenient." #delay/ms 1000]}]
+   "How convenient." #delay/ms 1000]}
+ {:name "More Puzzles"
+  :music :loop1 ;; yeah...
+  :scene
+  ["=> 24"
+   #game/expression {:expression (cons * (((Y first) (Y next)) (+ 2 3 4)))
+                     :target #{24}}
+   :continue
+   "=> 30"
+   #game/expression {:expression (cons * ((Y (fn (r x)
+                                               (if (list? x)
+                                                 (cons x (r (- x 1)))
+                                                 (if (<= x 0)
+                                                   ()
+                                                   (r (- x 1))))))
+                                          6))
+                     :target #{30}}
+   :continue
+   "=> 1"
+   #game/expression {:expression (cons first (next (next (reduce (fn (x n) (n x))
+                                                                 (1 2 3)
+                                                                 (first next first list first first)))))
+                     :target #{1}}
+   :continue
+   "=> (the end)"
+   #game/expression {:expression (reduce (fn (l el)
+                                           (if (symbol? el)
+                                             (concat l (el))
+                                             l))
+                                         ()
+                                         (this is the end))
+                     :target #{(the end)}}
+   "Thank you for playing!" #delay/ms 1000]}]
