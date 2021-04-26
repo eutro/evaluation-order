@@ -132,7 +132,9 @@
             (error "Not a list")))
    'reduce (fn [f init l]
              (if (vector? l)
-               (reduce #(app f [%1 %2]) init l)
+               (if (empty? l)
+                 init
+                 (vector 'reduce f (app f [init (first l)]) (subvec l 1)))
                (error "Not a list")))})
 
 (def ^:dynamic *val-env*
@@ -294,7 +296,12 @@
              ["keyboard_arrow_left" left! "Left (Left Arrow)"]
              ["keyboard_arrow_up" up! "Outer (Up Arrow)"]
              ["keyboard_arrow_down" down! "Inner (Down Arrow)"]
-             ["keyboard_arrow_right" right! "Right (Right Arrow)"]])]]))))
+             ["keyboard_arrow_right" right! "Right (Right Arrow)"]
+             ["fast_forward"
+              (fn []
+                (swap! hist to-cons assoc :expr (first target))
+                (audio/play audio/failed))
+              "Skip"]])]]))))
 
 (screen/add-reader!
   'game/expression
